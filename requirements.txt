@@ -1,5 +1,6 @@
-flask
-requests
-xmltodict
-flask_cors
-dotenv
+Flask==2.1.2
+requests==2.27.1
+xmltodict==0.12.0
+flask_cors==3.0.10
+python-dotenv==0.20.0
+Werkzeug==2.1.1
