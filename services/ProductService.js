@@ -1,0 +1,197 @@
+const product = require('../utils/AxiosService');
+
+class ProductService{
+    async getFlexofferProduct(search,id ,name,type){
+        const  regexCase = /\b(KID|KIDS|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS)\b/i;
+        
+        let flexSearch  =search.replace(' ',',')
+        let analyzedQuery = queryAnalysis(search);
+        let targetWordRegix = regex = new RegExp(`\\b${analyzedQuery.item}\\b`, 'i');
+        let FLEX_OFFER_API = `https://api.flexoffers.com/products/full?page=1&name=${flexSearch}&pageSize=10`
+        let flexOfferHeader = {
+            'apiKey':'41a02e6b-b5a3-4d7f-ae2a-476cdd6be0b7',
+            'Content-Type': 'application/json'
+        }
+        let cid='';
+        if(id !=='0' && name !=='-'){
+            if(type ==='FLEXOFFER'){
+                let FLEXOFFER_CATELOG = `https://api.flexoffers.com/products/catalogs?aid=${id}`;
+                const catelog = await product.getAPI(FLEXOFFER_CATELOG,flexOfferHeader,'JSON');
+                catelog.forEach(c=>{
+                    cid=cid+c.cid+',';
+                })
+                cid = cid.substring(0,cid.length - 1)
+                FLEX_OFFER_API= FLEX_OFFER_API+'&cid='+cid;
+            }
+        }
+        else {
+            cid = '172122.156074.815D5727FF79F9D1,172122.156074.477079660CE9C556,158527.1.4D5,209002.156074.1310692960C87047,200434.156074.7A6D0F7C12820A28,181293.156074.E474BA81234AD025,204122.156052.207C,192065.156052.219F';
+        }
+        try{
+            
+            // const apiDataFlexOffer = await product.getAPI(FLEX_OFFER_API,flexOfferHeader,'JSON');
+            const apiDataFlexOffer = await product.getStaticDataForFlexOffer(FLEX_OFFER_API,flexOfferHeader,'JSON');
+            // const apiDataFlexOffer = await product.getStaticDataForFlexOffer();
+             const responseData = [];
+            const uniqueMap = new Map();
+            apiDataFlexOffer.forEach(prod=>{
+                if(!uniqueMap.has(prod.deepLinkURL) && prod.isInstock && prod.deepLinkURL && prod.priceCurrency==='USD'&&
+                (regexCase.test(prod.description)||regexCase.test(prod.name))&&
+                (targetWordRegix.test(prod.description)||targetWordRegix.test(prod.name))){
+                    const responseStructure = {
+                        'productName': prod.name,
+                        'imageUrl': prod.imageUrl !=null? [prod.imageUrl] : [],
+                        'price': prod.price,
+                        'currency': prod.priceCurrency,
+                        'salesPrice': prod.salePrice,
+                        'discount': prod.discount,
+                        'category': prod.category,
+                        'manufacturer': prod.manufacturer,
+                        'advertiserName':prod.advertiserName,
+                        'description': prod.description,
+                        'linkurl': [prod.deepLinkURL],
+                        'from': 'FLEXOFFER',
+                        'color': prod.color!=null ? [prod.color]: [],
+                        'size': prod.size!=null ? [prod.size] : [],
+                        'gender':prod.gender,
+                        'isInStock':prod.isInstock,
+                        'isOnSale':prod.isOnSale
+                    };
+                    uniqueMap.set(prod.deepLinkURL, responseStructure);
+                }
+                else if(uniqueMap.has(prod.deepLinkURL) && prod.isInstock){
+                    const responseStructure = uniqueMap.get(prod.deepLinkURL);
+                    if(prod.imageUrl!=null){
+                        responseStructure.imageUrl.push(prod.imageUrl);
+                    }
+                    if(prod.size!=null){
+                        responseStructure.color.push(prod.color);
+                    }
+                    if(prod.color!=null){
+                        responseStructure.size.push(prod.size);
+                    }
+                }
+            });
+            let mid = '41094';
+            let one = 'kids,teens,children,toodler';
+            if(analyzedQuery.gender==='GIRL' || analyzedQuery.gender==='GIRLS'){
+                one  = 'girls,girl,kids,teens,children,toodler';
+            }
+            else if(analyzedQuery.gender==='BOY' || analyzedQuery.gender==='BOYS'){
+                one  = 'boy,boys,kids,teens,children,toodler';
+            }
+            let LINK_SHARE_API = `https://api.linksynergy.com/productsearch/1.0?keyword=${search}&mid=${mid}&sort=productname&sorttype=asc&max=100&pagenumber=1&one=${one}`;
+            let linkShareHeader = {
+                'Authorization':`Bearer ${await product.linkShareRefreshToken()}`,
+            }
+            // console.log(LINK_SHARE_API);
+            const apiDataLinkShare = await product.getAPI(LINK_SHARE_API,linkShareHeader,'XML');
+            // console.log(apiDataLinkShare.result.item);
+            apiDataLinkShare.result.item.forEach(prod=>{
+                let currency = prod.price[0].$.currency;
+                if(!uniqueMap.has(prod.imageurl[0])&& currency==='USD' && (targetWordRegix.test(prod.prductname[0])||targetWordRegix.test(prod.description[0].short[0]))){
+                    let salesPrice = prod.saleprice[0]._;
+                    let price = prod.price[0]._;
+                    const responseStructure = {
+                        'productName': prod.productname[0],
+                        'imageUrl': prod.imageurl !=null? [...prod.imageurl] : [],
+                        'price': price,
+                        'currency': currency,
+                        'salesPrice': salesPrice,
+                        'discount':'0%',
+                        'category': prod.category[0].primary[0]+'->'+prod.category[0].secondary[0],
+                        'manufacturer': '-',
+                        'advertiserName':prod.merchantname[0],
+                        'description': prod.description[0].short[0],
+                        'linkurl': [prod.linkurl[0]],
+                        'from': 'LINKSHARE',
+                        'color': [],
+                        'size': [],
+                        'gender':'-',
+                        'isInStock':true,
+                        'isOnSale':price>salesPrice
+                    };
+                    // uniqueMap.set(prod.imageurl[0], responseStructure);
+                }
+            });
+            uniqueMap.forEach((value,key)=>{
+                responseData.push(value);
+            });
+            return responseData;
+        }
+        catch(error){
+            console.log('Error on fetching API data ',error.message);
+            console.error(error.stack);
+        }
+    }
+    queryAnalysis(query){
+        let suffix = /\b(BEST|LUXURY|TOP|HIGHEND)\b/i;
+        let gender = /\b(GIRL|GIRLS|BOY|BOYS)\b/i;
+        let target = /\b(KID|KIDS|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS)\b/i;
+        let helpingWord = /\b(FOR|WITH|IN|IS|WITH)\b/i;
+        let response = {
+            gender:null,
+            product:null,
+            suffix:null,
+            target:null,
+            item:null,
+            helpingWord:null
+        }
+        let wordArray = query.toUpperCase().split(' ');
+        wordArray.forEach(word=>{
+            word=word.replace('-','');
+            if(gender.test(word.toUpperCase())){
+                response.gender=word.toUpperCase();
+            }
+            else if(suffix.test(word.toUpperCase())){
+                response.suffix=word.toUpperCase();
+            }
+            else if(target.test(word.toUpperCase())){
+                response.target=word.toUpperCase();
+            }
+            else if(helpingWord.test(word.toUpperCase())){
+                response.helpingWord=word.toUpperCase();
+            }
+            else{
+                response.item=word.toUpperCase();
+            }
+        });
+        return response;
+      }
+}
+module.exports = ProductService;
+
+
+
+//Common Response
+
+// name  
+// imageUrl 
+// price 
+// description
+// category
+// manufacturer
+// Condition
+// color
+// deepLinkURL
+// From  = static
+// brand
+// priceCurrency
+// salePrice
+// finalPrice
+// discount
+
+
+
+
+// LINK SHARE 
+// merchantname
+// productname
+// category
+// price
+// salesprice
+// description
+// linkurl
+// imageurl
+// currency
+// From = static
