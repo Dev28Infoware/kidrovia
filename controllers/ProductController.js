@@ -2,7 +2,7 @@ const ProductService = require('../services/ProductService')
 
 const productService = new ProductService();
 exports.getAllProducts = async(req,res)=>{
-    const search = req.query.searchQuery;
+    const search = req.query.searchQuery || '';
     const advertiserId = req.query.id;
     const advertiserName = req.query.name;
     const type = req.query.type;

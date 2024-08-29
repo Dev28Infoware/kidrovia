@@ -25706,7 +25706,7 @@ const cribe=`[
     "statusId": 1
   }
 ]`;
-  return JSON.parse(cribe);
+  return JSON.parse(data);
 }
 async function getAPI(url,header,type){
     try{
@@ -25748,6 +25748,25 @@ async function postAPI(url,header,data){
     }
 }
 
+async function getFlexOfferProductIds(url, header) {
+  try {
+    // Fetch the API response
+    const response = await getAPI(url, header, 'JSON');
+    // console.log('response', response);
+    
+    
+    if (Array.isArray(response)) {
+      // Extract product IDs from the response
+      return response.map(product => product.pid);
+    } else {
+      throw new Error('Invalid response format: Response is not an array');
+    }
+  } catch (error) {
+    console.error(`Error fetching product IDs: ${error.message}`);
+    throw new Error('Failed to fetch product IDs');
+  }
+}
+
 async function linkShareRefreshToken(){
   if(tokenExpiry==0 || Date.now()>= tokenExpiry){
       let authTokenAPI = 'https://api.linksynergy.com/token';
@@ -25765,4 +25784,4 @@ async function linkShareRefreshToken(){
   }
   return refreshToken;
 }
-module.exports = {getAPI,postAPI,linkShareRefreshToken,getStaticDataForFlexOffer};
+module.exports = {getAPI,postAPI,linkShareRefreshToken,getStaticDataForFlexOffer, getFlexOfferProductIds};
