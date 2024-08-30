@@ -25752,7 +25752,6 @@ async function getFlexOfferProductIds(url, header) {
   try {
     // Fetch the API response
     const response = await getAPI(url, header, 'JSON');
-    // console.log('response', response);
     
     
     if (Array.isArray(response)) {

@@ -1,7 +1,36 @@
 const product = require('../utils/AxiosService');
+const CSVService = require('../utils/CSVService');
 
 class ProductService {
+    constructor() {
+        this.csvService = new CSVService();
+    }
 
+    async getProductsFromCSV(filePath) {
+        try {
+            const csvData = await this.csvService.readCSVFile(filePath);
+            const allResults = [];
+
+            console.log('csvData',csvData);
+
+            for (const row of csvData) {
+                const search = row['query'];
+                const advertiserId = row['id'];
+                const advertiserName = row['query variance'];
+                const type = row['source'];
+
+                if (search) {  // Ensure search query is provided
+                    const products = await this.getFlexofferProduct(search, advertiserId, advertiserName, type);
+                    allResults.push(...products);
+                }
+            }
+
+            return allResults;
+        } catch (error) {
+            console.error('Error processing CSV file:', error.message);
+            throw error;
+        }
+    }
    
     async getFlexofferProduct(search, id, name, type) {
         const regexCase = /\b(KID|KIDS|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS)\b/i;
@@ -31,30 +60,33 @@ class ProductService {
             cid = '172122.156074.815D5727FF79F9D1,172122.156074.477079660CE9C556,158527.1.4D5,209002.156074.1310692960C87047,200434.156074.7A6D0F7C12820A28,181293.156074.E474BA81234AD025,204122.156052.207C,192065.156052.219F';
         }
         
-        let FLEX_OFFER_API = `https://api.flexoffers.com/products?name=${flexSearch}&page=1&pageSize=10&cid=${cid}`;
-             
+        // let FLEX_OFFER_API = `https://api.flexoffers.com/products?name=${flexSearch}&page=1&pageSize=10&cid=${cid}`;
+        let FLEX_OFFER_API1 = `https://api.flexoffers.com/products?cid=157993.156074.8C0134638C25338F&name=Shoes&page=1&pageSize=10`;
+
         try {
             // Fetch product IDs
-            const productIds = await product.getFlexOfferProductIds(FLEX_OFFER_API, flexOfferHeader);
+            const productIds = await product.getFlexOfferProductIds(FLEX_OFFER_API1, flexOfferHeader);
             const responseData = [];
             const uniqueMap = new Map();
+
+            console.log('productIds', productIds);
 
             for (const pid of productIds) {
                 const productDetailsAPI = `https://api.flexoffers.com/products/product?pid=${pid}`;
                 try {
                     const fullProductDetailsArray = await product.getAPI(productDetailsAPI, flexOfferHeader, 'JSON');
-                    // console.log('Full Product Details:', fullProductDetailsArray);
+                    console.log('Full Product Details:', fullProductDetailsArray);
 
                     if (fullProductDetailsArray && fullProductDetailsArray.length > 0) {
                         const fullProductDetails = fullProductDetailsArray[0];
 
-                        if (
-                            !uniqueMap.has(fullProductDetails.deepLinkURL) &&
-                            fullProductDetails.isInstock &&
-                            fullProductDetails.deepLinkURL &&
-                            fullProductDetails.priceCurrency === 'USD' &&
-                            (regexCase.test(fullProductDetails.description) || regexCase.test(fullProductDetails.name)) &&
-                            (analyzedQuery.item && new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.description) || new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.name))
+                        if (true
+                            // !uniqueMap.has(fullProductDetails.deepLinkURL) &&
+                            // fullProductDetails.isInstock &&
+                            // fullProductDetails.deepLinkURL &&
+                            // fullProductDetails.priceCurrency === 'USD' &&
+                            // (regexCase.test(fullProductDetails.description) || regexCase.test(fullProductDetails.name)) &&
+                            // (analyzedQuery.item && new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.description) || new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.name))
                         ) {
                             const responseStructure = {
                                 'productName': fullProductDetails.name,
@@ -97,13 +129,13 @@ class ProductService {
                 }
             }
 
-            let mid = '41094';
-            let one = 'kids,teens,children,toodler';
-            if (analyzedQuery.gender === 'GIRL' || analyzedQuery.gender === 'GIRLS') {
-                one = 'girls,girl,kids,teens,children,toodler';
-            } else if (analyzedQuery.gender === 'BOY' || analyzedQuery.gender === 'BOYS') {
-                one = 'boy,boys,kids,teens,children,toodler';
-            }
+            // let mid = '41094';
+            // let one = 'kids,teens,children,toodler';
+            // if (analyzedQuery.gender === 'GIRL' || analyzedQuery.gender === 'GIRLS') {
+            //     one = 'girls,girl,kids,teens,children,toodler';
+            // } else if (analyzedQuery.gender === 'BOY' || analyzedQuery.gender === 'BOYS') {
+            //     one = 'boy,boys,kids,teens,children,toodler';
+            // }
 
            // let LINK_SHARE_API = `https://api.linksynergy.com/productsearch/1.0?keyword=${search}&mid=${mid}&sort=productname&sorttype=asc&max=100&pagenumber=1&one=${one}`;
             // let linkShareHeader = {

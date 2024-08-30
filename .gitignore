@@ -5,7 +5,3 @@ node_modules
 .vscode
 uploads
 src/logs
-/**/*.js
-/**/*.*.js
-/**/*.js.map
-src/logs
