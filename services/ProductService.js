@@ -1,5 +1,9 @@
 const product = require('../utils/AxiosService');
 const CsvService = require('../utils/CsvService');
+const path = require('path');
+const STOREFILEWRITEPATH = path.join(__dirname, '../file_structure/product_dump/product.json'); 
+const store = new CsvService();
+
 
 class ProductService {
     constructor() {
@@ -80,13 +84,13 @@ class ProductService {
                     if (fullProductDetailsArray && fullProductDetailsArray!== 'undefined' && fullProductDetailsArray.length > 0) {
                         const fullProductDetails = fullProductDetailsArray[0];
 
-                        if (true
-                            // !uniqueMap.has(fullProductDetails.deepLinkURL) &&
-                            // fullProductDetails.isInstock &&
-                            // fullProductDetails.deepLinkURL &&
-                            // fullProductDetails.priceCurrency === 'USD' &&
-                            // (regexCase.test(fullProductDetails.description) || regexCase.test(fullProductDetails.name)) &&
-                            // (analyzedQuery.item && new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.description) || new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.name))
+                        if (
+                            !uniqueMap.has(fullProductDetails.deepLinkURL) &&
+                            fullProductDetails.isInstock &&
+                            fullProductDetails.deepLinkURL &&
+                            fullProductDetails.priceCurrency === 'USD' &&
+                            (regexCase.test(fullProductDetails.description) || regexCase.test(fullProductDetails.name)) &&
+                            (analyzedQuery.item && new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.description) || new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.name))
                         ) {
                             const responseStructure = {
                                 'productName': fullProductDetails.name,
@@ -129,48 +133,48 @@ class ProductService {
                 }
             }
 
-            // let mid = '41094';
-            // let one = 'kids,teens,children,toodler';
-            // if (analyzedQuery.gender === 'GIRL' || analyzedQuery.gender === 'GIRLS') {
-            //     one = 'girls,girl,kids,teens,children,toodler';
-            // } else if (analyzedQuery.gender === 'BOY' || analyzedQuery.gender === 'BOYS') {
-            //     one = 'boy,boys,kids,teens,children,toodler';
-            // }
+            let mid = '41094';
+            let one = 'kids,teens,children,toodler';
+            if (analyzedQuery.gender === 'GIRL' || analyzedQuery.gender === 'GIRLS') {
+                one = 'girls,girl,kids,teens,children,toodler';
+            } else if (analyzedQuery.gender === 'BOY' || analyzedQuery.gender === 'BOYS') {
+                one = 'boy,boys,kids,teens,children,toodler';
+            }
 
-           // let LINK_SHARE_API = `https://api.linksynergy.com/productsearch/1.0?keyword=${search}&mid=${mid}&sort=productname&sorttype=asc&max=100&pagenumber=1&one=${one}`;
-            // let linkShareHeader = {
-            //     'Authorization':`Bearer ${await product.linkShareRefreshToken()}`,
-            // }
-            // console.log(LINK_SHARE_API);
-            // const apiDataLinkShare = await product.getAPI(LINK_SHARE_API,linkShareHeader,'XML');
-            // // console.log(apiDataLinkShare.result.item);
-            // apiDataLinkShare.result.item.forEach(prod=>{
-            //     let currency = prod.price[0].$.currency;
-            //     if(!uniqueMap.has(prod.imageurl[0])&& currency==='USD' && (targetWordRegix.test(prod.prductname[0])||targetWordRegix.test(prod.description[0].short[0]))){
-            //         let salesPrice = prod.saleprice[0]._;
-            //         let price = prod.price[0]._;
-            //         const responseStructure = {
-            //             'productName': prod.productname[0],
-            //             'imageUrl': prod.imageurl !=null? [...prod.imageurl] : [],
-            //             'price': price,
-            //             'currency': currency,
-            //             'salesPrice': salesPrice,
-            //             'discount':'0%',
-            //             'category': prod.category[0].primary[0]+'->'+prod.category[0].secondary[0],
-            //             'manufacturer': '-',
-            //             'advertiserName':prod.merchantname[0],
-            //             'description': prod.description[0].short[0],
-            //             'linkurl': [prod.linkurl[0]],
-            //             'from': 'LINKSHARE',
-            //             'color': [],
-            //             'size': [],
-            //             'gender':'-',
-            //             'isInStock':true,
-            //             'isOnSale':price>salesPrice
-            //         };
-            //         // uniqueMap.set(prod.imageurl[0], responseStructure);
-            //     }
-            // });
+           let LINK_SHARE_API = `https://api.linksynergy.com/productsearch/1.0?keyword=${search}&mid=${mid}&sort=productname&sorttype=asc&max=100&pagenumber=1&one=${one}`;
+            let linkShareHeader = {
+                'Authorization':`Bearer ${await product.linkShareRefreshToken()}`,
+            }
+            console.log(LINK_SHARE_API);
+            const apiDataLinkShare = await product.getAPI(LINK_SHARE_API,linkShareHeader,'XML');
+            // console.log(apiDataLinkShare.result.item);
+            apiDataLinkShare.result.item.forEach(prod=>{
+                let currency = prod.price[0].$.currency;
+                if(!uniqueMap.has(prod.imageurl[0])&& currency==='USD' && (targetWordRegix.test(prod.prductname[0])||targetWordRegix.test(prod.description[0].short[0]))){
+                    let salesPrice = prod.saleprice[0]._;
+                    let price = prod.price[0]._;
+                    const responseStructure = {
+                        'productName': prod.productname[0],
+                        'imageUrl': prod.imageurl !=null? [...prod.imageurl] : [],
+                        'price': price,
+                        'currency': currency,
+                        'salesPrice': salesPrice,
+                        'discount':'0%',
+                        'category': prod.category[0].primary[0]+'->'+prod.category[0].secondary[0],
+                        'manufacturer': '-',
+                        'advertiserName':prod.merchantname[0],
+                        'description': prod.description[0].short[0],
+                        'linkurl': [prod.linkurl[0]],
+                        'from': 'LINKSHARE',
+                        'color': [],
+                        'size': [],
+                        'gender':'-',
+                        'isInStock':true,
+                        'isOnSale':price>salesPrice
+                    };
+                    // uniqueMap.set(prod.imageurl[0], responseStructure);
+                }
+            });
 
             uniqueMap.forEach((value, key) => {
                 responseData.push(value);
@@ -181,7 +185,206 @@ class ProductService {
             // console.error(error.stack);
         }
     }
+
+    async shopByProduct(filePath) {
+        try {
+            const csvData = await this.csvService.readCSVFile(filePath);
+            const flexofferIds = [];
+            const linkshareIds = [];
+            const allResults = [];
     
+            // Separate store IDs by source
+            csvData.forEach(row => {
+                if (row.source === 'FLEXOFFER') {
+                    flexofferIds.push(row.store_id);
+                } else if (row.source === 'LINKSHARE') {
+                    linkshareIds.push(row.store_id);
+                }
+            });
+    
+            console.log('flexofferIds', flexofferIds);
+            console.log('linkshareIds', linkshareIds);
+    
+            // Fetch products from FlexOffers
+
+            // if (flexofferIds.length > 0) {
+            //     const flexOfferHeader = {
+            //         'apiKey': '41a02e6b-b5a3-4d7f-ae2a-476cdd6be0b7',
+            //         'Content-Type': 'application/json'
+            //     };
+    
+            //     const cidList = [];
+            //     for (const storeId of flexofferIds) {
+            //         const FLEXOFFER_CATALOG_API = `https://api.flexoffers.com/products/catalogs?aid=${storeId}`;
+            //         const catalog = await product.getAPI(FLEXOFFER_CATALOG_API, flexOfferHeader, 'JSON');
+            //         catalog.forEach(c => {
+            //             cidList.push(c.cid);
+            //         });
+            //     }
+    
+            //     console.log('cidList', cidList);
+    
+            //     for (const cid of cidList) {
+            //         const FLEX_OFFER_PRODUCTS_API = `https://api.flexoffers.com/products?cid=${cid}&page=1&pageSize=10`;
+    
+            //         console.log('FLEX_OFFER_PRODUCTS_API', FLEX_OFFER_PRODUCTS_API);
+            //         const productIds = await product.getFlexOfferProductIds(FLEX_OFFER_PRODUCTS_API, flexOfferHeader);
+            //         const uniqueMap = new Map();
+    
+            //         for (const pid of productIds) {
+            //             const productDetailsAPI = `https://api.flexoffers.com/products/product?pid=${pid}`;
+            //             try {
+            //                 const fullProductDetailsArray = await product.getAPI(productDetailsAPI, flexOfferHeader, 'JSON');
+    
+            //                 console.log('fullProductDetailsArray', fullProductDetailsArray);
+    
+            //                 if (fullProductDetailsArray && fullProductDetailsArray !== 'undefined' && fullProductDetailsArray.length > 0) {
+            //                     const fullProductDetails = fullProductDetailsArray[0];
+    
+            //                     // Apply conditions as in getFlexofferProduct
+            //                     if (
+            //                         !uniqueMap.has(fullProductDetails.deepLinkURL) &&
+            //                         fullProductDetails.isInstock &&
+            //                         fullProductDetails.deepLinkURL &&
+            //                         fullProductDetails.priceCurrency === 'USD'
+            //                     ) {
+            //                         const responseStructure = this.createProductResponseStructure(fullProductDetails, 'FLEXOFFER');
+            //                         uniqueMap.set(fullProductDetails.deepLinkURL, responseStructure);
+            //                     } else if (uniqueMap.has(fullProductDetails.deepLinkURL) && fullProductDetails.isInstock) {
+            //                         const responseStructure = uniqueMap.get(fullProductDetails.deepLinkURL);
+            //                         if (fullProductDetails.imageUrl) {
+            //                             responseStructure.imageUrl.push(fullProductDetails.imageUrl);
+            //                         }
+            //                         if (fullProductDetails.color) {
+            //                             responseStructure.color.push(fullProductDetails.color);
+            //                         }
+            //                         if (fullProductDetails.size) {
+            //                             responseStructure.size.push(fullProductDetails.size);
+            //                         }
+            //                     }
+            //                 }
+            //             } catch (detailsError) {
+            //                 console.error('Error fetching product details from API:', detailsError.message);
+            //             }
+            //         }
+    
+            //         uniqueMap.forEach((value, key) => {
+            //             allResults.push(value);
+            //         });
+            //     }
+            // }
+    
+            // Fetch products from LinkShare
+            if (linkshareIds.length > 0) {
+                const linkShareHeader = {
+                    'Authorization': `Bearer ${await product.linkShareRefreshToken()}`,
+                };
+    
+                for (const mid of linkshareIds) {
+                    const LINK_SHARE_API = `https://api.linksynergy.com/productsearch/1.0?sorttype=dsc&sort=productname&mid=${mid}&pagenumber=1&max=20&language=en_US`;
+                    
+                    const apiDataLinkShare = await product.getAPI(LINK_SHARE_API, linkShareHeader, 'XML');
+    
+                    apiDataLinkShare.result.item.forEach(prod => {
+                        const responseStructure = this.createProductResponseStructure(prod, 'LINKSHARE');
+                        allResults.push(responseStructure);
+                    });
+                }
+            }
+    
+            await store.writeToFile(STOREFILEWRITEPATH,allResults);
+            return allResults;
+            
+    
+        } catch (error) {
+            console.error('Error processing shop by product:', error.message);
+            throw error;
+        }
+    }    
+    
+    
+    createProductResponseStructure(productDetails, source) {
+        return {
+            productName: productDetails.name || productDetails.productname?.[0] || 'N/A',
+            imageUrl: productDetails.imageUrl 
+                ? [productDetails.imageUrl] 
+                : productDetails.imageurl 
+                    ? [productDetails.imageurl?.[0]] 
+                    : [],
+            price: productDetails.price?.[0]?._ || productDetails.price || 0,
+            currency: productDetails.priceCurrency || productDetails.price?.[0]?.$?.currency || 'USD',
+            salesPrice: productDetails.salePrice || (productDetails.saleprice?.[0]?._ || null),
+            discount: productDetails.discount || '0%',
+            category: productDetails.category 
+                ? (Array.isArray(productDetails.category) 
+                    ? `${productDetails.category[0]?.primary?.[0]} -> ${productDetails.category[0]?.secondary?.[0]}` 
+                    : productDetails.category) 
+                : 'N/A',
+            manufacturer: productDetails.manufacturer || '-',
+            advertiserName: productDetails.advertiserName || productDetails.merchantname?.[0] || 'N/A',
+            description: productDetails.description?.[0]?.short?.[0] || productDetails.description || 'N/A',
+            linkurl: [productDetails.deepLinkURL || productDetails.linkurl?.[0]] || [],
+            from: source,
+            color: productDetails.color ? [productDetails.color] : [],
+            size: productDetails.size ? [productDetails.size] : [],
+            gender: productDetails.gender || '-',
+            isInStock: productDetails.isInstock !== undefined ? productDetails.isInstock : true,
+            isOnSale: productDetails.isOnSale || (productDetails.price > productDetails.salePrice)
+        };
+    }
+    
+    async checkIfDataIsThere(){
+        const product = await product.readFromFile(STOREFILEWRITEPATH);
+        if(product && product!='undefine' && product.length>0){
+          return product;
+        }
+        else{
+          return [];
+        }
+    }
+
+    async getAllProductByShop(){
+        let allResults = await this.checkIfDataIsThere();
+
+        console.log('csdcfdda',allResults);
+
+        if(allResults.length>0){
+          return allResults;
+        }
+        else{
+            allResults=await this.shopByProduct(filePath);
+
+            console.log('cfdda',allResults);
+          return allResults;
+        }
+    }
+
+    async getProductsByCategory(category) {
+
+        const filePath = path.join(__dirname, '../file_structure/product_dump/product.json'); // Path to the JSON file
+        let allProducts;
+
+        try {
+            allProducts = await this.csvService.readFromFile(filePath);
+        } catch (error) {
+            throw new Error('Failed to read products from file.');
+        }
+        
+        if (!allProducts || allProducts.length === 0) {
+            throw new Error('No products found.');
+        }
+
+        const filteredProducts = allProducts.filter(product => {
+            // Check if the product has a category and compare it
+            return product.category && product.category.toLowerCase().includes(category.toLowerCase());
+        });
+
+        if (filteredProducts.length === 0) {
+            throw new Error('No products found for the specified category.');
+        }
+
+        return filteredProducts;
+    }
 
     queryAnalysis(query) {
         let suffix = /\b(BEST|LUXURY|TOP|HIGHEND)\b/i;
