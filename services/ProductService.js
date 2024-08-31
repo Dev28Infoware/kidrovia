@@ -1,5 +1,5 @@
 const product = require('../utils/AxiosService');
-const CSVService = require('../utils/CSVService');
+const CSVService = require('../utils/CsvService');
 
 class ProductService {
     constructor() {
@@ -220,38 +220,3 @@ class ProductService {
 }
 
 module.exports = ProductService;
-
-
-
-//Common Response
-
-// name  
-// imageUrl 
-// price 
-// description
-// category
-// manufacturer
-// Condition
-// color
-// deepLinkURL
-// From  = static
-// brand
-// priceCurrency
-// salePrice
-// finalPrice
-// discount
-
-
-
-
-// LINK SHARE 
-// merchantname
-// productname
-// category
-// price
-// salesprice
-// description
-// linkurl
-// imageurl
-// currency
-// From = static

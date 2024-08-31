@@ -7,7 +7,7 @@ exports.getAllMerchant = async(req,res)=>{
         res.json(prod);
     }
     catch(error){
-        // console.error(error.stack);
+        console.error(error.stack);
         res.status(500).send(error.message);
     }
 }
