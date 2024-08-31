@@ -9,7 +9,7 @@ class CouponService {
 
     async getCouponsByStore() {
       let responseData = await this.checkIfDataIsThere(STORECOUPONBYSTOREFILEWRITEPATH);
-      if(Object.keys(responseData).length>0>0){
+      if(Object.keys(responseData).length>0){
         return responseData;
       }
       else{
@@ -17,6 +17,28 @@ class CouponService {
         return responseData;
       }
     }
+    async getAllCoupons(){
+      let responseData = await this.checkIfDataIsThere(STORECOUPONBYSTOREFILEWRITEPATH);
+      let allCoupons=[];
+      if(Object.keys(responseData).length>0){
+        for(let key  in responseData){
+            allCoupons=allCoupons.concat(responseData[key]);
+        }
+      }
+      return allCoupons;
+    }
+
+    async getCouponsByShop(shopName){
+        let responseData = await this.checkIfDataIsThere(STORECOUPONBYSTOREFILEWRITEPATH);
+        if(Object.keys(responseData).length>0){
+            for(let key in responseData){
+                if(key===shopName){
+                    return responseData[key];
+                }
+            }
+        }
+        return [];
+      }
     async getCouponByStoreFromAPI() {
         try{
             const currentDate = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate());
@@ -45,6 +67,7 @@ class CouponService {
             const startDate = new Date(coupon.startDate);
             if((currentDate<endDate) && (currentDate>startDate)){
                 let name = coupon.advertiserName;
+                let keyName = name.replace(/\..*$/, '').replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase();
                 let response;
                 let responseFormat = {
                 'advertiserName':name,
@@ -59,14 +82,14 @@ class CouponService {
                 'priceOff':coupon.dollarOff,
                 'service':'FLEXOFFER'
             }
-            if (responseMap.has(name.replace(/ /g,'_'))){
-                response = responseMap.get(name.replace(/ /g,'_'))
+            if (responseMap.has(keyName)){
+                response = responseMap.get(keyName)
             }
             else{
                 response = []
             }
             response.push(responseFormat);
-            responseMap.set(name.replace(/ /g,'_'),response);
+            responseMap.set(keyName,response);
             }
         });
 
@@ -83,6 +106,7 @@ class CouponService {
             // console.log(`current Date = ${currentDate} \n start date = ${startDate}\nend date = ${endDate}\nand comparision of all ${(currentDate<endDate) && (currentDate>startDate)}`)
             if((currentDate<endDate) && (currentDate>startDate)){
                 let name = coupon.advertisername[0];
+                let keyName = name.replace(/\..*$/, '').replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase();
                 let response;
                 let responseFormat = {
                     'advertiserName':name,
@@ -97,14 +121,14 @@ class CouponService {
                     'priceOff':'-',
                     'service':'LINKSHARE'
                 }
-                if (responseMap.has(name.replace(/ /g,'_'))){
-                    response = responseMap.get(name.replace(/ /g,'_'))
+                if (responseMap.has(keyName)){
+                    response = responseMap.get(keyName)
                 }
                 else{
                     response = []
                 }
                 response.push(responseFormat);
-                responseMap.set(name.replace(/ /g,'_'),response);
+                responseMap.set(keyName,response);
             }
         });
         await store.writeToFile(STORECOUPONBYSTOREFILEWRITEPATH,Object.fromEntries(responseMap));
@@ -163,6 +187,7 @@ class CouponService {
             const startDate = new Date(coupon.startDate);
             if((currentDate<endDate) && (currentDate>startDate)){
                 let cat = coupon.categories
+                let keyName = cat.replace(/\..*$/, '').replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase();
                 let response;
                 let responseFormat = {
                 'advertiserName':coupon.advertiserName,
@@ -177,14 +202,14 @@ class CouponService {
                 'priceOff':coupon.dollarOff,
                 'service':'FLEXOFFER'
             }
-            if (responseMap.has(cat.replace(/ /g,'_'))){
-                response = responseMap.get(cat.replace(/ /g,'_'))
+            if (responseMap.has(keyName)){
+                response = responseMap.get(keyName)
             }
             else{
                 response = []
             }
             response.push(responseFormat);
-            responseMap.set(cat.replace(/ /g,'_'),response);
+            responseMap.set(keyName,response);
             }
         });
 
@@ -200,6 +225,7 @@ class CouponService {
             const startDate = new Date(startDateWithTime.getFullYear(),startDateWithTime.getMonth(),startDateWithTime.getDate());
             if((currentDate<endDate) && (currentDate>startDate)){
                 let cat = coupon.categories[0].category[0]._;
+                let keyName = cat.replace(/\..*$/, '').replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase();
                 let response;
                 let responseFormat = {
                     'advertiserName':coupon.advertisername[0],
@@ -214,14 +240,14 @@ class CouponService {
                     'priceOff':'-',
                     'service':'LINKSHARE'
                 }
-                if (responseMap.has(cat.replace(/ /g,'_'))){
-                    response = responseMap.get(cat.replace(/ /g,'_'))
+                if (responseMap.has(keyName)){
+                    response = responseMap.get(keyName)
                 }
                 else{
                     response = []
                 }
                 response.push(responseFormat);
-                responseMap.set(cat.replace(/ /g,'_'),response);
+                responseMap.set(keyName,response);
             }
         });
         await store.writeToFile(STORECOUPONBYCATEGORYFILEWRITEPATH,Object.fromEntries(responseMap));

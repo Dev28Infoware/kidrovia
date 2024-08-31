@@ -1,5 +1,5 @@
 {
-  "Kohl's": [
+  "kohls": [
     {
       "advertiserName": "Kohl's",
       "category": "Department Stores",
@@ -107,7 +107,22 @@
       "service": "FLEXOFFER"
     }
   ],
-  "Neiman_Marcus": [
+  "kidpik": [
+    {
+      "advertiserName": "kidpik",
+      "category": "Babies and Kids,Subscriptions",
+      "url": "https://track.flexlinkspro.com/g.ashx?foid=156052.8607.592542&trid=1215225.192065&foc=11&fot=9999&fos=2",
+      "advertiserId": 192065,
+      "startDate": "2023-03-23",
+      "endDate": "2024-09-04",
+      "couponCode": "EXTRA20",
+      "description": "Extra 20% off all clearance - use code EXTRA20",
+      "percentageOff": 20,
+      "priceOff": 0,
+      "service": "FLEXOFFER"
+    }
+  ],
+  "neiman-marcus": [
     {
       "advertiserName": "Neiman Marcus",
       "category": "Apparel",
@@ -174,7 +189,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "Bergdorf_Goodman": [
+  "bergdorf-goodman": [
     {
       "advertiserName": "Bergdorf Goodman",
       "category": "Apparel - Woman’s",
@@ -280,7 +295,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "Cotton_On_(US)": [
+  "cotton-on-us": [
     {
       "advertiserName": "Cotton On (US)",
       "category": "Apparel",
@@ -555,7 +570,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "italist_US": [
+  "italist-us": [
     {
       "advertiserName": "italist US",
       "category": "House wares",
@@ -687,7 +702,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "Vilebrequin_US": [
+  "vilebrequin-us": [
     {
       "advertiserName": "Vilebrequin US",
       "category": "Apparel",

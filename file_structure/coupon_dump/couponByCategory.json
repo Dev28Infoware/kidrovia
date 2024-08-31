@@ -1,5 +1,5 @@
 {
-  "Department_Stores": [
+  "department-stores": [
     {
       "advertiserName": "Kohl's",
       "category": "Department Stores",
@@ -79,7 +79,7 @@
       "service": "FLEXOFFER"
     }
   ],
-  "Babies_and_Kids": [
+  "babies-and-kids": [
     {
       "advertiserName": "4moms",
       "category": "Babies and Kids",
@@ -107,7 +107,22 @@
       "service": "FLEXOFFER"
     }
   ],
-  "Apparel": [
+  "babies-and-kidssubscriptions": [
+    {
+      "advertiserName": "kidpik",
+      "category": "Babies and Kids,Subscriptions",
+      "url": "https://track.flexlinkspro.com/g.ashx?foid=156052.8607.592542&trid=1215225.192065&foc=11&fot=9999&fos=2",
+      "advertiserId": 192065,
+      "startDate": "2023-03-23",
+      "endDate": "2024-09-04",
+      "couponCode": "EXTRA20",
+      "description": "Extra 20% off all clearance - use code EXTRA20",
+      "percentageOff": 20,
+      "priceOff": 0,
+      "service": "FLEXOFFER"
+    }
+  ],
+  "apparel": [
     {
       "advertiserName": "Neiman Marcus",
       "category": "Apparel",
@@ -343,7 +358,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "House_wares": [
+  "house-wares": [
     {
       "advertiserName": "Neiman Marcus",
       "category": "House wares",
@@ -384,7 +399,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "Apparel_-_Woman’s": [
+  "apparel-womans": [
     {
       "advertiserName": "Neiman Marcus",
       "category": "Apparel - Woman’s",
@@ -529,7 +544,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "Jewelry_&_Accessories": [
+  "jewelry-accessories": [
     {
       "advertiserName": "Bergdorf Goodman",
       "category": "Jewelry & Accessories",
@@ -570,7 +585,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "Department_Store": [
+  "department-store": [
     {
       "advertiserName": "Bergdorf Goodman",
       "category": "Department Store",
@@ -637,7 +652,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "Apparel_-_Men’s": [
+  "apparel-mens": [
     {
       "advertiserName": "Cotton On (US)",
       "category": "Apparel - Men’s",
@@ -730,7 +745,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "Beauty_&_Fragrance": [
+  "beauty-fragrance": [
     {
       "advertiserName": "italist US",
       "category": "Beauty & Fragrance",
@@ -745,7 +760,7 @@
       "service": "LINKSHARE"
     }
   ],
-  "Apparel_-_Babies_&_Kids": [
+  "apparel-babies-kids": [
     {
       "advertiserName": "Vilebrequin US",
       "category": "Apparel - Babies & Kids",
