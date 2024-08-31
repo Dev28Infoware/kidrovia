@@ -24,7 +24,7 @@ class S3CSVService {
         return new Promise((resolve, reject) => {
             const results = [];
             const readStream = new stream.Readable();
-            readStream._read = () => {}; // _read is required but you can noop it
+            readStream._read = () => {};
             readStream.push(s3Object.Body);
             readStream.push(null);
 

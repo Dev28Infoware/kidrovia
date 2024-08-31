@@ -1,9 +1,9 @@
 const product = require('../utils/AxiosService');
-const CSVService = require('../utils/CsvService');
+const CsvService = require('../utils/CsvService');
 
 class ProductService {
     constructor() {
-        this.csvService = new CSVService();
+        this.csvService = new CsvService();
     }
 
     async getProductsFromCSV(filePath) {
@@ -20,7 +20,7 @@ class ProductService {
                 const type = row['source'];
 
                 if (search) {  // Ensure search query is provided
-                    const products = await this.getFlexofferProduct(search, advertiserId, advertiserName, type);
+                    const products = await this.getProductBySearch(search, advertiserId, advertiserName, type);
                     allResults.push(...products);
                 }
             }
@@ -32,7 +32,7 @@ class ProductService {
         }
     }
    
-    async getFlexofferProduct(search, id, name, type) {
+    async getProductBySearch(search, id, name, type) {
         const regexCase = /\b(KID|KIDS|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS)\b/i;
         let flexSearch = search.replace(' ', ',');
         console.log('flexSearch',flexSearch);
@@ -77,7 +77,7 @@ class ProductService {
                     const fullProductDetailsArray = await product.getAPI(productDetailsAPI, flexOfferHeader, 'JSON');
                     console.log('Full Product Details:', fullProductDetailsArray);
 
-                    if (fullProductDetailsArray && fullProductDetailsArray.length > 0) {
+                    if (fullProductDetailsArray && fullProductDetailsArray!== 'undefined' && fullProductDetailsArray.length > 0) {
                         const fullProductDetails = fullProductDetailsArray[0];
 
                         if (true
@@ -178,7 +178,7 @@ class ProductService {
             return responseData;
         } catch (error) {
             console.log('Error on fetching API data', error.message);
-            console.error(error.stack);
+            // console.error(error.stack);
         }
     }
     

@@ -1,6 +1,6 @@
 const exchange = require('../utils/AxiosService');
-const CSVService = require('../utils/CsvService');
-const store = new CSVService();
+const CsvService = require('../utils/CsvService');
+const store = new CsvService();
 class CouponService {
 
    

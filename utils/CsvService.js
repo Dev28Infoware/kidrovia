@@ -1,7 +1,7 @@
 const fs = require('fs');
 const csv = require('csv-parser');
 
-class CSVService {
+class CsvService {
     async readCSVFile(filePath) {
         const results = [];
         return new Promise((resolve, reject) => {
@@ -18,4 +18,4 @@ class CSVService {
     }
 }
 
-module.exports = CSVService;
+module.exports = CsvService;
