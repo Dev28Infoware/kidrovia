@@ -1,16 +1,29 @@
 const exchange = require('../utils/AxiosService');
 const CsvService = require('../utils/CsvService');
+const path = require('path');
 const store = new CsvService();
+const filePath = path.join(__dirname, '../file_structure/store/store.csv');
+const STORECOUPONBYSTOREFILEWRITEPATH = path.join(__dirname, '../file_structure/coupon_dump/couponByStore.json'); 
+const STORECOUPONBYCATEGORYFILEWRITEPATH = path.join(__dirname, '../file_structure/coupon_dump/couponByCategory.json'); 
 class CouponService {
 
-   
     async getCouponsByStore() {
+      let responseData = await this.checkIfDataIsThere(STORECOUPONBYSTOREFILEWRITEPATH);
+      if(Object.keys(responseData).length>0>0){
+        return responseData;
+      }
+      else{
+        responseData=await this.getCouponByStoreFromAPI();
+        return responseData;
+      }
+    }
+    async getCouponByStoreFromAPI() {
         try{
             const currentDate = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate());
             const couponIdSet = new Set();
             let flexOfferAdvertiserId='';
             let linkShareAdvertiserid='';
-            const couponsCategoryData = await store.readCSVFile('D:/Organization/Repositorys/Kidrovia/backend/file_structure/store/store.csv');
+            const couponsCategoryData = await store.readCSVFile(filePath);
             couponsCategoryData.forEach(coupon=>{
                 if(coupon.source==='FLEXOFFER'){
                     flexOfferAdvertiserId=flexOfferAdvertiserId+','+coupon.store_id;
@@ -28,15 +41,6 @@ class CouponService {
         const responseMap = new Map();
         let flexOfferResponse = await exchange.getAPI(FLEXOFFER_API,flexOfferHeader,'JSON');
         flexOfferResponse.results.forEach(coupon=>{
-            // let categories = coupon.categories.split(',');
-            // let underCategory = false;
-            // for (const cat of category) {
-            //     if (couponIdSet.has(cat)) {
-            //         underCategory = true;
-            //         break;
-            //     }
-            // }
-           
             const endDate = new Date(coupon.endDate);
             const startDate = new Date(coupon.startDate);
             if((currentDate<endDate) && (currentDate>startDate)){
@@ -103,6 +107,7 @@ class CouponService {
                 responseMap.set(name.replace(/ /g,'_'),response);
             }
         });
+        await store.writeToFile(STORECOUPONBYSTOREFILEWRITEPATH,Object.fromEntries(responseMap));
         return Object.fromEntries(responseMap);
         }
         catch(error){
@@ -112,12 +117,23 @@ class CouponService {
      }
 
     async getCouponsByCategories() {
+        let responseData = await this.checkIfDataIsThere(STORECOUPONBYCATEGORYFILEWRITEPATH);
+        if(Object.keys(responseData).length>0>0){
+            return responseData;
+        }
+        else{
+            responseData=await this.getCouponsByCategoriesFromAPI();
+            return responseData;
+        }
+    }
+
+    async getCouponsByCategoriesFromAPI() {
         try{
             const currentDate = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate());
             const couponIdSet = new Set();
             let flexOfferAdvertiserId ='';
             let linkShareAdvertiserid ='';
-            const couponsCategoryData = await store.readCSVFile('D:/Organization/Repositorys/Kidrovia/backend/file_structure/store/store.csv');
+            const couponsCategoryData = await store.readCSVFile(filePath);
             couponsCategoryData.forEach(coupon=>{
                 if(coupon.source==='FLEXOFFER'){
                     flexOfferAdvertiserId=flexOfferAdvertiserId+','+coupon.store_id;
@@ -208,12 +224,23 @@ class CouponService {
                 responseMap.set(cat.replace(/ /g,'_'),response);
             }
         });
+        await store.writeToFile(STORECOUPONBYCATEGORYFILEWRITEPATH,Object.fromEntries(responseMap));
         return Object.fromEntries(responseMap);
         }
         catch(error){
             console.log(error.stack);
         }
         
+    }
+    
+    async checkIfDataIsThere(filePath){
+        const storeData = await store.readFromFile(filePath);
+        if(storeData && storeData!='undefine' && Object.keys(storeData).length>0){
+          return storeData;
+        }
+        else{
+          return new Map();
+        }
     }
 }
 

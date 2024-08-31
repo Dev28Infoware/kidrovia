@@ -11,7 +11,7 @@ class ProductService {
             const csvData = await this.csvService.readCSVFile(filePath);
             const allResults = [];
 
-            console.log('csvData',csvData);
+            // console.log('csvData',csvData);
 
             for (const row of csvData) {
                 const search = row['query'];
@@ -35,9 +35,9 @@ class ProductService {
     async getProductBySearch(search, id, name, type) {
         const regexCase = /\b(KID|KIDS|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS)\b/i;
         let flexSearch = search.replace(' ', ',');
-        console.log('flexSearch',flexSearch);
+        // console.log('flexSearch',flexSearch);
         let analyzedQuery = this.queryAnalysis(search);
-        console.log(analyzedQuery);
+        // console.log(analyzedQuery);
 
         // let FLEX_OFFER_API = `https://api.flexoffers.com/products?name=${flexSearch}&page=1&pageSize=10`;
         let flexOfferHeader = {
@@ -69,13 +69,13 @@ class ProductService {
             const responseData = [];
             const uniqueMap = new Map();
 
-            console.log('productIds', productIds);
+            // console.log('productIds', productIds);
 
             for (const pid of productIds) {
                 const productDetailsAPI = `https://api.flexoffers.com/products/product?pid=${pid}`;
                 try {
                     const fullProductDetailsArray = await product.getAPI(productDetailsAPI, flexOfferHeader, 'JSON');
-                    console.log('Full Product Details:', fullProductDetailsArray);
+                    // console.log('Full Product Details:', fullProductDetailsArray);
 
                     if (fullProductDetailsArray && fullProductDetailsArray!== 'undefined' && fullProductDetailsArray.length > 0) {
                         const fullProductDetails = fullProductDetailsArray[0];
