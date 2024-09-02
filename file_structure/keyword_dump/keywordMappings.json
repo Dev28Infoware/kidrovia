@@ -1,0 +1,13 @@
+{
+    "clothing": ["Athletic Wear", "Coats & Jackets", "Denim", "Pants", "Sets", "Shorts", "Sleepwear", "Sweaters", "Swimwear", "Suits", "Tops", "Underwear"],
+    "kids": ["boys", "girls", "boy's", "girl's","baby", "baby's", "kid's"],
+    "shoes": ["footwear", "sneakers", "sandals"],
+    "dresses": ["Beach Dresses", "Casual Dresses", "Formal Dresses", "Party Dresses", "Sun Dresses", "Maxi Dresses"],
+    "shorts": ["Cargo Shorts", "Casual Shorts", "Chino Shorts", "Skorts", "Bermuda Shorts"],
+    "skirts": ["Ballet Skirts", "Denim Skirts", "Maxi Skirts", "Midi Skirts", "Mini Skirts", "Pleated Skirts", "Tutu Skirts"],
+    "sleepwear": ["Bath robes", "Nighties", "Nightgowns", "Nightdress", "Pajamas", "Sleep Shorts", "Sweatsuits"],
+    "sweaters": ["Cardigans", "Jumpers", "Knitted", "Sweaters"],
+    "girls": ["Female", "Woman", "Girl", "Young Woman","Girl's"],
+    "boys": ["Male", "Boy", "Young Man","Boy's"],
+    "babies": ["Baby Girl", "Baby Boy", "Infant", "Newborn"]
+}

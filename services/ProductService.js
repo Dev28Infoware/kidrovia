@@ -3,7 +3,7 @@ const CsvService = require('../utils/CsvService');
 const path = require('path');
 const STOREFILEWRITEPATH = path.join(__dirname, '../file_structure/product_dump/product.json'); 
 const store = new CsvService();
-
+const fs = require('fs');
 const filePath = path.join(__dirname, '../file_structure/store/store.csv');  // Path to the CSV file
 
 
@@ -76,7 +76,6 @@ class ProductService {
                 const productDetailsAPI = `https://api.flexoffers.com/products/product?pid=${pid}`;
                 try {
                     const fullProductDetailsArray = await product.getAPI(productDetailsAPI, flexOfferHeader, 'JSON');
-                    // console.log('Full Product Details:', fullProductDetailsArray);
 
                     if (fullProductDetailsArray && fullProductDetailsArray!== 'undefined' && fullProductDetailsArray.length > 0) {
                         const fullProductDetails = fullProductDetailsArray[0];
@@ -229,7 +228,6 @@ class ProductService {
             //             try {
             //                 const fullProductDetailsArray = await product.getAPI(productDetailsAPI, flexOfferHeader, 'JSON');
     
-            //                 console.log('fullProductDetailsArray', fullProductDetailsArray);
     
             //                 if (fullProductDetailsArray && fullProductDetailsArray !== 'undefined' && fullProductDetailsArray.length > 0) {
             //                     const fullProductDetails = fullProductDetailsArray[0];
@@ -295,7 +293,7 @@ class ProductService {
                     for (const keywords of keywordGroups) {
                         const one = encodeURIComponent(keywords);
                         const LINK_SHARE_API = `https://api.linksynergy.com/productsearch/1.0?pagenumber=1&max=100&language=en_US&one=${one}&mid=${mid}`;
-                        // console.log('LINK_SHARE_API', LINK_SHARE_API);
+
     
                         try {
                             const apiDataLinkShare = await product.getAPI(LINK_SHARE_API, linkShareHeader, 'XML');
@@ -330,6 +328,12 @@ class ProductService {
     }
     
     createProductResponseStructure(productDetails, source) {
+        const urlName = (productDetails.advertiserName || productDetails.merchantname?.[0] || 'N/A')
+            .replace(/\..*$/, '')           
+            .replace(/[^a-zA-Z0-9\s]/g, '')  
+            .replace(/\s+/g, '-')            
+            .toLowerCase();  
+
         return {
             productName: productDetails.name || productDetails.productname?.[0] || 'N/A',
             imageUrl: productDetails.imageUrl 
@@ -348,6 +352,7 @@ class ProductService {
                 : 'N/A',
             manufacturer: productDetails.manufacturer || '-',
             advertiserName: productDetails.advertiserName || productDetails.merchantname?.[0] || 'N/A',
+            urlName: urlName,
             description: productDetails.description?.[0]?.short?.[0] || productDetails.description || 'N/A',
             linkurl: [productDetails.deepLinkURL || productDetails.linkurl?.[0]] || [],
             from: source,
@@ -406,6 +411,35 @@ class ProductService {
         }
 
         return filteredProducts;
+    }
+
+    async searchProductsByKeywords(shop, keywords) {
+        const products = await store.readFromFile(STOREFILEWRITEPATH);
+
+        
+        const mappingsFilePath = path.join(__dirname, '../file_structure/keyword_dump/keywordMappings.json');
+        const keywordMappings = JSON.parse(fs.readFileSync(mappingsFilePath, 'utf-8'));
+
+        // Expand the keywords using the mapping file without changing their case
+        const expandedKeywords = keywords.flatMap(keyword => {
+            return keywordMappings[keyword] ? keywordMappings[keyword] : [keyword];
+        });
+
+        return products.filter(product => {
+
+            if (shop && product.urlName !== shop) return false;
+
+            // Check if the product matches all expanded keywords
+            return expandedKeywords.every(keyword => {
+                const keywordRegex = new RegExp(keyword, 'i');
+                return (
+                    keywordRegex.test(product.productName) ||
+                    keywordRegex.test(product.description) ||
+                    keywordRegex.test(product.category) ||
+                    keywordRegex.test(product.linkURL)
+                );
+            });
+        });
     }
 
     queryAnalysis(query) {

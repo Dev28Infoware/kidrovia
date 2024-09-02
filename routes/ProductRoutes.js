@@ -10,4 +10,5 @@ router.get('/coupons/get_by_category',couponController.getCouponByCategory);
 router.get('/coupons/get_by_shop_all',couponController.getCouponAllOrByShop);
 router.get('/shops/products', productController.shopByProduct);
 router.get('/shops/products/:category', productController.getProductByCategory);
+router.post('/products/search', productController.searchProducts);
 module.exports = router;
