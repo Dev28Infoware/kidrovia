@@ -4,6 +4,8 @@ const path = require('path');
 const STOREFILEWRITEPATH = path.join(__dirname, '../file_structure/product_dump/product.json'); 
 const store = new CsvService();
 
+const filePath = path.join(__dirname, '../file_structure/store/store.csv');  // Path to the CSV file
+
 
 class ProductService {
     constructor() {
@@ -14,8 +16,6 @@ class ProductService {
         try {
             const csvData = await this.csvService.readCSVFile(filePath);
             const allResults = [];
-
-            // console.log('csvData',csvData);
 
             for (const row of csvData) {
                 const search = row['query'];
@@ -39,9 +39,7 @@ class ProductService {
     async getProductBySearch(search, id, name, type) {
         const regexCase = /\b(KID|KIDS|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS)\b/i;
         let flexSearch = search.replace(' ', ',');
-        // console.log('flexSearch',flexSearch);
         let analyzedQuery = this.queryAnalysis(search);
-        // console.log(analyzedQuery);
 
         // let FLEX_OFFER_API = `https://api.flexoffers.com/products?name=${flexSearch}&page=1&pageSize=10`;
         let flexOfferHeader = {
@@ -73,7 +71,6 @@ class ProductService {
             const responseData = [];
             const uniqueMap = new Map();
 
-            // console.log('productIds', productIds);
 
             for (const pid of productIds) {
                 const productDetailsAPI = `https://api.flexoffers.com/products/product?pid=${pid}`;
@@ -145,9 +142,8 @@ class ProductService {
             let linkShareHeader = {
                 'Authorization':`Bearer ${await product.linkShareRefreshToken()}`,
             }
-            console.log(LINK_SHARE_API);
+
             const apiDataLinkShare = await product.getAPI(LINK_SHARE_API,linkShareHeader,'XML');
-            // console.log(apiDataLinkShare.result.item);
             apiDataLinkShare.result.item.forEach(prod=>{
                 let currency = prod.price[0].$.currency;
                 if(!uniqueMap.has(prod.imageurl[0])&& currency==='USD' && (targetWordRegix.test(prod.prductname[0])||targetWordRegix.test(prod.description[0].short[0]))){
@@ -172,7 +168,7 @@ class ProductService {
                         'isInStock':true,
                         'isOnSale':price>salesPrice
                     };
-                    // uniqueMap.set(prod.imageurl[0], responseStructure);
+                    uniqueMap.set(prod.imageurl[0], responseStructure);
                 }
             });
 
@@ -186,12 +182,14 @@ class ProductService {
         }
     }
 
-    async shopByProduct(filePath) {
+    async shopByProduct() {
         try {
             const csvData = await this.csvService.readCSVFile(filePath);
+            const regexCase = /\b(KID|KIDS|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS)\b/i;
             const flexofferIds = [];
             const linkshareIds = [];
             const allResults = [];
+            const uniqueMap = new Map();
     
             // Separate store IDs by source
             csvData.forEach(row => {
@@ -202,11 +200,8 @@ class ProductService {
                 }
             });
     
-            console.log('flexofferIds', flexofferIds);
-            console.log('linkshareIds', linkshareIds);
     
             // Fetch products from FlexOffers
-
             // if (flexofferIds.length > 0) {
             //     const flexOfferHeader = {
             //         'apiKey': '41a02e6b-b5a3-4d7f-ae2a-476cdd6be0b7',
@@ -216,18 +211,16 @@ class ProductService {
             //     const cidList = [];
             //     for (const storeId of flexofferIds) {
             //         const FLEXOFFER_CATALOG_API = `https://api.flexoffers.com/products/catalogs?aid=${storeId}`;
+
             //         const catalog = await product.getAPI(FLEXOFFER_CATALOG_API, flexOfferHeader, 'JSON');
             //         catalog.forEach(c => {
             //             cidList.push(c.cid);
             //         });
             //     }
     
-            //     console.log('cidList', cidList);
-    
             //     for (const cid of cidList) {
-            //         const FLEX_OFFER_PRODUCTS_API = `https://api.flexoffers.com/products?cid=${cid}&page=1&pageSize=10`;
+            //         const FLEX_OFFER_PRODUCTS_API = `https://api.flexoffers.com/products?cid=${cid}&page=1&pageSize=500`;
     
-            //         console.log('FLEX_OFFER_PRODUCTS_API', FLEX_OFFER_PRODUCTS_API);
             //         const productIds = await product.getFlexOfferProductIds(FLEX_OFFER_PRODUCTS_API, flexOfferHeader);
             //         const uniqueMap = new Map();
     
@@ -241,12 +234,27 @@ class ProductService {
             //                 if (fullProductDetailsArray && fullProductDetailsArray !== 'undefined' && fullProductDetailsArray.length > 0) {
             //                     const fullProductDetails = fullProductDetailsArray[0];
     
+            //                     // Analyzed query for filtering
+            //                     const analyzedQuery = this.queryAnalysis(fullProductDetails.description || fullProductDetails.name);
+            //                     let isValidProduct = true;
+    
+            //                     // Check gender filter
+            //                     if (analyzedQuery.gender === 'GIRL' || analyzedQuery.gender === 'GIRLS') {
+            //                         isValidProduct = /girl|girls|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
+            //                     } else if (analyzedQuery.gender === 'BOY' || analyzedQuery.gender === 'BOYS') {
+            //                         isValidProduct = /boy|boys|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
+            //                     } else {
+            //                         isValidProduct = regexCase.test(fullProductDetails.description || fullProductDetails.name);
+            //                     }
+    
             //                     // Apply conditions as in getFlexofferProduct
             //                     if (
+            //                         isValidProduct &&
             //                         !uniqueMap.has(fullProductDetails.deepLinkURL) &&
             //                         fullProductDetails.isInstock &&
             //                         fullProductDetails.deepLinkURL &&
-            //                         fullProductDetails.priceCurrency === 'USD'
+            //                         fullProductDetails.priceCurrency === 'USD' &&
+            //                         (analyzedQuery.item && new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.description) || new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.name))
             //                     ) {
             //                         const responseStructure = this.createProductResponseStructure(fullProductDetails, 'FLEXOFFER');
             //                         uniqueMap.set(fullProductDetails.deepLinkURL, responseStructure);
@@ -279,29 +287,47 @@ class ProductService {
                 const linkShareHeader = {
                     'Authorization': `Bearer ${await product.linkShareRefreshToken()}`,
                 };
+                const keywordGroups = ['kid,toddler', 'kid', 'toddler']; // Fallback keywords in order of priority
     
                 for (const mid of linkshareIds) {
-                    const LINK_SHARE_API = `https://api.linksynergy.com/productsearch/1.0?sorttype=dsc&sort=productname&mid=${mid}&pagenumber=1&max=20&language=en_US`;
-                    
-                    const apiDataLinkShare = await product.getAPI(LINK_SHARE_API, linkShareHeader, 'XML');
+                    let productsFound = false;
     
-                    apiDataLinkShare.result.item.forEach(prod => {
-                        const responseStructure = this.createProductResponseStructure(prod, 'LINKSHARE');
-                        allResults.push(responseStructure);
-                    });
+                    for (const keywords of keywordGroups) {
+                        const one = encodeURIComponent(keywords);
+                        const LINK_SHARE_API = `https://api.linksynergy.com/productsearch/1.0?pagenumber=1&max=100&language=en_US&one=${one}&mid=${mid}`;
+                        console.log('LINK_SHARE_API', LINK_SHARE_API);
+    
+                        try {
+                            const apiDataLinkShare = await product.getAPI(LINK_SHARE_API, linkShareHeader, 'XML');
+    
+                            if (apiDataLinkShare.result?.item?.length > 0) {
+                                apiDataLinkShare.result.item.forEach(prod => {
+
+                                    const responseStructure = this.createProductResponseStructure(prod, 'LINKSHARE');
+                                    uniqueMap.set(prod.deepLinkURL, responseStructure);
+                                    allResults.push(responseStructure);
+                                });
+                                productsFound = true;
+                                break; // Exit loop if products are found
+                            }
+                        } catch (apiError) {
+                            console.error(`Error fetching LinkShare products with keywords "${keywords}":`, apiError.message);
+                        }
+                    }
                 }
+                uniqueMap.forEach((value, key) => {
+                    allResults.push(value);
+                })
             }
     
-            await store.writeToFile(STOREFILEWRITEPATH,allResults);
+            await store.writeToFile(STOREFILEWRITEPATH, allResults);
             return allResults;
-            
     
         } catch (error) {
             console.error('Error processing shop by product:', error.message);
             throw error;
         }
-    }    
-    
+    }
     
     createProductResponseStructure(productDetails, source) {
         return {
@@ -334,29 +360,25 @@ class ProductService {
     }
     
     async checkIfDataIsThere(){
-        const product = await product.readFromFile(STOREFILEWRITEPATH);
-        if(product && product!='undefine' && product.length>0){
-          return product;
+        const productData = await store.readFromFile(STOREFILEWRITEPATH);
+        if(productData && productData!='undefine' && Object.keys(productData).length>0){
+          return productData;
         }
         else{
-          return [];
+          return new Map();
         }
     }
 
     async getAllProductByShop(){
         let allResults = await this.checkIfDataIsThere();
 
-        console.log('csdcfdda',allResults);
-
-        if(allResults.length>0){
-          return allResults;
-        }
-        else{
-            allResults=await this.shopByProduct(filePath);
-
-            console.log('cfdda',allResults);
-          return allResults;
-        }
+        if(Object.keys(allResults).length>0>0){
+            return allResults;
+          }
+          else{
+            allResults=await this.shopByProduct();
+            return allResults;
+          }
     }
 
     async getProductsByCategory(category) {

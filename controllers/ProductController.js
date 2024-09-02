@@ -15,10 +15,10 @@ exports.getAllProducts = async (req, res) => {
 };
 
 exports.shopByProduct = async (req, res) => {
-    const filePath = path.join(__dirname, '../file_structure/store/store.csv');  // Path to the CSV file
 
     try {
-        const allResults = await productService.shopByProduct(filePath);
+        // const allResults = await productService.shopByProduct(filePath);
+        const allResults = await productService.getAllProductByShop();
         res.json(allResults);
     } catch (error) {
         res.status(500).send(error.message);
