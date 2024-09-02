@@ -46,7 +46,7 @@ class MerchantService{
                     'imageUrl':advertiser.imageUrl,
                     'description':advertiser.description,
                     'country':advertiser.country,
-                    'urlName':advertiser.name.replace(/\..*$/, '').replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_'),
+                    'urlName':advertiser.name.replace(/\..*$/, '').replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase(),
                     'from':'FLEXOFFER'
                 }
                 responseData.push(responseFormat);
@@ -72,7 +72,7 @@ class MerchantService{
                       'imageUrl': advertiser.advertiser.profiles.logoURL,
                       'country': advertiser.advertiser.contact.country,
                       'description': advertiser.advertiser.description,
-                      'urlName':advertiser.advertiser.name.replace(/\..*$/, '').replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_'),
+                      'urlName':advertiser.advertiser.name.replace(/\..*$/, '').replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase(),
                       'from': 'LINKSHARE'
                   };
                   responseData.push(responseFormat);
