@@ -6,15 +6,15 @@ const STORECSVPATH = path.join(__dirname, '../file_structure/store/store.csv');
 const STOREFILEWRITEPATH = path.join(__dirname, '../file_structure/store_dump/store.json'); 
 class MerchantService{
 
-    async getAllMerchant(){
-      let responseData = await this.checkIfDataIsThere();
-      if(responseData.length>0){
-        return responseData;
+    async getAllMerchant(isCached){
+      if(isCached){
+        let responseData = await this.checkIfDataIsThere();
+        if(responseData.length>0){
+          return responseData;
+        }
       }
-      else{
-        responseData=await this.getStoreFromAPI();
-        return responseData;
-      }
+      let responseData=await this.getStoreFromAPI();
+      return responseData;
     }
     async getStoreFromAPI(){
       const responseData=[];
@@ -64,15 +64,19 @@ class MerchantService{
           try {
               const advertiser = await product.getAPI(LINK_SHARE_MERCHANT_BY_ID+value, linkShareHeader, 'JSON');
               let country = advertiser.advertiser.contact.country;
+              let advertiserName = advertiser.advertiser.name;
+              if(value==35300){
+                advertiserName='Bergdorf Goodman';
+              }
               if(country==='United States' || country==='US'){
                   const responseFormat = {
                       'id': advertiser.advertiser.id,
-                      'name': advertiser.advertiser.name,
+                      'name': advertiserName,
                       'url': advertiser.advertiser.url,
                       'imageUrl': advertiser.advertiser.profiles.logoURL,
                       'country': advertiser.advertiser.contact.country,
                       'description': advertiser.advertiser.description,
-                      'urlName':advertiser.advertiser.name.replace(/\..*$/, '').replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase(),
+                      'urlName':advertiserName.replace(/\..*$/, '').replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase(),
                       'from': 'LINKSHARE'
                   };
                   responseData.push(responseFormat);

@@ -15,9 +15,16 @@ exports.getAllProducts = async (req, res) => {
 };
 
 exports.shopByProduct = async (req, res) => {
+    let isCached = req.query.isCached;
+    if(typeof isCached === 'undefined'){
+        isCached=true;
+    }
+    else{
+        isCached = isCached.toLowerCase()==='true';
+    }
     try {
         const { page = 1, pageSize = 10 } = req.query; // Default to page 1 and 10 items per page if not provided
-        const allResults = await productService.getAllProductByShop();
+        const allResults = await productService.getAllProductByShop(isCached);
 
         // Pagination logic
         const startIndex = (page - 1) * pageSize;
@@ -32,7 +39,7 @@ exports.shopByProduct = async (req, res) => {
             data: paginatedResults
         });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).send(error.stack);
     }
 };
 

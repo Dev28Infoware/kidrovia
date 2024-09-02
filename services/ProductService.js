@@ -201,84 +201,86 @@ class ProductService {
     
     
             // Fetch products from FlexOffers
-            // if (flexofferIds.length > 0) {
-            //     const flexOfferHeader = {
-            //         'apiKey': '41a02e6b-b5a3-4d7f-ae2a-476cdd6be0b7',
-            //         'Content-Type': 'application/json'
-            //     };
+            if (flexofferIds.length > 0) {
+                const flexOfferHeader = {
+                    'apiKey': '41a02e6b-b5a3-4d7f-ae2a-476cdd6be0b7',
+                    'Accept': 'application/json'
+                };
     
-            //     const cidList = [];
-            //     for (const storeId of flexofferIds) {
-            //         const FLEXOFFER_CATALOG_API = `https://api.flexoffers.com/products/catalogs?aid=${storeId}`;
+                const cidList = [];
+                for (const storeId of flexofferIds) {
+                    const FLEXOFFER_CATALOG_API = `https://api.flexoffers.com/products/catalogs?aid=${storeId}`;
 
-            //         const catalog = await product.getAPI(FLEXOFFER_CATALOG_API, flexOfferHeader, 'JSON');
-            //         catalog.forEach(c => {
-            //             cidList.push(c.cid);
-            //         });
-            //     }
+                    const catalog = await product.getAPI(FLEXOFFER_CATALOG_API, flexOfferHeader, 'JSON');
+                    if(catalog){
+                        catalog.forEach(c => {
+                            cidList.push(c.cid);
+                        });
+                    }
+                }
     
-            //     for (const cid of cidList) {
-            //         const FLEX_OFFER_PRODUCTS_API = `https://api.flexoffers.com/products?cid=${cid}&page=1&pageSize=500`;
+                for (const cid of cidList) {
+                    
+                    const uniqueMap = new Map();
     
-            //         const productIds = await product.getFlexOfferProductIds(FLEX_OFFER_PRODUCTS_API, flexOfferHeader);
-            //         const uniqueMap = new Map();
+                    // for (const pid of productIds) {
+                        // const productDetailsAPI = `https://api.flexoffers.com/products/product?pid=${pid}`;
+                        try {
+                            // const fullProductDetailsArray = await product.getAPI(productDetailsAPI, flexOfferHeader, 'JSON');
     
-            //         for (const pid of productIds) {
-            //             const productDetailsAPI = `https://api.flexoffers.com/products/product?pid=${pid}`;
-            //             try {
-            //                 const fullProductDetailsArray = await product.getAPI(productDetailsAPI, flexOfferHeader, 'JSON');
+                            const FLEX_OFFER_PRODUCTS_API = `https://api.flexoffers.com/products/full?cid=${cid}&page=1&pageSize=500`;
+                    
+                            const fullProductDetailsArray = await product.getFlexOfferProductIds(FLEX_OFFER_PRODUCTS_API, flexOfferHeader);
+                            if (fullProductDetailsArray && fullProductDetailsArray !== 'undefined' && fullProductDetailsArray.length > 0) {
+                                const fullProductDetails = fullProductDetailsArray[0];
     
+                                // Analyzed query for filtering
+                                const analyzedQuery = this.queryAnalysis(fullProductDetails.description || fullProductDetails.name);
+                                let isValidProduct = true;
     
-            //                 if (fullProductDetailsArray && fullProductDetailsArray !== 'undefined' && fullProductDetailsArray.length > 0) {
-            //                     const fullProductDetails = fullProductDetailsArray[0];
+                                // Check gender filter
+                                if (analyzedQuery.gender === 'GIRL' || analyzedQuery.gender === 'GIRLS') {
+                                    isValidProduct = /girl|girls|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
+                                } else if (analyzedQuery.gender === 'BOY' || analyzedQuery.gender === 'BOYS') {
+                                    isValidProduct = /boy|boys|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
+                                } else {
+                                    isValidProduct = regexCase.test(fullProductDetails.description || fullProductDetails.name);
+                                }
     
-            //                     // Analyzed query for filtering
-            //                     const analyzedQuery = this.queryAnalysis(fullProductDetails.description || fullProductDetails.name);
-            //                     let isValidProduct = true;
+                                // Apply conditions as in getFlexofferProduct
+                                if (
+                                    isValidProduct &&
+                                    !uniqueMap.has(fullProductDetails.deepLinkURL) &&
+                                    fullProductDetails.isInstock &&
+                                    fullProductDetails.deepLinkURL &&
+                                    fullProductDetails.priceCurrency === 'USD' &&
+                                    (analyzedQuery.item && new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.description) || new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.name))
+                                ) {
+                                    const responseStructure = this.createProductResponseStructure(fullProductDetails, 'FLEXOFFER');
+                                    uniqueMap.set(fullProductDetails.deepLinkURL, responseStructure);
+                                } else if (uniqueMap.has(fullProductDetails.deepLinkURL) && fullProductDetails.isInstock) {
+                                    const responseStructure = uniqueMap.get(fullProductDetails.deepLinkURL);
+                                    if (fullProductDetails.imageUrl) {
+                                        responseStructure.imageUrl.push(fullProductDetails.imageUrl);
+                                    }
+                                    if (fullProductDetails.color) {
+                                        responseStructure.color.push(fullProductDetails.color);
+                                    }
+                                    if (fullProductDetails.size) {
+                                        responseStructure.size.push(fullProductDetails.size);
+                                    }
+                                }
+                            }
+                        } catch (detailsError) {
+                            console.error('Error fetching product details from API:', detailsError.message);
+                        }
+                    // }
     
-            //                     // Check gender filter
-            //                     if (analyzedQuery.gender === 'GIRL' || analyzedQuery.gender === 'GIRLS') {
-            //                         isValidProduct = /girl|girls|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
-            //                     } else if (analyzedQuery.gender === 'BOY' || analyzedQuery.gender === 'BOYS') {
-            //                         isValidProduct = /boy|boys|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
-            //                     } else {
-            //                         isValidProduct = regexCase.test(fullProductDetails.description || fullProductDetails.name);
-            //                     }
-    
-            //                     // Apply conditions as in getFlexofferProduct
-            //                     if (
-            //                         isValidProduct &&
-            //                         !uniqueMap.has(fullProductDetails.deepLinkURL) &&
-            //                         fullProductDetails.isInstock &&
-            //                         fullProductDetails.deepLinkURL &&
-            //                         fullProductDetails.priceCurrency === 'USD' &&
-            //                         (analyzedQuery.item && new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.description) || new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.name))
-            //                     ) {
-            //                         const responseStructure = this.createProductResponseStructure(fullProductDetails, 'FLEXOFFER');
-            //                         uniqueMap.set(fullProductDetails.deepLinkURL, responseStructure);
-            //                     } else if (uniqueMap.has(fullProductDetails.deepLinkURL) && fullProductDetails.isInstock) {
-            //                         const responseStructure = uniqueMap.get(fullProductDetails.deepLinkURL);
-            //                         if (fullProductDetails.imageUrl) {
-            //                             responseStructure.imageUrl.push(fullProductDetails.imageUrl);
-            //                         }
-            //                         if (fullProductDetails.color) {
-            //                             responseStructure.color.push(fullProductDetails.color);
-            //                         }
-            //                         if (fullProductDetails.size) {
-            //                             responseStructure.size.push(fullProductDetails.size);
-            //                         }
-            //                     }
-            //                 }
-            //             } catch (detailsError) {
-            //                 console.error('Error fetching product details from API:', detailsError.message);
-            //             }
-            //         }
-    
-            //         uniqueMap.forEach((value, key) => {
-            //             allResults.push(value);
-            //         });
-            //     }
-            // }
+                    uniqueMap.forEach((value, key) => {
+                        allResults.push(value);
+                    });
+                }
+            }
     
             // Fetch products from LinkShare
             if (linkshareIds.length > 0) {
@@ -374,16 +376,15 @@ class ProductService {
         }
     }
 
-    async getAllProductByShop(){
-        let allResults = await this.checkIfDataIsThere();
-
-        if(Object.keys(allResults).length>0>0){
-            return allResults;
-          }
-          else{
-            allResults=await this.shopByProduct();
-            return allResults;
-          }
+    async getAllProductByShop(isCached){
+        if(isCached){
+            let allResults = await this.checkIfDataIsThere();
+            if(Object.keys(allResults).length>0>0){
+                return allResults;
+            }
+        }
+        let allResults=await this.shopByProduct();
+        return allResults;
     }
 
     async getProductsByCategory(category) {

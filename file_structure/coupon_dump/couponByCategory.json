@@ -3,19 +3,6 @@
     {
       "advertiserName": "Kohl's",
       "category": "Department Stores",
-      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2074663&trid=1215225.157993&foc=11&fot=9999&fos=2",
-      "advertiserId": 157993,
-      "startDate": "2024-06-24",
-      "endDate": "2024-09-04",
-      "couponCode": "CATCH15OFF",
-      "description": "Take 15% off your order of $100+ with code CATCH15OFF\n        (offer will be turned off during pricing events like Epic Deals and Lowest Prices of the Season)",
-      "percentageOff": 15,
-      "priceOff": 0,
-      "service": "FLEXOFFER"
-    },
-    {
-      "advertiserName": "Kohl's",
-      "category": "Department Stores",
       "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2101822&trid=1215225.157993&foc=11&fot=9999&fos=2",
       "advertiserId": 157993,
       "startDate": "2024-08-06",
@@ -29,12 +16,12 @@
     {
       "advertiserName": "Kohl's",
       "category": "Department Stores",
-      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2104765&trid=1215225.157993&foc=11&fot=9999&fos=2",
+      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2074663&trid=1215225.157993&foc=11&fot=9999&fos=2",
       "advertiserId": 157993,
-      "startDate": "2024-08-06",
-      "endDate": "2024-09-03",
-      "couponCode": "HOME15",
-      "description": "Take 15% off select Home. 8/29-9/2 with code HOME15",
+      "startDate": "2024-06-24",
+      "endDate": "2024-09-04",
+      "couponCode": "CATCH15OFF",
+      "description": "Take 15% off your order of $100+ with code CATCH15OFF\n        (offer will be turned off during pricing events like Epic Deals and Lowest Prices of the Season)",
       "percentageOff": 15,
       "priceOff": 0,
       "service": "FLEXOFFER"
@@ -55,19 +42,6 @@
     {
       "advertiserName": "Kohl's",
       "category": "Department Stores",
-      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2134874&trid=1215225.157993&foc=11&fot=9999&fos=2",
-      "advertiserId": 157993,
-      "startDate": "2024-08-28",
-      "endDate": "2024-09-09",
-      "couponCode": "SHOPPER20",
-      "description": "Take 20% off. 9/6-9/8 with code SHOPPER20",
-      "percentageOff": 20,
-      "priceOff": 0,
-      "service": "FLEXOFFER"
-    },
-    {
-      "advertiserName": "Kohl's",
-      "category": "Department Stores",
       "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2134875&trid=1215225.157993&foc=11&fot=9999&fos=2",
       "advertiserId": 157993,
       "startDate": "2024-08-28",
@@ -77,18 +51,29 @@
       "percentageOff": 20,
       "priceOff": 0,
       "service": "FLEXOFFER"
-    }
-  ],
-  "babies-and-kidssubscriptions": [
+    },
     {
-      "advertiserName": "kidpik",
-      "category": "Babies and Kids,Subscriptions",
-      "url": "https://track.flexlinkspro.com/g.ashx?foid=156052.8607.592542&trid=1215225.192065&foc=11&fot=9999&fos=2",
-      "advertiserId": 192065,
-      "startDate": "2023-03-23",
-      "endDate": "2024-09-04",
-      "couponCode": "EXTRA20",
-      "description": "Extra 20% off all clearance - use code EXTRA20",
+      "advertiserName": "Kohl's",
+      "category": "Department Stores",
+      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2104765&trid=1215225.157993&foc=11&fot=9999&fos=2",
+      "advertiserId": 157993,
+      "startDate": "2024-08-06",
+      "endDate": "2024-09-03",
+      "couponCode": "HOME15",
+      "description": "Take 15% off select Home. 8/29-9/2 with code HOME15",
+      "percentageOff": 15,
+      "priceOff": 0,
+      "service": "FLEXOFFER"
+    },
+    {
+      "advertiserName": "Kohl's",
+      "category": "Department Stores",
+      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2134874&trid=1215225.157993&foc=11&fot=9999&fos=2",
+      "advertiserId": 157993,
+      "startDate": "2024-08-28",
+      "endDate": "2024-09-09",
+      "couponCode": "SHOPPER20",
+      "description": "Take 20% off. 9/6-9/8 with code SHOPPER20",
       "percentageOff": 20,
       "priceOff": 0,
       "service": "FLEXOFFER"
@@ -117,6 +102,21 @@
       "endDate": "2024-09-04",
       "couponCode": "4LDW20",
       "description": "20% off Select Gear & Accessories at 4moms! Use code 4LDW20. Valid 8/29-9/4.",
+      "percentageOff": 20,
+      "priceOff": 0,
+      "service": "FLEXOFFER"
+    }
+  ],
+  "babies-and-kidssubscriptions": [
+    {
+      "advertiserName": "kidpik",
+      "category": "Babies and Kids,Subscriptions",
+      "url": "https://track.flexlinkspro.com/g.ashx?foid=156052.8607.592542&trid=1215225.192065&foc=11&fot=9999&fos=2",
+      "advertiserId": 192065,
+      "startDate": "2023-03-23",
+      "endDate": "2024-09-04",
+      "couponCode": "EXTRA20",
+      "description": "Extra 20% off all clearance - use code EXTRA20",
       "percentageOff": 20,
       "priceOff": 0,
       "service": "FLEXOFFER"

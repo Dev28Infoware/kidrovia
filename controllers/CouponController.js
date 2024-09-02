@@ -1,8 +1,15 @@
 const CouponService = require('../services/CouponService')
 const couponService = new CouponService();
 exports.getCouponByStore = async(req,res)=>{
+    let isCached = req.query.isCached;
+    if(typeof isCached === 'undefined'){
+        isCached=true;
+    }
+    else{
+        isCached = isCached.toLowerCase()==='true';
+    }
     try{
-        const coupons = await couponService.getCouponsByStore();
+        const coupons = await couponService.getCouponsByStore(isCached);
         res.json(coupons)
     }
     catch(error){
@@ -12,8 +19,15 @@ exports.getCouponByStore = async(req,res)=>{
 }
 
 exports.getCouponByCategory = async(req,res)=>{
+    let isCached = req.query.isCached;
+    if(typeof isCached === 'undefined'){
+        isCached=true;
+    }
+    else{
+        isCached = isCached.toLowerCase()==='true';
+    }
     try{
-        const coupons = await couponService.getCouponsByCategories();
+        const coupons = await couponService.getCouponsByCategories(isCached);
         res.json(coupons);
     }
     catch(error){

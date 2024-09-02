@@ -7,15 +7,15 @@ const STORECOUPONBYSTOREFILEWRITEPATH = path.join(__dirname, '../file_structure/
 const STORECOUPONBYCATEGORYFILEWRITEPATH = path.join(__dirname, '../file_structure/coupon_dump/couponByCategory.json'); 
 class CouponService {
 
-    async getCouponsByStore() {
-      let responseData = await this.checkIfDataIsThere(STORECOUPONBYSTOREFILEWRITEPATH);
-      if(Object.keys(responseData).length>0){
-        return responseData;
+    async getCouponsByStore(isCached) {
+      if(isCached){
+        let responseData = await this.checkIfDataIsThere(STORECOUPONBYSTOREFILEWRITEPATH);
+        if(Object.keys(responseData).length>0){
+            return responseData;
+        }
       }
-      else{
-        responseData=await this.getCouponByStoreFromAPI();
-        return responseData;
-      }
+      let responseData=await this.getCouponByStoreFromAPI();
+      return responseData;
     }
     async getAllCoupons(){
       let responseData = await this.checkIfDataIsThere(STORECOUPONBYSTOREFILEWRITEPATH);
@@ -28,7 +28,7 @@ class CouponService {
       return allCoupons;
     }
 
-    async getCouponsByShop(shopName){
+    async getCouponsByShop(shopName,isCached){
         let responseData = await this.checkIfDataIsThere(STORECOUPONBYSTOREFILEWRITEPATH);
         if(Object.keys(responseData).length>0){
             for(let key in responseData){
@@ -140,15 +140,15 @@ class CouponService {
         
      }
 
-    async getCouponsByCategories() {
-        let responseData = await this.checkIfDataIsThere(STORECOUPONBYCATEGORYFILEWRITEPATH);
-        if(Object.keys(responseData).length>0>0){
-            return responseData;
+    async getCouponsByCategories(isCached) {
+        if(isCached){
+            let responseData = await this.checkIfDataIsThere(STORECOUPONBYCATEGORYFILEWRITEPATH);
+            if(Object.keys(responseData).length>0>0){
+                return responseData;
+            }
         }
-        else{
-            responseData=await this.getCouponsByCategoriesFromAPI();
-            return responseData;
-        }
+        let responseData=await this.getCouponsByCategoriesFromAPI();
+        return responseData;
     }
 
     async getCouponsByCategoriesFromAPI() {
