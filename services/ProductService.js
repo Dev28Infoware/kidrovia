@@ -379,7 +379,7 @@ class ProductService {
     async getAllProductByShop(isCached){
         if(isCached){
             let allResults = await this.checkIfDataIsThere();
-            if(Object.keys(allResults).length>0>0){
+            if(Object.keys(allResults).length>0){
                 return allResults;
             }
         }
