@@ -3,6 +3,19 @@
     {
       "advertiserName": "Kohl's",
       "category": "Department Stores",
+      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2074663&trid=1215225.157993&foc=11&fot=9999&fos=2",
+      "advertiserId": 157993,
+      "startDate": "2024-06-24",
+      "endDate": "2024-09-04",
+      "couponCode": "CATCH15OFF",
+      "description": "Take 15% off your order of $100+ with code CATCH15OFF\n        (offer will be turned off during pricing events like Epic Deals and Lowest Prices of the Season)",
+      "percentageOff": 15,
+      "priceOff": 0,
+      "service": "FLEXOFFER"
+    },
+    {
+      "advertiserName": "Kohl's",
+      "category": "Department Stores",
       "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2101822&trid=1215225.157993&foc=11&fot=9999&fos=2",
       "advertiserId": 157993,
       "startDate": "2024-08-06",
@@ -16,12 +29,12 @@
     {
       "advertiserName": "Kohl's",
       "category": "Department Stores",
-      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2074663&trid=1215225.157993&foc=11&fot=9999&fos=2",
+      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2104765&trid=1215225.157993&foc=11&fot=9999&fos=2",
       "advertiserId": 157993,
-      "startDate": "2024-06-24",
-      "endDate": "2024-09-04",
-      "couponCode": "CATCH15OFF",
-      "description": "Take 15% off your order of $100+ with code CATCH15OFF\n        (offer will be turned off during pricing events like Epic Deals and Lowest Prices of the Season)",
+      "startDate": "2024-08-06",
+      "endDate": "2024-09-03",
+      "couponCode": "HOME15",
+      "description": "Take 15% off select Home. 8/29-9/2 with code HOME15",
       "percentageOff": 15,
       "priceOff": 0,
       "service": "FLEXOFFER"
@@ -42,6 +55,19 @@
     {
       "advertiserName": "Kohl's",
       "category": "Department Stores",
+      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2134874&trid=1215225.157993&foc=11&fot=9999&fos=2",
+      "advertiserId": 157993,
+      "startDate": "2024-08-28",
+      "endDate": "2024-09-09",
+      "couponCode": "SHOPPER20",
+      "description": "Take 20% off. 9/6-9/8 with code SHOPPER20",
+      "percentageOff": 20,
+      "priceOff": 0,
+      "service": "FLEXOFFER"
+    },
+    {
+      "advertiserName": "Kohl's",
+      "category": "Department Stores",
       "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2134875&trid=1215225.157993&foc=11&fot=9999&fos=2",
       "advertiserId": 157993,
       "startDate": "2024-08-28",
@@ -51,29 +77,18 @@
       "percentageOff": 20,
       "priceOff": 0,
       "service": "FLEXOFFER"
-    },
+    }
+  ],
+  "kidpik": [
     {
-      "advertiserName": "Kohl's",
-      "category": "Department Stores",
-      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2104765&trid=1215225.157993&foc=11&fot=9999&fos=2",
-      "advertiserId": 157993,
-      "startDate": "2024-08-06",
-      "endDate": "2024-09-03",
-      "couponCode": "HOME15",
-      "description": "Take 15% off select Home. 8/29-9/2 with code HOME15",
-      "percentageOff": 15,
-      "priceOff": 0,
-      "service": "FLEXOFFER"
-    },
-    {
-      "advertiserName": "Kohl's",
-      "category": "Department Stores",
-      "url": "https://track.flexlinkspro.com/g.ashx?foid=156074.5349.2134874&trid=1215225.157993&foc=11&fot=9999&fos=2",
-      "advertiserId": 157993,
-      "startDate": "2024-08-28",
-      "endDate": "2024-09-09",
-      "couponCode": "SHOPPER20",
-      "description": "Take 20% off. 9/6-9/8 with code SHOPPER20",
+      "advertiserName": "kidpik",
+      "category": "Babies and Kids,Subscriptions",
+      "url": "https://track.flexlinkspro.com/g.ashx?foid=156052.8607.592542&trid=1215225.192065&foc=11&fot=9999&fos=2",
+      "advertiserId": 192065,
+      "startDate": "2023-03-23",
+      "endDate": "2024-09-04",
+      "couponCode": "EXTRA20",
+      "description": "Extra 20% off all clearance - use code EXTRA20",
       "percentageOff": 20,
       "priceOff": 0,
       "service": "FLEXOFFER"
@@ -107,21 +122,6 @@
       "service": "FLEXOFFER"
     }
   ],
-  "kidpik": [
-    {
-      "advertiserName": "kidpik",
-      "category": "Babies and Kids,Subscriptions",
-      "url": "https://track.flexlinkspro.com/g.ashx?foid=156052.8607.592542&trid=1215225.192065&foc=11&fot=9999&fos=2",
-      "advertiserId": 192065,
-      "startDate": "2023-03-23",
-      "endDate": "2024-09-04",
-      "couponCode": "EXTRA20",
-      "description": "Extra 20% off all clearance - use code EXTRA20",
-      "percentageOff": 20,
-      "priceOff": 0,
-      "service": "FLEXOFFER"
-    }
-  ],
   "neiman-marcus": [
     {
       "advertiserName": "Neiman Marcus",
@@ -130,10 +130,10 @@
       "advertiserId": "25003",
       "startDate": "2013-10-01T00:00Z",
       "endDate": "2026-10-04T00:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Free Shipping! Plus Free Returns. Exclusions Apply. See Site for Details!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -143,10 +143,10 @@
       "advertiserId": "25003",
       "startDate": "2022-10-06T15:21Z",
       "endDate": "2028-10-06T05:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Free Shipping! Plus Free Returns. Exclusions apply. See site for details!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -156,10 +156,10 @@
       "advertiserId": "25003",
       "startDate": "2022-11-15T22:49Z",
       "endDate": "2028-11-15T06:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Sign up for NM email and receive 15% Off your first purchase at NeimanMarcus.com!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -169,23 +169,36 @@
       "advertiserId": "25003",
       "startDate": "2023-08-09T17:22Z",
       "endDate": "2029-08-09T05:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Designer Sale: Up To 70% Off at Neiman Marcus.Com!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
       "advertiserName": "Neiman Marcus",
-      "category": "Apparel - Woman’s",
-      "url": "https://click.linksynergy.com/fs-bin/click?id=e2tPVNoFBZo&offerid=1585012.10003534&type=3&subid=0",
+      "category": "Apparel",
+      "url": "https://click.linksynergy.com/fs-bin/click?id=e2tPVNoFBZo&offerid=1585012.10003535&type=3&subid=0",
       "advertiserId": "25003",
-      "startDate": "2024-08-28T04:00Z",
-      "endDate": "2024-09-01T04:00Z",
-      "couponCode": "-",
-      "description": "Spend More Save More: Take 20% Off 1 Sale Item, 25% Off 2 Sales Items or 30% Off 3 Plus Sale Items!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "startDate": "2024-08-30T04:00Z",
+      "endDate": "2024-09-05T04:00Z",
+      "couponCode": "",
+      "description": "Take $100 Off $400 or $250 off $1,000 Select Regular Priced Styles! Beauty/Fragrances & Jewelry Excluded.",
+      "percentageOff": "",
+      "priceOff": "",
+      "service": "LINKSHARE"
+    },
+    {
+      "advertiserName": "Neiman Marcus",
+      "category": "Apparel",
+      "url": "https://click.linksynergy.com/fs-bin/click?id=e2tPVNoFBZo&offerid=1585012.10003548&type=3&subid=0",
+      "advertiserId": "25003",
+      "startDate": "2024-08-30T12:07Z",
+      "endDate": "2024-09-06T04:00Z",
+      "couponCode": "NMSEPT",
+      "description": "Limited Time: UP to $250 Off with Code: NMSEPT",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     }
   ],
@@ -197,10 +210,10 @@
       "advertiserId": "35300",
       "startDate": "2013-10-01T00:00Z",
       "endDate": "2026-10-04T00:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Free Shipping and Returns, Every Day*. Feel Free to Indulge!    *exclusions Apply.  See Site for Details.",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -210,10 +223,10 @@
       "advertiserId": "35300",
       "startDate": "2021-11-19T23:36Z",
       "endDate": "2027-11-19T06:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "15% Off your first purchase when you sign up for Bergdorf Goodman emails!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -223,10 +236,10 @@
       "advertiserId": "35300",
       "startDate": "2023-02-02T22:00Z",
       "endDate": "2029-02-02T06:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Shop Saint Laurent Handbags!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -236,10 +249,10 @@
       "advertiserId": "35300",
       "startDate": "2023-02-02T22:00Z",
       "endDate": "2029-02-02T06:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Shop new arrivals from Valentino!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -249,10 +262,10 @@
       "advertiserId": "35300",
       "startDate": "2024-02-02T17:57Z",
       "endDate": "2030-02-02T06:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "15% Off your purchase when you sign up for email & SMS!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -262,10 +275,10 @@
       "advertiserId": "35300",
       "startDate": "2024-02-07T15:18Z",
       "endDate": "2030-02-07T06:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Bags of the moment | New season heroes that beg to be picked up!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -275,10 +288,10 @@
       "advertiserId": "35300",
       "startDate": "2024-02-07T15:18Z",
       "endDate": "2030-02-07T06:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "The chicest of shoes | high and refined luxe new styles!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -288,10 +301,10 @@
       "advertiserId": "35300",
       "startDate": "2024-08-30T04:00Z",
       "endDate": "2024-09-03T04:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Extra 20% Off Sale, Save up To 75% Off Last Chance to Shop Designer Sale!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     }
   ],
@@ -303,10 +316,10 @@
       "advertiserId": "41094",
       "startDate": "2022-05-02T21:59Z",
       "endDate": "2028-05-02T04:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Join Cotton On's Rewards Program and Get 20% Off Your First Online Purchase as A Member. Exclusions Apply!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -316,10 +329,10 @@
       "advertiserId": "41094",
       "startDate": "2022-06-08T22:29Z",
       "endDate": "2028-06-08T04:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Shop Sale Items $5 & Under!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -329,10 +342,10 @@
       "advertiserId": "41094",
       "startDate": "2022-06-08T22:29Z",
       "endDate": "2028-06-08T04:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Shop Sale Items $10 & Under!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -342,10 +355,10 @@
       "advertiserId": "41094",
       "startDate": "2022-06-08T22:29Z",
       "endDate": "2028-06-08T04:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Shop Sale Items $20 & Under!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -355,10 +368,10 @@
       "advertiserId": "41094",
       "startDate": "2022-09-09T12:23Z",
       "endDate": "2028-09-09T04:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Sign up for Cotton On Perks and get 20% Off your first online order!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -368,10 +381,10 @@
       "advertiserId": "41094",
       "startDate": "2023-02-27T15:09Z",
       "endDate": "2029-04-10T04:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Swim Is In! 2 for $40 Swim",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -381,10 +394,10 @@
       "advertiserId": "41094",
       "startDate": "2023-12-04T23:51Z",
       "endDate": "2029-12-04T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "2 for $30 Women's Tops!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -394,10 +407,10 @@
       "advertiserId": "41094",
       "startDate": "2023-12-04T23:51Z",
       "endDate": "2029-12-04T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "2 for $30 Men's Tops!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -407,10 +420,10 @@
       "advertiserId": "41094",
       "startDate": "2023-12-04T23:51Z",
       "endDate": "2029-12-04T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Bogo 50% Off Women's Graphics!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -420,10 +433,10 @@
       "advertiserId": "41094",
       "startDate": "2023-12-04T23:51Z",
       "endDate": "2029-12-04T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Bogo 50% Off Men's Graphics!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -433,10 +446,10 @@
       "advertiserId": "41094",
       "startDate": "2023-12-04T23:51Z",
       "endDate": "2029-12-04T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "2 for $40 Activewear!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -446,10 +459,10 @@
       "advertiserId": "41094",
       "startDate": "2023-12-06T21:36Z",
       "endDate": "2029-12-06T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Shop Women's New Arrivals!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -459,10 +472,10 @@
       "advertiserId": "41094",
       "startDate": "2023-12-06T21:36Z",
       "endDate": "2029-12-06T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Shop Men's New Arrivals!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -472,10 +485,10 @@
       "advertiserId": "41094",
       "startDate": "2024-01-09T20:46Z",
       "endDate": "2030-01-09T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Up to 50% Off Sale!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -485,10 +498,10 @@
       "advertiserId": "41094",
       "startDate": "2024-02-07T23:11Z",
       "endDate": "2030-02-07T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "IN OUR LOVE ERA - Start your day, ​Celebrate you, Get dressed, From me to you, with love!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -498,10 +511,10 @@
       "advertiserId": "41094",
       "startDate": "2024-02-07T23:11Z",
       "endDate": "2030-02-07T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "MOTO REVIVAL​ - Women's vintage graphics. Wear-with-everything jackets. Full logomania!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -511,10 +524,10 @@
       "advertiserId": "41094",
       "startDate": "2024-02-07T23:11Z",
       "endDate": "2030-02-07T08:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "MOTO REVIVAL​ - Men's vintage graphics. Wear-with-everything jackets. Full logomania!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -524,10 +537,10 @@
       "advertiserId": "41094",
       "startDate": "2024-08-29T07:00Z",
       "endDate": "2024-09-03T07:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Swim Separates Now $15!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -537,10 +550,10 @@
       "advertiserId": "41094",
       "startDate": "2024-08-29T07:00Z",
       "endDate": "2024-09-03T07:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Cotton on Kids: $10 Selected Styles!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -550,10 +563,10 @@
       "advertiserId": "41094",
       "startDate": "2024-08-29T07:00Z",
       "endDate": "2024-09-03T07:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Activewear Now $20!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -563,10 +576,10 @@
       "advertiserId": "41094",
       "startDate": "2024-08-29T07:00Z",
       "endDate": "2024-09-03T07:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "40% Off Kids Swim!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     }
   ],
@@ -578,10 +591,10 @@
       "advertiserId": "41132",
       "startDate": "2021-06-28T18:27Z",
       "endDate": "2027-07-09T04:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Discover Luxury Homewares at Italist.Com and Save up To 40%!!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -591,10 +604,10 @@
       "advertiserId": "41132",
       "startDate": "2021-06-28T18:54Z",
       "endDate": "2027-07-09T04:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Discover Luxury Homewares at Italist.Com and Save up To 40%!!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -604,10 +617,10 @@
       "advertiserId": "41132",
       "startDate": "2022-01-23T15:14Z",
       "endDate": "2028-01-23T05:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "SAVE up to 40% at italist.com on your favorite luxury designers! Get your parcel in 2-4 days & enjoy FREE EXPRESS INTERNATIONAL SHIPPING!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -617,23 +630,10 @@
       "advertiserId": "41132",
       "startDate": "2023-01-11T16:52Z",
       "endDate": "2029-01-11T00:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Save up To 40% Off on New Arrivals at Italist.Com and Shop the Most Wanted Luxury Designer Brands for Kids Including Dolce & Gabbana, Fendi, Givenchy, Golden Goose and More. Plus Enjoy Free Express International Shipping!",
-      "percentageOff": "-",
-      "priceOff": "-",
-      "service": "LINKSHARE"
-    },
-    {
-      "advertiserName": "italist US",
-      "category": "Beauty & Fragrance",
-      "url": "https://click.linksynergy.com/fs-bin/click?id=e2tPVNoFBZo&offerid=1336850.398&type=3&subid=0",
-      "advertiserId": "41132",
-      "startDate": "2024-04-19T18:37Z",
-      "endDate": "2024-09-01T07:00Z",
-      "couponCode": "-",
-      "description": "italist | Spring-Summer '24 Collection Bags On Sale >  Up to 50% Off!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -643,10 +643,10 @@
       "advertiserId": "41132",
       "startDate": "2024-08-12T07:00Z",
       "endDate": "2024-09-12T07:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Flash Sales on Fw24: Up To 45% Off Limited Time Only!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -656,10 +656,10 @@
       "advertiserId": "41132",
       "startDate": "2024-08-09T20:25Z",
       "endDate": "2024-09-09T07:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Shop the edit: Swimwear  70% off. Hunza G, Ganni and more!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -669,10 +669,10 @@
       "advertiserId": "41132",
       "startDate": "2024-08-19T13:16Z",
       "endDate": "2024-09-19T07:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Burberry's Iconic Collections Now up To 80% Off!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -682,10 +682,10 @@
       "advertiserId": "41132",
       "startDate": "2024-08-21T14:48Z",
       "endDate": "2024-09-21T07:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Special Sale. Balenciaga up To 80% Off!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -695,10 +695,23 @@
       "advertiserId": "41132",
       "startDate": "2024-08-27T18:50Z",
       "endDate": "2024-09-27T07:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Special Sale. Max Mara up To 80% Off!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
+      "service": "LINKSHARE"
+    },
+    {
+      "advertiserName": "italist US",
+      "category": "Apparel",
+      "url": "https://click.linksynergy.com/fs-bin/click?id=e2tPVNoFBZo&offerid=1336850.432&type=3&subid=0",
+      "advertiserId": "41132",
+      "startDate": "2024-08-30T15:41Z",
+      "endDate": "2024-09-30T07:00Z",
+      "couponCode": "",
+      "description": "Get Ready for Labor Day. Special Sale up to 45% off designer styles!",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     }
   ],
@@ -710,10 +723,10 @@
       "advertiserId": "43322",
       "startDate": "2018-04-09T00:00Z",
       "endDate": "2027-09-30T00:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Enjoy Free Shipping & Free Returns at Vilebrequin!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -723,62 +736,10 @@
       "advertiserId": "43322",
       "startDate": "2022-05-31T16:05Z",
       "endDate": "2028-05-31T00:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Get 15% Off Your First Online Order with Email Sign-up at Vilebrequin!",
-      "percentageOff": "-",
-      "priceOff": "-",
-      "service": "LINKSHARE"
-    },
-    {
-      "advertiserName": "Vilebrequin US",
-      "category": "Apparel - Men’s",
-      "url": "https://click.linksynergy.com/fs-bin/click?id=e2tPVNoFBZo&offerid=578449.199&type=3&subid=0",
-      "advertiserId": "43322",
-      "startDate": "2024-02-20T05:00Z",
-      "endDate": "2024-09-01T04:00Z",
-      "couponCode": "-",
-      "description": "Shop the 2024 Summer Collection for Men!",
-      "percentageOff": "-",
-      "priceOff": "-",
-      "service": "LINKSHARE"
-    },
-    {
-      "advertiserName": "Vilebrequin US",
-      "category": "Apparel - Woman’s",
-      "url": "https://click.linksynergy.com/fs-bin/click?id=e2tPVNoFBZo&offerid=578449.200&type=3&subid=0",
-      "advertiserId": "43322",
-      "startDate": "2024-02-20T05:00Z",
-      "endDate": "2024-09-01T04:00Z",
-      "couponCode": "-",
-      "description": "Shop the 2024 Summer Collection for Women!",
-      "percentageOff": "-",
-      "priceOff": "-",
-      "service": "LINKSHARE"
-    },
-    {
-      "advertiserName": "Vilebrequin US",
-      "category": "Apparel - Babies & Kids",
-      "url": "https://click.linksynergy.com/fs-bin/click?id=e2tPVNoFBZo&offerid=578449.201&type=3&subid=0",
-      "advertiserId": "43322",
-      "startDate": "2024-02-20T05:00Z",
-      "endDate": "2024-09-01T04:00Z",
-      "couponCode": "-",
-      "description": "Shop the 2024 Summer Collection for Boys!",
-      "percentageOff": "-",
-      "priceOff": "-",
-      "service": "LINKSHARE"
-    },
-    {
-      "advertiserName": "Vilebrequin US",
-      "category": "Apparel - Babies & Kids",
-      "url": "https://click.linksynergy.com/fs-bin/click?id=e2tPVNoFBZo&offerid=578449.202&type=3&subid=0",
-      "advertiserId": "43322",
-      "startDate": "2024-02-20T05:00Z",
-      "endDate": "2024-09-01T04:00Z",
-      "couponCode": "-",
-      "description": "Shop the 2024 Summer Collection for Girls!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     },
     {
@@ -788,10 +749,10 @@
       "advertiserId": "43322",
       "startDate": "2024-08-27T21:00Z",
       "endDate": "2024-09-04T04:00Z",
-      "couponCode": "-",
+      "couponCode": "",
       "description": "Free Drawstring Backpack with Orders of $500 or More!",
-      "percentageOff": "-",
-      "priceOff": "-",
+      "percentageOff": "",
+      "priceOff": "",
       "service": "LINKSHARE"
     }
   ]

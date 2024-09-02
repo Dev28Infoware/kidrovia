@@ -115,10 +115,10 @@ class CouponService {
                     'advertiserId':coupon.advertiserid[0],
                     'startDate':coupon.offerstartdate[0],
                     'endDate':coupon.offerenddate[0],
-                    'couponCode':coupon.couponcode?coupon.couponcode[0]:'-',
+                    'couponCode':coupon.couponcode?coupon.couponcode[0]:'',
                     'description':coupon.offerdescription[0],
-                    'percentageOff':'-',
-                    'priceOff':'-',
+                    'percentageOff':'',
+                    'priceOff':'',
                     'service':'LINKSHARE'
                 }
                 if (responseMap.has(keyName)){
@@ -234,10 +234,10 @@ class CouponService {
                     'advertiserId':coupon.advertiserid[0],
                     'startDate':coupon.offerstartdate[0],
                     'endDate':coupon.offerenddate[0],
-                    'couponCode':coupon.couponcode?coupon.couponcode[0]:'-',
+                    'couponCode':coupon.couponcode?coupon.couponcode[0]:'',
                     'description':coupon.offerdescription[0],
-                    'percentageOff':'-',
-                    'priceOff':'-',
+                    'percentageOff':'',
+                    'priceOff':'',
                     'service':'LINKSHARE'
                 }
                 if (responseMap.has(keyName)){

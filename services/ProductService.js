@@ -295,7 +295,7 @@ class ProductService {
                     for (const keywords of keywordGroups) {
                         const one = encodeURIComponent(keywords);
                         const LINK_SHARE_API = `https://api.linksynergy.com/productsearch/1.0?pagenumber=1&max=100&language=en_US&one=${one}&mid=${mid}`;
-                        console.log('LINK_SHARE_API', LINK_SHARE_API);
+                        // console.log('LINK_SHARE_API', LINK_SHARE_API);
     
                         try {
                             const apiDataLinkShare = await product.getAPI(LINK_SHARE_API, linkShareHeader, 'XML');
