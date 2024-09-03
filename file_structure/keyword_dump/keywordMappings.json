@@ -1,13 +1,343 @@
 {
-    "clothing": ["Athletic Wear", "Coats & Jackets", "Denim", "Pants", "Sets", "Shorts", "Sleepwear", "Sweaters", "Swimwear", "Suits", "Tops", "Underwear"],
-    "kids": ["boys", "girls", "boy's", "girl's","baby", "baby's", "kid's"],
-    "shoes": ["footwear", "sneakers", "sandals"],
-    "dresses": ["Beach Dresses", "Casual Dresses", "Formal Dresses", "Party Dresses", "Sun Dresses", "Maxi Dresses"],
-    "shorts": ["Cargo Shorts", "Casual Shorts", "Chino Shorts", "Skorts", "Bermuda Shorts"],
-    "skirts": ["Ballet Skirts", "Denim Skirts", "Maxi Skirts", "Midi Skirts", "Mini Skirts", "Pleated Skirts", "Tutu Skirts"],
-    "sleepwear": ["Bath robes", "Nighties", "Nightgowns", "Nightdress", "Pajamas", "Sleep Shorts", "Sweatsuits"],
-    "sweaters": ["Cardigans", "Jumpers", "Knitted", "Sweaters"],
-    "girls": ["Female", "Woman", "Girl", "Young Woman","Girl's"],
-    "boys": ["Male", "Boy", "Young Man","Boy's"],
-    "babies": ["Baby Girl", "Baby Boy", "Infant", "Newborn"]
+  "clothing": [
+    "Athletic Wear",
+    "Coats & Jackets",
+    "Denim",
+    "Pants",
+    "Sets",
+    "Shorts",
+    "Sleepwear",
+    "Sweaters",
+    "Swimwear",
+    "Suits",
+    "Tops",
+    "Underwear"
+  ],
+  "kids": [
+    "boys",
+    "girls",
+    "boy's",
+    "girl's",
+    "baby",
+    "baby's",
+    "kid's",
+    "child"
+  ],
+  "active wear": [
+    "Athleisure",
+    "Gym shorts",
+    "Joggers",
+    "Leggings",
+    "Sweatpants",
+    "Tracksuits"
+  ],
+  "coats & jackets": [
+    "Biker jackets",
+    "Blazers",
+    "Bomber Jackets",
+    "Down Padded",
+    "Duffle",
+    "Leather",
+    "Puffer",
+    "Rainwear",
+    "Ski Suit",
+    "Trench Coats",
+    "Varsity Jackets",
+    "Windbreakers",
+    "Winter Coats",
+    "Wool Coats"
+  ],
+  "denim": [
+    "Denim Dresses",
+    "Denim Overalls",
+    "Denim Skirts",
+    "Denim Shorts",
+    "Denim Jackets",
+    "Jean Jackets",
+    "Jeans"
+  ],
+  "dresses": [
+    "Beach Dresses",
+    "Casual Dresses",
+    "Formal Dresses",
+    "Party Dresses",
+    "Sun Dresses",
+    "Maxi Dresses"
+  ],
+  "jumpsuits": [
+    "Playsuits",
+    "Rompers",
+    "Dungarees",
+    "Overalls"
+  ],
+  "pants": [
+    "Cargo Pants",
+    "Capris",
+    "Chinos",
+    "Corduroy",
+    "Linen Pants",
+    "Trousers"
+  ],
+  "sets": [
+    "All Sets",
+    "Casual Sets",
+    "Formal Sets"
+  ],
+  "shorts": [
+    "Cargo Shorts",
+    "Casual Shorts",
+    "Chino Shorts",
+    "Skorts",
+    "Bermuda Shorts"
+  ],
+  "skirts": [
+    "Ballet Skirts",
+    "Denim Skirts",
+    "Maxi Skirts",
+    "Midi Skirts",
+    "Mini Skirts",
+    "Pleated Skirts",
+    "Tutu Skirts"
+  ],
+  "sleepwear": [
+    "Bath robes",
+    "Nighties",
+    "Nightgowns",
+    "Nightdress",
+    "Pajamas",
+    "Sleep Shorts",
+    "Sweatsuits"
+  ],
+  "sweaters": [
+    "Cardigans",
+    "Jumpers",
+    "Knitted",
+    "Sweaters"
+  ],
+  "swimwear": [
+    "Bikinis",
+    "Board shorts",
+    "Swimsuits",
+    "Tankinis",
+    "Swim shorts",
+    "Sun suits",
+    "Trunks"
+  ],
+  "suits": [
+    "Formal Suits",
+    "Tuxedos"
+  ],
+  "tops": [
+    "Blouses",
+    "Polos",
+    "Shirts",
+    "T-shirts",
+    "Tanks",
+    "Vests"
+  ],
+  "underwear": [
+    "Bras",
+    "Bralets",
+    "Briefs",
+    "Boxers",
+    "Panties",
+    "Knickers",
+    "Petticoats",
+    "Socks",
+    "Thermals",
+    "Tights"
+  ],
+  "accessories": [
+    "Bags",
+    "Belts",
+    "Hats",
+    "Gloves",
+    "Scarves",
+    "Sunglasses",
+    "Jewelry"
+  ],
+  "bags": [
+    "Backpacks",
+    "Bum bags",
+    "Clutches",
+    "Handbags",
+    "Messenger Bags",
+    "Purses",
+    "Shoulder bags",
+    "Sports bags",
+    "Wallets"
+  ],
+  "hair accessories": [
+    "Bows",
+    "Clips",
+    "Hair bands",
+    "Hair ties",
+    "Headbands",
+    "Ribbons",
+    "Scarves"
+  ],
+  "jewelry": [
+    "Bracelets",
+    "Brooches",
+    "Charms",
+    "Earrings",
+    "Necklaces"
+  ],
+  "hats": [
+    "Beanies",
+    "Caps",
+    "Fedoras",
+    "Sun Hats",
+    "Winter Hats",
+    "Balaclavas",
+    "Visors",
+    "Bonnets"
+  ],
+  "gloves & scarves": [
+    "Gloves",
+    "Mittens",
+    "Scarf Sets",
+    "Summer Scarves",
+    "Winter Scarves",
+    "Collars"
+  ],
+  "sunglasses": [
+    "Eyewear",
+    "Sun Protective Hats"
+  ],
+  "shoes": [
+    "Ballerinas",
+    "Flats",
+    "Boots",
+    "Espadrilles",
+    "Flip Flops",
+    "Loafers",
+    "Mary Janes",
+    "Moccasins",
+    "Rain Boots",
+    "Sandals",
+    "Sliders",
+    "Slip Ons",
+    "Slippers",
+    "Sneakers",
+    "Trainers",
+    "Wedges"
+  ],
+  "footwear": [
+    "Athletic Shoes",
+    "Booties",
+    "Running Shoes",
+    "Soccer Shoes",
+    "Sports Footwear",
+    "Snow Boots"
+  ],
+  "girls": [
+    "Female",
+    "Woman",
+    "Girl",
+    "Young Woman"
+  ],
+  "boys": [
+    "Male",
+    "Boy",
+    "Young Man"
+  ],
+  "babies": [
+    "Baby Girl",
+    "Baby Boy",
+    "Infant",
+    "Newborn"
+  ],
+  "baby girl": [
+    "Bodysuits",
+    "Onesies",
+    "Dresses",
+    "Bottoms",
+    "Coats",
+    "Sleepwear",
+    "Sweaters",
+    "Swimwear",
+    "Tops"
+  ],
+  "baby boy": [
+    "Bodysuits",
+    "Onesies",
+    "Bottoms",
+    "Coats",
+    "Sleepwear",
+    "Sweaters",
+    "Swimwear",
+    "Tops"
+  ],
+  "gear": [
+    "Bouncers",
+    "Carriers",
+    "Car Seats",
+    "Diaper Bags",
+    "Feeding",
+    "Gadgets",
+    "High Chairs",
+    "Luggage",
+    "Monitors",
+    "Play Mats",
+    "Strollers",
+    "Swings"
+  ],
+  "home": [
+    "Bath & Bed",
+    "Decor",
+    "Furniture"
+  ],
+  "bath & bed": [
+    "Bath",
+    "Bedding",
+    "Beauty & Skin",
+    "Comforters",
+    "Linens",
+    "Storage"
+  ],
+  "decor": [
+    "Artwork",
+    "Baskets",
+    "Clocks",
+    "Curtains",
+    "Figurines",
+    "Frames",
+    "Lighting",
+    "Rugs",
+    "Travel"
+  ],
+  "furniture": [
+    "Bassinets",
+    "Beds",
+    "Bookcases",
+    "Chairs",
+    "Cribs",
+    "Desks",
+    "Dressers",
+    "Mattresses",
+    "Ottomans",
+    "Shelves",
+    "Sofas",
+    "Storage",
+    "Tables"
+  ],
+  "toys": [
+    "Action Figures",
+    "Arts & Crafts",
+    "Books",
+    "Bikes",
+    "Costumes",
+    "Dolls",
+    "Educational",
+    "Gadgets",
+    "Luxury",
+    "Musical Instruments",
+    "Outdoor Play",
+    "Puzzles",
+    "STEM",
+    "Soft Toys",
+    "Vehicles",
+    "Wooden Toys"
+  ]
 }

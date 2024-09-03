@@ -1,14 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const productController = require('../controllers/ProductController')
-const merchantController = require('../controllers/MerchantController')
-const couponController = require('../controllers/CouponController')
-router.get('/products/search',productController.getAllProducts);
-router.get('/merchant/get_all',merchantController.getAllMerchant);
-router.get('/coupons/get_by_store',couponController.getCouponByStore);
-router.get('/coupons/get_by_category',couponController.getCouponByCategory);
-router.get('/coupons/get_by_shop_all',couponController.getCouponAllOrByShop);
+const productController = require('../controllers/ProductController');
+const merchantController = require('../controllers/MerchantController');
+const couponController = require('../controllers/CouponController');
+const jsonMappingController = require('../controllers/JSONMappingController');
+
+// Product Routes
+router.get('/products/search', productController.getAllProducts);
+router.post('/products/search', productController.searchProducts);
 router.get('/shops/products', productController.shopByProduct);
 router.get('/shops/products/:category', productController.getProductByCategory);
-router.post('/products/search', productController.searchProducts);
+
+// Merchant Routes
+router.get('/merchant/get_all', merchantController.getAllMerchant);
+
+// Coupon Routes
+router.get('/coupons/get_by_store', couponController.getCouponByStore);
+router.get('/coupons/get_by_category', couponController.getCouponByCategory);
+router.get('/coupons/get_by_shop_all', couponController.getCouponAllOrByShop);
+
+// JSON Mapping Routes
+router.post('/json-mapping/add', jsonMappingController.addMapping);
+router.put('/json-mapping/edit', jsonMappingController.editMapping);
+router.delete('/json-mapping/remove', jsonMappingController.removeMapping);
+
 module.exports = router;

@@ -16,26 +16,24 @@ exports.getAllProducts = async (req, res) => {
 
 exports.shopByProduct = async (req, res) => {
     let isCached = req.query.isCached;
-    if(typeof isCached === 'undefined'){
-        isCached=true;
+    if (typeof isCached === 'undefined') {
+        isCached = true;
+    } else {
+        isCached = isCached.toLowerCase() === 'true';
     }
-    else{
-        isCached = isCached.toLowerCase()==='true';
-    }
+    
     try {
         const { page = 1, pageSize = 10 } = req.query; // Default to page 1 and 10 items per page if not provided
-        const allResults = await productService.getAllProductByShop(isCached);
+        const paginatedResults = await productService.getAllProductByShop(isCached, parseInt(page), parseInt(pageSize));
 
-        // Pagination logic
-        const startIndex = (page - 1) * pageSize;
-        const endIndex = startIndex + parseInt(pageSize);
-        const paginatedResults = allResults.slice(startIndex, endIndex);
+        // If `getAllProductByShop` returns the total count, include it in the response
+        const totalItems = (await productService.getAllProductByShop(isCached)).length;
 
         res.json({
-            totalItems: allResults.length,
+            totalItems: totalItems,
             page: parseInt(page),
             pageSize: parseInt(pageSize),
-            totalPages: Math.ceil(allResults.length / pageSize),
+            totalPages: Math.ceil(totalItems / pageSize),
             data: paginatedResults
         });
     } catch (error) {
@@ -57,7 +55,7 @@ exports.getProductByCategory = async (req, res) => {
 
 exports.searchProducts = async (req, res) => {
     const { shop, keywords = [] } = req.body;
-    const { page = 1, pageSize = 100 } = req.query;
+    const { page = 1, pageSize = 10 } = req.query;
 
     try {
         // Validate input
@@ -65,23 +63,18 @@ exports.searchProducts = async (req, res) => {
             return res.status(400).json({ message: "Invalid keywords format" });
         }
 
-        // Call the search method
-        const searchResults = await productService.searchProductsByKeywords(shop, keywords);
-
-        // Pagination logic
-        const startIndex = (page - 1) * pageSize;
-        const endIndex = startIndex + parseInt(pageSize);
-        const paginatedResults = searchResults.slice(startIndex, endIndex);
+        // Call the search method with pagination parameters
+        const searchResults = await productService.searchProductsByKeywords(shop, keywords, parseInt(page), parseInt(pageSize));
 
         res.json({
-            totalItems: searchResults.length,
             page: parseInt(page),
             pageSize: parseInt(pageSize),
-            totalPages: Math.ceil(searchResults.length / pageSize),
-            data: paginatedResults
+            totalItems: searchResults.length,
+            data: searchResults
         });
     } catch (error) {
         res.status(500).send(error.message);
     }
 };
+
 

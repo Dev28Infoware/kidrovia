@@ -37,7 +37,6 @@ class CsvService {
                 }
                 try{
                     const jsonData = JSON.parse(data);
-                    console.log('Data read from file:');
                     resolve(jsonData);
                 } catch (parseError) {
                     console.error('Error parsing JSON:', parseError);

@@ -335,7 +335,16 @@ class ProductService {
             .replace(/[^a-zA-Z0-9\s]/g, '')  
             .replace(/\s+/g, '-')            
             .toLowerCase();  
-
+    
+            let price = productDetails.price?.[0]?._ || productDetails.price || 0;
+            let salesPrice = productDetails.salePrice || (productDetails.saleprice?.[0]?._ || null);
+        
+            
+             // Ensure salesPrice is lower than or equal to price
+            if (salesPrice !== null && salesPrice > price) {
+                [price, salesPrice] = [salesPrice, price];
+            }
+        
         return {
             productName: productDetails.name || productDetails.productname?.[0] || 'N/A',
             imageUrl: productDetails.imageUrl 
@@ -343,9 +352,9 @@ class ProductService {
                 : productDetails.imageurl 
                     ? [productDetails.imageurl?.[0]] 
                     : [],
-            price: productDetails.price?.[0]?._ || productDetails.price || 0,
+            price: price,
             currency: productDetails.priceCurrency || productDetails.price?.[0]?.$?.currency || 'USD',
-            salesPrice: productDetails.salePrice || (productDetails.saleprice?.[0]?._ || null),
+            salesPrice: salesPrice,
             discount: productDetails.discount || '0%',
             category: productDetails.category 
                 ? (Array.isArray(productDetails.category) 
@@ -362,9 +371,10 @@ class ProductService {
             size: productDetails.size ? [productDetails.size] : [],
             gender: productDetails.gender || '-',
             isInStock: productDetails.isInstock !== undefined ? productDetails.isInstock : true,
-            isOnSale: productDetails.isOnSale || (productDetails.price > productDetails.salePrice)
+            isOnSale: productDetails.isOnSale || (price > salesPrice)
         };
     }
+    
     
     async checkIfDataIsThere(){
         const productData = await store.readFromFile(STOREFILEWRITEPATH);
@@ -376,16 +386,23 @@ class ProductService {
         }
     }
 
-    async getAllProductByShop(isCached){
-        if(isCached){
+    async getAllProductByShop(isCached, page = 1, pageSize = 10) {
+        if (isCached) {
             let allResults = await this.checkIfDataIsThere();
-            if(Object.keys(allResults).length>0){
+            if (Object.keys(allResults).length > 0) {
                 return allResults;
             }
         }
-        let allResults=await this.shopByProduct();
-        return allResults;
+        
+        let allResults = await this.shopByProduct();
+        
+        // Apply pagination
+        const startIndex = (page - 1) * pageSize;
+        const paginatedResults = allResults.slice(startIndex, startIndex + pageSize);
+    
+        return paginatedResults;
     }
+    
 
     async getProductsByCategory(category) {
 
@@ -414,34 +431,40 @@ class ProductService {
         return filteredProducts;
     }
 
-    async searchProductsByKeywords(shop, keywords) {
-        const products = await store.readFromFile(STOREFILEWRITEPATH);
+    async searchProductsByKeywords(shop, keywords, page = 1, pageSize = 10) {
+    const products = await store.readFromFile(STOREFILEWRITEPATH);
 
-        
-        const mappingsFilePath = path.join(__dirname, '../file_structure/keyword_dump/keywordMappings.json');
-        const keywordMappings = JSON.parse(fs.readFileSync(mappingsFilePath, 'utf-8'));
+    const mappingsFilePath = path.join(__dirname, '../file_structure/keyword_dump/keywordMappings.json');
+    const keywordMappings = JSON.parse(fs.readFileSync(mappingsFilePath, 'utf-8'));
 
-        // Expand the keywords using the mapping file without changing their case
-        const expandedKeywords = keywords.flatMap(keyword => {
-            return keywordMappings[keyword] ? keywordMappings[keyword] : [keyword];
+    // Expand the keywords using the mapping file without changing their case
+    const expandedKeywords = keywords.flatMap(keyword => {
+        return keywordMappings[keyword] ? keywordMappings[keyword] : [keyword];
+    });
+
+    // Filter products based on the keywords and shop
+    const filteredProducts = products.filter(product => {
+        if (shop && product.urlName !== shop) return false;
+
+        // Check if the product matches all expanded keywords
+        return expandedKeywords.every(keyword => {
+            const keywordRegex = new RegExp(keyword, 'i');
+            return (
+                keywordRegex.test(product.productName) ||
+                keywordRegex.test(product.description) ||
+                keywordRegex.test(product.category) ||
+                keywordRegex.test(product.linkURL)
+            );
         });
+    });
 
-        return products.filter(product => {
+    // Apply pagination
+    const startIndex = (page - 1) * pageSize;
+    const paginatedResults = filteredProducts.slice(startIndex, startIndex + pageSize);
 
-            if (shop && product.urlName !== shop) return false;
+    return paginatedResults;
+}
 
-            // Check if the product matches all expanded keywords
-            return expandedKeywords.every(keyword => {
-                const keywordRegex = new RegExp(keyword, 'i');
-                return (
-                    keywordRegex.test(product.productName) ||
-                    keywordRegex.test(product.description) ||
-                    keywordRegex.test(product.category) ||
-                    keywordRegex.test(product.linkURL)
-                );
-            });
-        });
-    }
 
     queryAnalysis(query) {
         let suffix = /\b(BEST|LUXURY|TOP|HIGHEND)\b/i;
