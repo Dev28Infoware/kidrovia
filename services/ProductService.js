@@ -182,6 +182,47 @@ class ProductService {
         }
     }
 
+    async fetchCIDsAndUpdateCSV() {
+        const csvData = await this.csvService.readCSVFile(filePath);
+        const flexofferIds = csvData.filter(row => row.source === 'FLEXOFFER' && !row.cid);
+
+        if (flexofferIds.length > 0) {
+            const flexOfferHeader = {
+                'apiKey': '41a02e6b-b5a3-4d7f-ae2a-476cdd6be0b7',
+                'Accept': 'application/json'
+            };
+
+            for (const store of flexofferIds) {
+                const FLEXOFFER_CATALOG_API = `https://api.flexoffers.com/products/catalogs?aid=${store.store_id}`;
+                try {
+                    const catalog = await product.getAPI(FLEXOFFER_CATALOG_API, flexOfferHeader, 'JSON');
+                    if (catalog && catalog.length > 0) {
+                        const cids = catalog.map(c => c.cid).join(',');
+                        store.cid = cids;
+
+                        // Update the row in the CSV with the fetched CIDs
+                        await this.updateCSVWithCID(store.store_id, cids);
+                    }
+                } catch (error) {
+                    console.error(`Error fetching CIDs for AID ${store.store_id}:`, error.message);
+                }
+            }
+        }
+    }
+
+    // Method to update the CSV with CIDs for a given store_id
+    async updateCSVWithCID(storeId, cids) {
+        const csvData = await this.csvService.readCSVFile(filePath);
+        const updatedData = csvData.map(row => {
+            if (row.store_id === storeId) {
+                row.cid = cids;
+            }
+            return row;
+        });
+
+        await this.csvService.writeCSVFile(filePath, updatedData);
+    }
+
     async shopByProduct() {
         try {
             const csvData =  await S3CSVService.readCSVFromS3(awsFilePath);
@@ -208,18 +249,26 @@ class ProductService {
                     'Accept': 'application/json'
                 };
     
-                const cidList = [];
-                for (const storeId of flexofferIds) {
-                    const FLEXOFFER_CATALOG_API = `https://api.flexoffers.com/products/catalogs?aid=${storeId}`;
 
-                    const catalog = await product.getAPI(FLEXOFFER_CATALOG_API, flexOfferHeader, 'JSON');
-                    if(catalog){
-                        catalog.forEach(c => {
-                            cidList.push(c.cid);
-                        });
+                // for (const storeId of flexofferIds) {
+                //     const FLEXOFFER_CATALOG_API = `https://api.flexoffers.com/products/catalogs?aid=${storeId}`;
+
+                //     const catalog = await product.getAPI(FLEXOFFER_CATALOG_API, flexOfferHeader, 'JSON');
+                //     if(catalog){
+                //         catalog.forEach(c => {
+                //             cidList.push(c.cid);
+                //         });
+                //     }
+                // }
+    
+                const cidList = [];
+                for (const row of csvData) {
+                    if (row.source === 'FLEXOFFER' && row.cid) {
+                        const cids = row.cid.split(',');
+                        cidList.push(...cids);
                     }
                 }
-    
+
                 for (const cid of cidList) {
                     
                     const uniqueMap = new Map();
@@ -231,31 +280,35 @@ class ProductService {
     
                             const FLEX_OFFER_PRODUCTS_API = `https://api.flexoffers.com/products/full?cid=${cid}&page=1&pageSize=500`;
                     
-                            const fullProductDetailsArray = await product.getFlexOfferProductIds(FLEX_OFFER_PRODUCTS_API, flexOfferHeader);
+
+                            const fullProductDetailsArray = await product.getFlexOfferProducts(FLEX_OFFER_PRODUCTS_API, flexOfferHeader);
+
                             if (fullProductDetailsArray && fullProductDetailsArray !== 'undefined' && fullProductDetailsArray.length > 0) {
                                 const fullProductDetails = fullProductDetailsArray[0];
     
                                 // Analyzed query for filtering
                                 const analyzedQuery = this.queryAnalysis(fullProductDetails.description || fullProductDetails.name);
                                 let isValidProduct = true;
+
+                                console.log('analyzedQuery', analyzedQuery);
     
                                 // Check gender filter
-                                if (analyzedQuery.gender === 'GIRL' || analyzedQuery.gender === 'GIRLS') {
-                                    isValidProduct = /girl|girls|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
-                                } else if (analyzedQuery.gender === 'BOY' || analyzedQuery.gender === 'BOYS') {
-                                    isValidProduct = /boy|boys|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
-                                } else {
-                                    isValidProduct = regexCase.test(fullProductDetails.description || fullProductDetails.name);
-                                }
+                                // if (analyzedQuery.gender === 'GIRL' || analyzedQuery.gender === 'GIRLS') {
+                                //     isValidProduct = /girl|girls|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
+                                // } else if (analyzedQuery.gender === 'BOY' || analyzedQuery.gender === 'BOYS') {
+                                //     isValidProduct = /boy|boys|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
+                                // } else {
+                                //     isValidProduct = regexCase.test(fullProductDetails.description || fullProductDetails.name);
+                                // }
     
                                 // Apply conditions as in getFlexofferProduct
                                 if (
-                                    isValidProduct &&
+                                    // isValidProduct &&
                                     !uniqueMap.has(fullProductDetails.deepLinkURL) &&
                                     fullProductDetails.isInstock &&
                                     fullProductDetails.deepLinkURL &&
-                                    fullProductDetails.priceCurrency === 'USD' &&
-                                    (analyzedQuery.item && new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.description) || new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.name))
+                                    fullProductDetails.priceCurrency === 'USD' 
+                                    // (analyzedQuery.item && new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.description) || new RegExp(`\\b${analyzedQuery.item}\\b`, 'i').test(fullProductDetails.name))
                                 ) {
                                     const responseStructure = this.createProductResponseStructure(fullProductDetails, 'FLEXOFFER');
                                     uniqueMap.set(fullProductDetails.deepLinkURL, responseStructure);

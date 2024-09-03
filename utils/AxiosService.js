@@ -48,7 +48,6 @@ async function getFlexOfferProductIds(url, header) {
   try {
     // Fetch the API response
     const response = await getAPI(url, header, 'JSON');
-    console.log('response', response);
     
     
     if (Array.isArray(response)) {
@@ -63,6 +62,24 @@ async function getFlexOfferProductIds(url, header) {
     return [];
   }
 }
+
+async function getFlexOfferProducts(url, header) {
+    try {
+      // Fetch the API response
+      const response = await getAPI(url, header, 'JSON');
+    //   console.log('response', response);
+      
+      if (Array.isArray(response)) {
+        return response;
+      } else {
+        // Handle unexpected response format
+        return [];
+      }
+    } catch (error) {
+      console.error(`Error fetching product data: ${error.message}`);
+      return [];
+    }
+  }
 
 async function linkShareRefreshToken(){
   if(tokenExpiry==0 || Date.now()>= tokenExpiry){
@@ -81,4 +98,4 @@ async function linkShareRefreshToken(){
   }
   return refreshToken;
 }
-module.exports = {getAPI,postAPI,linkShareRefreshToken, getFlexOfferProductIds};
+module.exports = {getAPI,postAPI,linkShareRefreshToken, getFlexOfferProductIds,getFlexOfferProducts};
