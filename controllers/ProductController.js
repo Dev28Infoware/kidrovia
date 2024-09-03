@@ -6,11 +6,11 @@ const productService = new ProductService();
 
 exports.getAllProducts = async (req, res) => {
     // const filePath = path.join(__dirname, '../file_structure/product/product.csv');  // Path to the CSV file
-    const awsDilePath = 'file_structure/product/product.csv';
+    const awsFilePath = 'file_structure/product/product.csv';
 
     try {
         // const allResults = await productService.getProductsFromCSV(filePath);
-        const allResults = await csvService.readCSVFromS3(awsDilePath);
+        const allResults = await csvService.readCSVFromS3(awsFilePath);
         res.json(allResults);
     } catch (error) {
         res.status(500).send(error.message);
@@ -52,6 +52,7 @@ exports.getProductByCategory = async (req, res) => {
         const productsByCategory = await productService.getProductsByCategory(category);
         res.json(productsByCategory);
     } catch (error) {
+        
         res.status(500).send(error.message);
     }
 };
@@ -68,15 +69,10 @@ exports.searchProducts = async (req, res) => {
 
         // Call the search method with pagination parameters
         const searchResults = await productService.searchProductsByKeywords(shop, keywords, parseInt(page), parseInt(pageSize));
+         res.json(searchResults);
 
-        res.json({
-            page: parseInt(page),
-            pageSize: parseInt(pageSize),
-            totalItems: searchResults.length,
-            data: searchResults
-        });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).send(error.stack);
     }
 };
 

@@ -4,7 +4,7 @@ const CsvApiService = require('../services/CsvApiService')
 const csvService = new CsvApiService();
 const path = require('path');
 const store = new CsvService();
-const awsDilePath = 'file_structure/store/store.csv';
+const awsFilePath = 'file_structure/store/store.csv';
 const STORECOUPONBYSTOREFILEWRITEPATH = path.join(__dirname, '../file_structure/coupon_dump/couponByStore.json'); 
 const STORECOUPONBYCATEGORYFILEWRITEPATH = path.join(__dirname, '../file_structure/coupon_dump/couponByCategory.json'); 
 class CouponService {
@@ -47,7 +47,7 @@ class CouponService {
             const couponIdSet = new Set();
             let flexOfferAdvertiserId='';
             let linkShareAdvertiserid='';
-            const couponsCategoryData = await csvService.readCSVFromS3(awsDilePath);
+            const couponsCategoryData = await csvService.readCSVFromS3(awsFilePath);
             couponsCategoryData.forEach(coupon=>{
                 if(coupon.source==='FLEXOFFER'){
                     flexOfferAdvertiserId=flexOfferAdvertiserId+','+coupon.store_id;
@@ -159,7 +159,7 @@ class CouponService {
             const couponIdSet = new Set();
             let flexOfferAdvertiserId ='';
             let linkShareAdvertiserid ='';
-            const couponsCategoryData = await csvService.readCSVFromS3(awsDilePath);
+            const couponsCategoryData = await csvService.readCSVFromS3(awsFilePath);
             couponsCategoryData.forEach(coupon=>{
                 if(coupon.source==='FLEXOFFER'){
                     flexOfferAdvertiserId=flexOfferAdvertiserId+','+coupon.store_id;

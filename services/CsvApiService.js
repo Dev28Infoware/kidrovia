@@ -18,6 +18,9 @@ class CsvApiService {
             else if(filename==='product.csv'){
                 path = 'file_structure/product/product.csv';
             }
+            else if(filename ==='seo.csv'){
+                path = 'file_structure/seo/seo.csv';
+            }
             await S3CSVService.writeCsvToS3(path, buffer);
             return 'Upload Sucess !';
         }
@@ -39,6 +42,9 @@ class CsvApiService {
             }
             else if(fileName==='product'){
                 path = 'file_structure/product/product.csv';
+            }
+            else if(fileName === 'seo'){
+                path = 'file_structure/seo/seo.csv';
             }
             const data = await S3CSVService.readCSVFromS3(path);
             // console.log('download Sucess !');

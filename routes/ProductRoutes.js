@@ -6,6 +6,7 @@ const merchantController = require('../controllers/MerchantController');
 const couponController = require('../controllers/CouponController');
 const jsonMappingController = require('../controllers/JSONMappingController');
 const csvController = require('../controllers/CsvController');
+const seoController = require('../controllers/SeoController');
 const upload = multer({ storage: multer.memoryStorage() });
 // Product Routes
 router.get('/products/search', productController.getAllProducts);
@@ -29,4 +30,7 @@ router.delete('/json-mapping/remove', jsonMappingController.removeMapping);
 //Csv Upload to s3 route
 router.post('/upload',upload.single('file'), csvController.uploadFile);
 router.get('/download', csvController.downloadFile);
+
+//SEO routes
+router.get('/seo-meta-tags',seoController.getSeoTagByFilter);
 module.exports = router;

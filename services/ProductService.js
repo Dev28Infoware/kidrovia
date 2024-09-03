@@ -1,20 +1,21 @@
 const product = require('../utils/AxiosService');
 const CsvService = require('../utils/CsvService');
 const path = require('path');
+const S3CSVService = require('../utils/S3CSVService')
 const STOREFILEWRITEPATH = path.join(__dirname, '../file_structure/product_dump/product.json'); 
 const store = new CsvService();
-const fs = require('fs');
-const filePath = path.join(__dirname, '../file_structure/store/store.csv');  // Path to the CSV file
+const fs = require('fs'); // Path to the CSV file
+const awsFilePath = 'file_structure/store/store.csv';
 
 
 class ProductService {
-    constructor() {
-        this.csvService = new CsvService();
-    }
+    // constructor() {
+    //     this.csvService = new CsvService();
+    // }
 
     async getProductsFromCSV(filePath) {
         try {
-            const csvData = await this.csvService.readCSVFile(filePath);
+            const csvData =  await S3CSVService.readCSVFromS3(awsFilePath);
             const allResults = [];
 
             for (const row of csvData) {
@@ -183,7 +184,7 @@ class ProductService {
 
     async shopByProduct() {
         try {
-            const csvData = await this.csvService.readCSVFile(filePath);
+            const csvData =  await S3CSVService.readCSVFromS3(awsFilePath);
             const regexCase = /\b(KID|KIDS|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS)\b/i;
             const flexofferIds = [];
             const linkshareIds = [];
@@ -414,8 +415,9 @@ class ProductService {
         let allProducts;
 
         try {
-            allProducts = await this.csvService.readFromFile(filePath);
+            allProducts = await store.readFromFile(filePath);
         } catch (error) {
+            console.log(error.stack);
             throw new Error('Failed to read products from file.');
         }
         
@@ -465,8 +467,14 @@ class ProductService {
     // Apply pagination
     const startIndex = (page - 1) * pageSize;
     const paginatedResults = filteredProducts.slice(startIndex, startIndex + pageSize);
-
-    return paginatedResults;
+   let response = {
+        page: parseInt(page),
+        pageSize: parseInt(pageSize),
+        totalItems: products.length,
+        // totalPage : Math.ceil(product.length/pageSize),
+        data: paginatedResults
+    };
+    return response;
 }
 
 
