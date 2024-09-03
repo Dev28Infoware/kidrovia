@@ -341,13 +341,23 @@ class ProductService {
             .replace(/\s+/g, '-')            
             .toLowerCase();  
     
-            let price = productDetails.price?.[0]?._ || productDetails.price || 0;
-            let salesPrice = productDetails.salePrice || (productDetails.saleprice?.[0]?._ || null);
+            let price = parseFloat((productDetails.price?.[0]?._ || productDetails.price || 0));
+            let salesPrice = parseFloat(productDetails.salePrice || (productDetails.saleprice?.[0]?._ || 0));
         
             
-             // Ensure salesPrice is lower than or equal to price
-            if (salesPrice !== null && salesPrice > price) {
-                [price, salesPrice] = [salesPrice, price];
+             if (salesPrice !== null && price !== null) {
+                if (salesPrice > price) {
+                    let tempPrice = salesPrice;
+                    salesPrice = price;
+                    price = tempPrice;
+                } else if (price === 0 && salesPrice !== 0) {
+                    price = salesPrice;
+                    salesPrice =0;
+                }
+            }
+            else if(price == null && salesPrice!=null){
+                price = salesPrice;
+                salesPrice=0;
             }
         
         return {
@@ -357,9 +367,9 @@ class ProductService {
                 : productDetails.imageurl 
                     ? productDetails.imageurl?.[0]
                     : '',
-            price: price,
+            price: price.toString(),
             currency: productDetails.priceCurrency || productDetails.price?.[0]?.$?.currency || 'USD',
-            salesPrice: salesPrice,
+            salesPrice: salesPrice.toString(),
             discount: productDetails.discount || '0%',
             category: productDetails.category 
                 ? (Array.isArray(productDetails.category) 
@@ -391,23 +401,39 @@ class ProductService {
         }
     }
 
-    async getAllProductByShop(isCached, page = 1, pageSize = 10) {
+    async getAllProductByShop(isCached) {
+        let allResults;
         if (isCached) {
-            let allResults = await this.checkIfDataIsThere();
+            allResults = await this.checkIfDataIsThere();
             if (Object.keys(allResults).length > 0) {
                 return allResults;
             }
         }
-        
-        let allResults = await this.shopByProduct();
-        
-        // Apply pagination
-        const startIndex = (page - 1) * pageSize;
-        const paginatedResults = allResults.slice(startIndex, startIndex + pageSize);
-    
-        return paginatedResults;
+            allResults = await this.shopByProduct();
     }
     
+    async getAllProductByShopByPagination(isCached, page = 1, pageSize = 10) {
+        let allResults;
+        if (isCached) {
+            allResults = await this.checkIfDataIsThere();
+            if (Object.keys(allResults).length == 0) {
+                allResults = await this.shopByProduct();
+            }
+        }
+        else{
+            allResults = await this.shopByProduct();
+        }
+        const startIndex = (page - 1) * pageSize;
+        const paginatedResults = allResults.slice(startIndex, startIndex + pageSize);
+        let response = {
+            totalItems: allResults.length,
+            page: parseInt(page),
+            pageSize: parseInt(pageSize),
+            totalPages: Math.ceil(allResults.length / pageSize),
+            data: paginatedResults
+        }
+        return response;
+    }
 
     async getProductsByCategory(category) {
 

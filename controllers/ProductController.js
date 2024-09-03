@@ -27,18 +27,18 @@ exports.shopByProduct = async (req, res) => {
     
     try {
         const { page = 1, pageSize = 10 } = req.query; // Default to page 1 and 10 items per page if not provided
-        const paginatedResults = await productService.getAllProductByShop(isCached, parseInt(page), parseInt(pageSize));
-
+        const paginatedResults = await productService.getAllProductByShopByPagination(isCached, parseInt(page), parseInt(pageSize));
+        res.json(paginatedResults);
         // If `getAllProductByShop` returns the total count, include it in the response
-        const totalItems = (await productService.getAllProductByShop(isCached)).length;
+        // const totalItems = (await productService.getAllProductByShop(isCached)).length;
 
-        res.json({
-            totalItems: totalItems,
-            page: parseInt(page),
-            pageSize: parseInt(pageSize),
-            totalPages: Math.ceil(totalItems / pageSize),
-            data: paginatedResults
-        });
+        // res.json({
+        //     totalItems: totalItems,
+        //     page: parseInt(page),
+        //     pageSize: parseInt(pageSize),
+        //     totalPages: Math.ceil(totalItems / pageSize),
+        //     data: paginatedResults
+        // });
     } catch (error) {
         res.status(500).send(error.stack);
     }
