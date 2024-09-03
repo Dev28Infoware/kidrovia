@@ -53,7 +53,7 @@ async function getFlexOfferProductIds(url, header) {
     
     if (Array.isArray(response)) {
       // Extract product IDs from the response
-      return response.map(product => product.pid);
+      return response;
     } else {
       // throw new Error('Invalid response format: Response is not an array');
       return [];
