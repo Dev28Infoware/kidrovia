@@ -1,8 +1,10 @@
 const product = require('../utils/AxiosService');
 const CsvService = require('../utils/CsvService');
 const path = require('path');
+const CsvApiService = require('../services/CsvApiService')
+const csvService = new CsvApiService();
 const store = new CsvService();
-const STORECSVPATH = path.join(__dirname, '../file_structure/store/store.csv');
+const awsDilePath = 'file_structure/store/store.csv';
 const STOREFILEWRITEPATH = path.join(__dirname, '../file_structure/store_dump/store.json'); 
 class MerchantService{
 
@@ -21,7 +23,7 @@ class MerchantService{
       try{
         let flexOfferId = new Set();
         let linkShareId = new Set();
-        const storeData = await store.readCSVFile(STORECSVPATH);
+        const storeData = await csvService.readCSVFromS3(awsDilePath);
         storeData.forEach(store=>{
           if(store.source==='FLEXOFFER'){
               flexOfferId.add(+store.store_id);

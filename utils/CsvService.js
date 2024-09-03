@@ -1,6 +1,7 @@
 const fs = require('fs');
 const csv = require('csv-parser');
-
+const S3CSVService = require('./S3CSVService');
+// const s3 = new S3CSVService();
 class CsvService {
     async readCSVFile(filePath) {
         const results = [];
@@ -15,6 +16,9 @@ class CsvService {
                     reject(error);
                 });
         });
+
+        
+        // return s3.readCSVFromS3(filePath);
     }
 
     async writeToFile(filePath,jsonString){
