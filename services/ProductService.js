@@ -330,7 +330,11 @@ class ProductService {
     }
     
     createProductResponseStructure(productDetails, source) {
-        const urlName = (productDetails.advertiserName || productDetails.merchantname?.[0] || 'N/A')
+        let advertiserName = (productDetails.advertiserName || productDetails.merchantname?.[0] || 'N/A')
+        if((productDetails.advertiserName||productDetails.merchantname?.[0]||'N/A')==='Bergdorf Goodman (Neiman Marcus)'){
+            advertiserName='Bergdorf Goodman';
+        }
+        const urlName = advertiserName
             .replace(/\..*$/, '')           
             .replace(/[^a-zA-Z0-9\s]/g, '')  
             .replace(/\s+/g, '-')            
@@ -348,10 +352,10 @@ class ProductService {
         return {
             productName: productDetails.name || productDetails.productname?.[0] || 'N/A',
             imageUrl: productDetails.imageUrl 
-                ? [productDetails.imageUrl] 
+                ? productDetails.imageUrl
                 : productDetails.imageurl 
-                    ? [productDetails.imageurl?.[0]] 
-                    : [],
+                    ? productDetails.imageurl?.[0]
+                    : '',
             price: price,
             currency: productDetails.priceCurrency || productDetails.price?.[0]?.$?.currency || 'USD',
             salesPrice: salesPrice,
@@ -362,10 +366,10 @@ class ProductService {
                     : productDetails.category) 
                 : 'N/A',
             manufacturer: productDetails.manufacturer || '-',
-            advertiserName: productDetails.advertiserName || productDetails.merchantname?.[0] || 'N/A',
+            advertiserName: advertiserName,
             urlName: urlName,
             description: productDetails.description?.[0]?.short?.[0] || productDetails.description || 'N/A',
-            linkurl: [productDetails.deepLinkURL || productDetails.linkurl?.[0]] || [],
+            linkurl: productDetails.deepLinkURL || productDetails.linkurl?.[0] || '',
             from: source,
             color: productDetails.color ? [productDetails.color] : [],
             size: productDetails.size ? [productDetails.size] : [],
