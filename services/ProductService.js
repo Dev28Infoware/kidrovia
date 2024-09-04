@@ -1,17 +1,21 @@
+const fs = require('fs'); // Path to the CSV file
+const path = require('path');
 const product = require('../utils/AxiosService');
 const CsvService = require('../utils/CsvService');
-const path = require('path');
+const JsonService = require('../utils/JsonService');
 const S3CSVService = require('../utils/S3CSVService')
-const STOREFILEWRITEPATH = path.join(__dirname, '../file_structure/product_dump/product.json'); 
 const store = new CsvService();
-const fs = require('fs'); // Path to the CSV file
+// const JsonService = new JsonService();
+const STOREFILEWRITEPATH = path.join(__dirname, '../file_structure/product_dump/product.json'); 
 const awsFilePath = 'file_structure/store/store.csv';
+const jsonMappingFilePath = path.join(__dirname, '../file_structure/store_dump/store.json'); // Path to your JSON file
+
 
 
 class ProductService {
-    // constructor() {
-    //     this.csvService = new CsvService();
-    // }
+    constructor() {
+        this.csvService = new CsvService();
+    }
 
     async getProductsFromCSV(filePath) {
         try {
@@ -183,45 +187,45 @@ class ProductService {
         }
     }
 
-    async fetchCIDsAndUpdateCSV() {
-        const csvData = await this.csvService.readCSVFile(filePath);
-        const flexofferIds = csvData.filter(row => row.source === 'FLEXOFFER' && !row.cid);
+    async fetchCIDsAndUpdateJSON() {
+        const jsonData = await JsonService.readJSONFile(jsonMappingFilePath);
 
-        if (flexofferIds.length > 0) {
+        const flexofferStores = jsonData.filter(store => store.from === 'FLEXOFFER' && !store.cid);
+    
+        if (flexofferStores.length > 0) {
             const flexOfferHeader = {
                 'apiKey': '41a02e6b-b5a3-4d7f-ae2a-476cdd6be0b7',
                 'Accept': 'application/json'
             };
-
-            for (const store of flexofferIds) {
+    
+            for (const store of flexofferStores) {
                 const FLEXOFFER_CATALOG_API = `https://api.flexoffers.com/products/catalogs?aid=${store.store_id}`;
                 try {
                     const catalog = await product.getAPI(FLEXOFFER_CATALOG_API, flexOfferHeader, 'JSON');
                     if (catalog && catalog.length > 0) {
                         const cids = catalog.map(c => c.cid).join(',');
                         store.cid = cids;
-
-                        // Update the row in the CSV with the fetched CIDs
-                        await this.updateCSVWithCID(store.store_id, cids);
+    
+                        // Update the store in the JSON file with the fetched CIDs
+                        await this.updateJSONWithCID(store.store_id, cids);
                     }
                 } catch (error) {
-                    console.error(`Error fetching CIDs for AID ${store.store_id}:`, error.message);
+                    console.error(`Error fetching CIDs for store ID ${store.store_id}:`, error.message);
                 }
             }
         }
     }
 
-    // Method to update the CSV with CIDs for a given store_id
-    async updateCSVWithCID(storeId, cids) {
-        const csvData = await this.csvService.readCSVFile(filePath);
-        const updatedData = csvData.map(row => {
-            if (row.store_id === storeId) {
-                row.cid = cids;
+    async updateJSONWithCID(storeId, cids) {
+        const jsonData = await JsonService.readJSONFile(jsonMappingFilePath);
+        const updatedData = jsonData.map(store => {
+            if (store.id === storeId) {
+                store.cid = cids;
             }
-            return row;
+            return store;
         });
-
-        await this.csvService.writeCSVFile(filePath, updatedData);
+    
+        await JsonService.writeToFile(jsonMappingFilePath, updatedData);
     }
 
     async shopByProduct() {
@@ -252,7 +256,12 @@ class ProductService {
                     'Accept': 'application/json'
                 };
     
+                const storeData = JSON.parse(fs.readFileSync(jsonMappingFilePath, 'utf8'));
+                const cidList = storeData.map(store => store.cid).flat().filter(Boolean); // Flatten and remove any empty values
 
+                console.log('storeData', storeData);
+                console.log('cidList', cidList);
+                // const cidList = [];
                 // for (const storeId of flexofferIds) {
                 //     const FLEXOFFER_CATALOG_API = `https://api.flexoffers.com/products/catalogs?aid=${storeId}`;
 
@@ -262,20 +271,8 @@ class ProductService {
                 //             cidList.push(c.cid);
                 //         });
                 //     }
+                //     await this.delay(timeGap);
                 // }
-    
-                const cidList = [];
-                for (const storeId of flexofferIds) {
-                    const FLEXOFFER_CATALOG_API = `https://api.flexoffers.com/products/catalogs?aid=${storeId}`;
-
-                    const catalog = await product.getAPI(FLEXOFFER_CATALOG_API, flexOfferHeader, 'JSON');
-                    if(catalog){
-                        catalog.forEach(c => {
-                            cidList.push(c.cid);
-                        });
-                    }
-                    await this.delay(timeGap);
-                }
 
                 for (const cid of cidList) {
                     await this.delay(timeGap);                    

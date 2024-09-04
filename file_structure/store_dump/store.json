@@ -7,7 +7,8 @@
     "description": "Kohl's is a leading retailer with a commitment to inspiring and empowering families to lead fulfilled lives. The store offers amazing national and exclusive brands, incredible savings, and an easy shopping experience in-store, online, and through the Kohl's app. This program offers a 7-day cookie duration.",
     "country": "US",
     "urlName": "kohls",
-    "from": "FLEXOFFER"
+    "from": "FLEXOFFER",
+    "cid": "157993.156074.8C0134638C25338F"
   },
   {
     "id": 158527,
@@ -17,7 +18,8 @@
     "description": "Nordstrom.com features leading apparel, shoe and accessory fashions for men, women, juniors and kids. Customers also enjoy the latest in beauty, personal care, home décor and gifts. This program offers a 7-day cookie duration.",
     "country": "US",
     "urlName": "nordstrom",
-    "from": "FLEXOFFER"
+    "from": "FLEXOFFER",
+    "cid": "158527.1.4D5"
   },
   {
     "id": 159468,
@@ -27,7 +29,8 @@
     "description": "LEGO is a world-famous producer of toy bricks that inspires children's creativity through playing and learning. This program offers a 30-day cookie duration.",
     "country": "US",
     "urlName": "lego",
-    "from": "FLEXOFFER"
+    "from": "FLEXOFFER",
+    "cid": "159468.1.3663"
   },
   {
     "id": 162750,
@@ -37,7 +40,8 @@
     "description": "Curious, connected and out in the world, Banana Republic provides a wardrobe of favorites – clothing, eyewear, jewelry, shoes, handbags, and fragrances – all made for a life in motion with the finest materials and fabric innovations. This program offers a 1-day cookie duration.",
     "country": "US",
     "urlName": "banana-republic",
-    "from": "FLEXOFFER"
+    "from": "FLEXOFFER",
+    "cid": "162750.156074.63235322F430017"
   },
   {
     "id": 171105,
@@ -47,7 +51,8 @@
     "description": "Alice + Olivia is a sophisticated brand with a playful sensibility that offers a full women's ready-to-wear collection, which includes outerwear, dresses, and perfectly flattering pants. This program offers a 3-day cookie duration.",
     "country": "US",
     "urlName": "alice-olivia",
-    "from": "FLEXOFFER"
+    "from": "FLEXOFFER",
+    "cid": "171105.1.B4F0"
   },
   {
     "id": 172122,
@@ -57,7 +62,8 @@
     "description": "The Children's Place is a leading specialty retailer of children's merchandise appropriate for newborns up to teens 14 years of age. The Children's Place focuses on outfitting and making the experience of dressing one's child a little easier and much more enjoyable. This program offers a 15-day cookie duration.",
     "country": "US",
     "urlName": "the-childrens-place",
-    "from": "FLEXOFFER"
+    "from": "FLEXOFFER",
+    "cid": "172122.156074.815D5727FF79F9D1"
   },
   {
     "id": 181293,
@@ -67,7 +73,8 @@
     "description": "Legendary for its quality that's crafted to last, Hanna Andersson's super soft clothes give babies and kids room to wiggle, play and grow. By caring for kids with comfy cuts, a love of color and eco-friendly fabrics, Hanna makes their world happier and softer. This program offers a 7-day cookie duration.",
     "country": "US",
     "urlName": "hanna-andersson",
-    "from": "FLEXOFFER"
+    "from": "FLEXOFFER",
+    "cid": "181293.156074.E474BA81234AD025"
   },
   {
     "id": 188587,
@@ -77,7 +84,8 @@
     "description": "The Honest Company is a one-stop shop for the safest products, best service, and most useful tools and information for today's modern families, with the ultimate goal of redefining the family brand by helping to create healthier, happier homes and a better future for all children. This program offers a 30-day cookie duration.",
     "country": "US",
     "urlName": "the-honest-company",
-    "from": "FLEXOFFER"
+    "from": "FLEXOFFER",
+    "cid": "188587.1.920D"
   },
   {
     "id": 192065,
@@ -87,7 +95,8 @@
     "description": "Kidpik offers a uniquely designed, limited edition custom fashion collection of premium apparel, footwear, and accessories for girls aged 3-14. The brand combines personal styling with the excitement of unboxing and the convenience of home try-on, allowing girls to create their own unique style profiles and receive customized fashion boxes filled with high-quality clothes, shoes, and accessories. This program offers a 30-day cookie duration.",
     "country": "US",
     "urlName": "kidpik",
-    "from": "FLEXOFFER"
+    "from": "FLEXOFFER",
+    "cid": "192065.156052.219F"
   },
   {
     "id": 200434,
@@ -97,7 +106,8 @@
     "description": "Gymboree, Crazy 8, & Janie and Jack mix kid sensibility with a modern sense of style with  comfort-first promise that let kids be themselves. The three clothing brands all work to create unique looks for kids based on quality and creativity. This program offers a 7-day cookie duration.",
     "country": "US",
     "urlName": "janie-and-jack",
-    "from": "FLEXOFFER"
+    "from": "FLEXOFFER",
+    "cid": "200434.156074.7A6D0F7C12820A28"
   },
   {
     "id": 204122,
@@ -107,17 +117,8 @@
     "description": "4moms develop dramatically better juvenile products for parents. From cribs and rockers to feeding chairs and accessories, the retailer makes parenting easier and allows customers to better manage their daily routine with infants and toddlers. This program offers a 30-day cookie duration.",
     "country": "US",
     "urlName": "4moms",
-    "from": "FLEXOFFER"
-  },
-  {
-    "id": 25003,
-    "name": "Neiman Marcus",
-    "url": "https://www.neimanmarcus.com/",
-    "imageUrl": "https://merchant.linksynergy.com/fs/logo/lg_25003.gif",
-    "country": "United States",
-    "description": "Neiman Marcus has been recognized as the premier luxury retailer, dedicated to providing customers a level of service commensurate with its renowned assortment of fine goods and fashion expertise.",
-    "urlName": "neiman-marcus",
-    "from": "LINKSHARE"
+    "from": "FLEXOFFER",
+    "cid": "204122.156052.207C"
   },
   {
     "id": 35300,
