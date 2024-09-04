@@ -297,10 +297,7 @@ class ProductService {
                                     try{
                                          // Analyzed query for filtering
                                 // const analyzedQuery = this.queryAnalysis(fullProductDetails.description || fullProductDetails.name);
-                                let isValidProduct = true;
 
-                                console.log('analyzedQuery', analyzedQuery);
-    
                                 // Check gender filter
                                 // if (analyzedQuery.gender === 'GIRL' || analyzedQuery.gender === 'GIRLS') {
                                 //     isValidProduct = /girl|girls|kids|teens|children|toddler/i.test(fullProductDetails.description || fullProductDetails.name);
@@ -312,9 +309,6 @@ class ProductService {
     
                                 // Apply conditions as in getFlexofferProduct
                                 if (
-                                    // isValidProduct &&
-                                    !uniqueMap.has(fullProductDetails.deepLinkURL) &&
-                                    isValidProduct &&
                                     !uniqueMap.has(fullProductDetails.imageUrl) &&
                                     fullProductDetails.isInstock &&
                                     fullProductDetails.deepLinkURL &&
@@ -324,8 +318,8 @@ class ProductService {
                                 ) {
                                     const responseStructure = this.createProductResponseStructure(fullProductDetails, 'FLEXOFFER');
                                     uniqueMap.set(fullProductDetails.imageUrl, responseStructure);
-                                } else if (uniqueMap.has(fullProductDetails.deepLinkURL) && fullProductDetails.isInstock) {
-                                    const responseStructure = uniqueMap.get(fullProductDetails.deepLinkURL);
+                                } else if (uniqueMap.has(fullProductDetails.imageUrl) && fullProductDetails.isInstock) {
+                                    const responseStructure = uniqueMap.get(fullProductDetails.imageUrl);
                                     if (fullProductDetails.color) {
                                         responseStructure.color.push(fullProductDetails.color);
                                     }
@@ -414,20 +408,39 @@ class ProductService {
             let salesPrice = parseFloat(productDetails.salePrice || (productDetails.saleprice?.[0]?._ || 0));
         
             
-             if (salesPrice !== null && price !== null) {
-                if (salesPrice > price) {
-                    let tempPrice = salesPrice;
-                    salesPrice = price;
-                    price = tempPrice;
-                } else if (price === 0 && salesPrice !== 0) {
-                    price = salesPrice;
-                    salesPrice =0;
-                }
+            //  if ((+salesPrice)  && (+price)) {
+            //     if (salesPrice > price) {
+            //         let tempPrice = salesPrice;
+            //         salesPrice = price;
+            //         price = tempPrice;
+            //     } 
+            // }
+            // else if(!(+salesPrice) && (+price)){
+            //     salesPrice = 0;
+            // }
+
+            // if (!price) {
+            //     price = 0;
+            //     salesPrice = salesPrice;
+            // } 
+            
+            // Scenario 2: If salesPrice is falsy and price not
+            if (!(+salesPrice) && (+price)) {
+                price = 0;
+                salesPrice = price;
             }
-            else if(price == null && salesPrice!=null){
+            else if ((+salesPrice) > (+price)) {
                 price = salesPrice;
-                salesPrice=0;
+                salesPrice = price;
             }
+            // Scenario 3: If pricePd > salesPricePd
+            // else if (price > salesPrice) {
+            //     price = salesPrice;
+            //     salesPrice = salesPrice;
+            // }
+            
+            // Scenario 4: If salesPricePd > pricePd
+
         
         return {
             productName: productDetails.name || productDetails.productname?.[0] || 'N/A',
@@ -565,8 +578,8 @@ class ProductService {
    let response = {
         page: parseInt(page),
         pageSize: parseInt(pageSize),
-        totalItems: products.length,
-        // totalPage : Math.ceil(product.length/pageSize),
+        totalItems: filteredProducts.length,
+        totalPages : Math.round(parseInt(filteredProducts.length)/pageSize),
         data: paginatedResults
     };
     return response;

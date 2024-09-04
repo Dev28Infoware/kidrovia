@@ -6,3 +6,9 @@ exports.getSeoTagByFilter=async(req,res)=>{
     const response= await seo.getSeoTagBasedOnFilter(filter);
     res.json(response);
 };
+
+exports.getSeoTagByFilterForSearch=async(req,res)=>{
+    const filter = req.query.query;
+    const response = await seo.getSeoTagForSearchProduct(filter);
+    res.json(response);
+}
