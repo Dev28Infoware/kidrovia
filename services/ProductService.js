@@ -232,7 +232,7 @@ class ProductService {
             const linkshareIds = [];
             const allResults = [];
             const uniqueMap = new Map();
-            let timeGap = 12000
+            let timeGap = 15000
             const keywordGroups = ['kids' , 'toddler' , 'boys' , 'boy', 'girls' ,'girl' ,'babies' ,'baby'];
                 
             // Separate store IDs by source
