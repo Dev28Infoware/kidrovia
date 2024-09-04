@@ -18,7 +18,7 @@ class SeoService{
     async getSeoTagForSearchProduct(filter){
         try{
             let response = await csvService.downloadFile('seo-search');
-            return response.find(element=>element.url === filter)?response.find(element=>element.page === filter):new Map();
+            return response.find(element=>element.url === filter)?response.find(element=>element.url === filter):new Map();
             // return result ?result:new Map();
         }
         catch(error){
@@ -30,15 +30,15 @@ class SeoService{
     async getAllSearchQuery(){
         try{
             let response = await csvService.downloadFile('seo-search');
-            return response.map(resp=>{
-                query : resp.query
-                url : resp.url;
-            });
+            return response.map(resp=>({
+                query : resp.query,
+                url : resp.url
+            }));
             // return result ?result:new Map();
         }
         catch(error){
             console.log('No file found ',error.stack);
-            return new Map();
+            return [];
         }
     }
 }

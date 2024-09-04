@@ -34,4 +34,5 @@ router.get('/download', csvController.downloadFile);
 //SEO routes
 router.get('/seo-meta-tags',seoController.getSeoTagByFilter);
 router.get('/seo-meta-tags-search',seoController.getSeoTagByFilterForSearch);
+router.get('/seo-meta-query',seoController.getAllSeoQueryAndUrl);
 module.exports = router;

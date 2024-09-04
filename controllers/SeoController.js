@@ -12,3 +12,8 @@ exports.getSeoTagByFilterForSearch=async(req,res)=>{
     const response = await seo.getSeoTagForSearchProduct(filter);
     res.json(response);
 }
+
+exports.getAllSeoQueryAndUrl= async(req,res)=>{
+    const response = await seo.getAllSearchQuery();
+    res.json(response);
+}
