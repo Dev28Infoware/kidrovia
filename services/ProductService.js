@@ -425,13 +425,13 @@ class ProductService {
             // } 
             
             // Scenario 2: If salesPrice is falsy and price not
-            if (!(+salesPrice) && (+price)) {
-                price = 0;
-                salesPrice = price;
+            if (!(+salesPrice)) {
+                // salesPrice = (+price);
+                // price = 0;
+                [price,salesPrice] = [(+salesPrice),(+price)];
             }
             else if ((+salesPrice) > (+price)) {
-                price = salesPrice;
-                salesPrice = price;
+                [price,salesPrice] = [(+salesPrice),(+price)];
             }
             // Scenario 3: If pricePd > salesPricePd
             // else if (price > salesPrice) {
