@@ -1,7 +1,7 @@
 {
   "clothing": [
     "Athletic Wear",
-    "Coats & Jackets",
+    "Outerwear",
     "Denim",
     "Pants",
     "Sets",
@@ -9,9 +9,11 @@
     "Sleepwear",
     "Sweaters",
     "Swimwear",
-    "Suits",
+    "Formalwear",
     "Tops",
-    "Underwear"
+    "Underwear",
+    "Leggings",
+    "Overalls"
   ],
   "kids": [
     "boys",
@@ -21,7 +23,12 @@
     "baby",
     "baby's",
     "kid's",
-    "child"
+    "child",
+    "infant",
+    "toddler",
+    "preschooler",
+    "young child",
+    "newborn"
   ],
   "active wear": [
     "Athleisure",
@@ -29,7 +36,9 @@
     "Joggers",
     "Leggings",
     "Sweatpants",
-    "Tracksuits"
+    "Tracksuits",
+    "Sportswear",
+    "Training Gear"
   ],
   "coats & jackets": [
     "Biker jackets",
@@ -45,16 +54,17 @@
     "Varsity Jackets",
     "Windbreakers",
     "Winter Coats",
-    "Wool Coats"
+    "Wool Coats",
+    "Parka"
   ],
   "denim": [
     "Denim Dresses",
     "Denim Overalls",
     "Denim Skirts",
     "Denim Shorts",
-    "Denim Jackets",
     "Jean Jackets",
-    "Jeans"
+    "Jeans",
+    "Denim Shirts"
   ],
   "dresses": [
     "Beach Dresses",
@@ -62,13 +72,15 @@
     "Formal Dresses",
     "Party Dresses",
     "Sun Dresses",
-    "Maxi Dresses"
+    "Maxi Dresses",
+    "Pinafores"
   ],
   "jumpsuits": [
     "Playsuits",
     "Rompers",
     "Dungarees",
-    "Overalls"
+    "Overalls",
+    "One-Pieces"
   ],
   "pants": [
     "Cargo Pants",
@@ -76,19 +88,22 @@
     "Chinos",
     "Corduroy",
     "Linen Pants",
-    "Trousers"
+    "Trousers",
+    "Joggers"
   ],
   "sets": [
-    "All Sets",
+    "Matching Sets",
     "Casual Sets",
-    "Formal Sets"
+    "Formal Sets",
+    "Coordinated Sets"
   ],
   "shorts": [
     "Cargo Shorts",
     "Casual Shorts",
     "Chino Shorts",
     "Skorts",
-    "Bermuda Shorts"
+    "Bermuda Shorts",
+    "Board Shorts"
   ],
   "skirts": [
     "Ballet Skirts",
@@ -97,7 +112,8 @@
     "Midi Skirts",
     "Mini Skirts",
     "Pleated Skirts",
-    "Tutu Skirts"
+    "Tutu Skirts",
+    "A-Line Skirts"
   ],
   "sleepwear": [
     "Bath robes",
@@ -106,13 +122,15 @@
     "Nightdress",
     "Pajamas",
     "Sleep Shorts",
-    "Sweatsuits"
+    "Sweatsuits",
+    "Loungewear"
   ],
   "sweaters": [
     "Cardigans",
     "Jumpers",
-    "Knitted",
-    "Sweaters"
+    "Knitted Sweaters",
+    "Pullovers",
+    "Hoodies"
   ],
   "swimwear": [
     "Bikinis",
@@ -121,11 +139,15 @@
     "Tankinis",
     "Swim shorts",
     "Sun suits",
-    "Trunks"
+    "Trunks",
+    "Cover-Ups"
   ],
   "suits": [
     "Formal Suits",
-    "Tuxedos"
+    "Tuxedos",
+    "Blazers",
+    "Dress Pants",
+    "Dress Shirts"
   ],
   "tops": [
     "Blouses",
@@ -133,7 +155,8 @@
     "Shirts",
     "T-shirts",
     "Tanks",
-    "Vests"
+    "Vests",
+    "Hoodies"
   ],
   "underwear": [
     "Bras",
@@ -145,7 +168,8 @@
     "Petticoats",
     "Socks",
     "Thermals",
-    "Tights"
+    "Tights",
+    "Undershirts"
   ],
   "accessories": [
     "Bags",
@@ -154,7 +178,8 @@
     "Gloves",
     "Scarves",
     "Sunglasses",
-    "Jewelry"
+    "Jewelry",
+    "Watches"
   ],
   "bags": [
     "Backpacks",
@@ -165,7 +190,8 @@
     "Purses",
     "Shoulder bags",
     "Sports bags",
-    "Wallets"
+    "Wallets",
+    "Diaper Bags"
   ],
   "hair accessories": [
     "Bows",
@@ -174,14 +200,17 @@
     "Hair ties",
     "Headbands",
     "Ribbons",
-    "Scarves"
+    "Scarves",
+    "Hair Clips"
   ],
   "jewelry": [
     "Bracelets",
     "Brooches",
     "Charms",
     "Earrings",
-    "Necklaces"
+    "Necklaces",
+    "Rings",
+    "Anklets"
   ],
   "hats": [
     "Beanies",
@@ -189,9 +218,9 @@
     "Fedoras",
     "Sun Hats",
     "Winter Hats",
-    "Balaclavas",
     "Visors",
-    "Bonnets"
+    "Bonnets",
+    "Beanies"
   ],
   "gloves & scarves": [
     "Gloves",
@@ -199,11 +228,13 @@
     "Scarf Sets",
     "Summer Scarves",
     "Winter Scarves",
-    "Collars"
+    "Collars",
+    "Fingerless Gloves"
   ],
   "sunglasses": [
     "Eyewear",
-    "Sun Protective Hats"
+    "Sun Protective Hats",
+    "Shades"
   ],
   "shoes": [
     "Ballerinas",
@@ -221,7 +252,8 @@
     "Slippers",
     "Sneakers",
     "Trainers",
-    "Wedges"
+    "Wedges",
+    "High Tops"
   ],
   "footwear": [
     "Athletic Shoes",
@@ -229,26 +261,35 @@
     "Running Shoes",
     "Soccer Shoes",
     "Sports Footwear",
-    "Snow Boots"
+    "Snow Boots",
+    "Dress Shoes",
+    "Casual Shoes"
   ],
   "girls": [
     "girl",
     "girls",
     "girl's",
-    "female"
-
+    "kid girl",
+    "young girl",
+    "little girl",
+    "tween girl"
   ],
   "boys": [
-    "male",
     "boy",
+    "boys",
     "boy's",
-    "boy"
+    "kid boy",
+    "young boy",
+    "little boy",
+    "tween boy"
   ],
   "babies": [
     "Baby Girl",
     "Baby Boy",
     "Infant",
-    "Newborn"
+    "Newborn",
+    "Toddler",
+    "Baby"
   ],
   "baby girl": [
     "Bodysuits",
@@ -259,7 +300,8 @@
     "Sleepwear",
     "Sweaters",
     "Swimwear",
-    "Tops"
+    "Tops",
+    "Romper"
   ],
   "baby boy": [
     "Bodysuits",
@@ -269,7 +311,8 @@
     "Sleepwear",
     "Sweaters",
     "Swimwear",
-    "Tops"
+    "Tops",
+    "Romper"
   ],
   "gear": [
     "Bouncers",
@@ -283,12 +326,15 @@
     "Monitors",
     "Play Mats",
     "Strollers",
-    "Swings"
+    "Swings",
+    "Baby Gear"
   ],
   "home": [
     "Bath & Bed",
     "Decor",
-    "Furniture"
+    "Furniture",
+    "Bedding",
+    "Storage"
   ],
   "bath & bed": [
     "Bath",
@@ -296,7 +342,9 @@
     "Beauty & Skin",
     "Comforters",
     "Linens",
-    "Storage"
+    "Storage",
+    "Towels",
+    "Bath Mats"
   ],
   "decor": [
     "Artwork",
@@ -307,7 +355,8 @@
     "Frames",
     "Lighting",
     "Rugs",
-    "Travel"
+    "Travel",
+    "Wall Decals"
   ],
   "furniture": [
     "Bassinets",
@@ -322,7 +371,8 @@
     "Shelves",
     "Sofas",
     "Storage",
-    "Tables"
+    "Tables",
+    "Changing Tables"
   ],
   "toys": [
     "Action Figures",
@@ -340,6 +390,7 @@
     "STEM",
     "Soft Toys",
     "Vehicles",
-    "Wooden Toys"
+    "Wooden Toys",
+    "Building Blocks"
   ]
 }
