@@ -1,0 +1,1013 @@
+[
+    {
+        "page": "girls",
+        "display": true,
+        "categories": [
+            {
+                "category": "Clothing",
+                "display": true,
+                "subCategories": [
+                    {
+                        "subCategory": "Active Wear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Athleisure", "display": true },
+                            { "productType": "Bodysuit", "display": true },
+                            { "productType": "Gym shorts", "display": true },
+                            { "productType": "Hoodies", "display": true },
+                            { "productType": "Jerseys", "display": true },
+                            { "productType": "Joggers", "display": true },
+                            { "productType": "Leggings", "display": true },
+                            { "productType": "Ski Suit", "display": true },
+                            { "productType": "Sportswear", "display": true },
+                            { "productType": "Sweatpants", "display": true },
+                            { "productType": "Sweatshirts", "display": true },
+                            { "productType": "Tracksuits", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Coats & Jackets",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Biker jackets", "display": true },
+                            { "productType": "Blazers", "display": true },
+                            { "productType": "Coats", "display": true },
+                            { "productType": "Down Padded", "display": true },
+                            { "productType": "Duffle", "display": true },
+                            { "productType": "Jackets", "display": true },
+                            { "productType": "Leather", "display": true },
+                            { "productType": "Lightweight", "display": true },
+                            { "productType": "Puffer", "display": true },
+                            { "productType": "Rainwear", "display": true },
+                            { "productType": "Sleeveless", "display": true },
+                            { "productType": "Trench Coats", "display": true },
+                            { "productType": "Varsity Jackets", "display": true },
+                            { "productType": "Waistcoats", "display": true },
+                            { "productType": "Windbreakers", "display": true },
+                            { "productType": "Winter Coats", "display": true },
+                            { "productType": "Wool Coats", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Denim",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Denim Dresses", "display": true },
+                            { "productType": "Denim Overalls", "display": true },
+                            { "productType": "Denim Skirts", "display": true },
+                            { "productType": "Denim Shorts", "display": true },
+                            { "productType": "Jeans", "display": true },
+                            { "productType": "Jean Jackets", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Dresses",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Beach Dresses", "display": true },
+                            { "productType": "Casual", "display": true },
+                            { "productType": "Formal", "display": true },
+                            { "productType": "Knitted", "display": true },
+                            { "productType": "Long sleeve", "display": true },
+                            { "productType": "Party Dresses", "display": true },
+                            { "productType": "Polo", "display": true },
+                            { "productType": "Short sleeve", "display": true },
+                            { "productType": "Silk", "display": true },
+                            { "productType": "Special Occasion", "display": true },
+                            { "productType": "Sun dresses", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Jumpsuits",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Dungarees", "display": true },
+                            { "productType": "Playsuits", "display": true },
+                            { "productType": "Overalls", "display": true },
+                            { "productType": "Rompers", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Pants",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Capris", "display": true },
+                            { "productType": "Cargo Pants", "display": true },
+                            { "productType": "Casual", "display": true },
+                            { "productType": "Chinos", "display": true },
+                            { "productType": "Cropped", "display": true },
+                            { "productType": "Culottes", "display": true },
+                            { "productType": "Hareems", "display": true },
+                            { "productType": "Trousers", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sets",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "All sets", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Shorts",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Cargo shorts", "display": true },
+                            { "productType": "Casual Shorts", "display": true },
+                            { "productType": "Chino Shorts", "display": true },
+                            { "productType": "Formal", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Skirts",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Ballet skirts", "display": true },
+                            { "productType": "Maxi skirts", "display": true },
+                            { "productType": "Midi skirts", "display": true },
+                            { "productType": "Pleated skirts", "display": true },
+                            { "productType": "Skorts", "display": true },
+                            { "productType": "Tutus", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sleepwear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bath robes", "display": true },
+                            { "productType": "Nighties", "display": true },
+                            { "productType": "Nightdress", "display": true },
+                            { "productType": "Night gowns", "display": true },
+                            { "productType": "Pajamas", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sweaters",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Cardigans", "display": true },
+                            { "productType": "Jumpers", "display": true },
+                            { "productType": "Knitted", "display": true },
+                            { "productType": "Sweaters", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Swimwear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bikinis", "display": true },
+                            { "productType": "Board shorts", "display": true },
+                            { "productType": "Coverups", "display": true },
+                            { "productType": "Kaftans", "display": true },
+                            { "productType": "Sun suits", "display": true },
+                            { "productType": "Swimsuits", "display": true },
+                            { "productType": "Tankinis", "display": true },
+                            { "productType": "Trunks", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Tops",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Blouses", "display": true },
+                            { "productType": "Polo shirts", "display": true },
+                            { "productType": "Shirts", "display": true },
+                            { "productType": "Tanks tops", "display": true },
+                            { "productType": "Tees", "display": true },
+                            { "productType": "T-shirts", "display": true },
+                            { "productType": "Vests", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Underwear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bras", "display": true },
+                            { "productType": "Bralets", "display": true },
+                            { "productType": "Knickers", "display": true },
+                            { "productType": "Panties", "display": true },
+                            { "productType": "Petticoats", "display": true },
+                            { "productType": "Socks", "display": true },
+                            { "productType": "Thermal", "display": true },
+                            { "productType": "Tights", "display": true },
+                            { "productType": "Underwear", "display": true }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "Accessories",
+                "display": true,
+                "subCategories": [
+                    {
+                        "subCategory": "Bags",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Backpacks", "display": true },
+                            { "productType": "Bum bags & Fanny packs", "display": true },
+                            { "productType": "Clutches", "display": true },
+                            { "productType": "Handbags", "display": true },
+                            { "productType": "Holdalls", "display": true },
+                            { "productType": "Messenger Bags", "display": true },
+                            { "productType": "Purses", "display": true },
+                            { "productType": "Shoulder bags", "display": true },
+                            { "productType": "Sports bags", "display": true },
+                            { "productType": "Wallets", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Hair Accessories",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bows", "display": true },
+                            { "productType": "Clips", "display": true },
+                            { "productType": "Hair bands", "display": true },
+                            { "productType": "Hair ties", "display": true },
+                            { "productType": "Headbands", "display": true },
+                            { "productType": "Ribbons", "display": true },
+                            { "productType": "Scarves", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Jewelry",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bracelets", "display": true },
+                            { "productType": "Brooches", "display": true },
+                            { "productType": "Charms", "display": true },
+                            { "productType": "Earrings", "display": true },
+                            { "productType": "Necklaces", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Hats",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Balaclavas", "display": true },
+                            { "productType": "Beanies", "display": true },
+                            { "productType": "Bonnets", "display": true },
+                            { "productType": "Caps", "display": true },
+                            { "productType": "Hat Sets", "display": true },
+                            { "productType": "Special Occasion", "display": true },
+                            { "productType": "Summer Hats", "display": true },
+                            { "productType": "Sun Protective Hats", "display": true },
+                            { "productType": "Winter Hats", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Gloves & Scarves",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Collars", "display": true },
+                            { "productType": "Gloves", "display": true },
+                            { "productType": "Mittens", "display": true },
+                            { "productType": "Scarf Sets", "display": true },
+                            { "productType": "Summer Scarves", "display": true },
+                            { "productType": "Winter Scarves", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sunglasses",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Eyewear", "display": true },
+                            { "productType": "Sunglasses", "display": true }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "Shoes",
+                "display": true,
+                "subCategories": [
+                    { "subCategory": "Ballerinas & Flats", "display": true },
+                    { "subCategory": "Boots", "display": true },
+                    { "subCategory": "Espadrilles", "display": true },
+                    { "subCategory": "Flip Flops", "display": true },
+                    { "subCategory": "Loafers", "display": true },
+                    { "subCategory": "Mary Janes", "display": true },
+                    { "subCategory": "Moccasins", "display": true },
+                    { "subCategory": "Rain Boots", "display": true },
+                    { "subCategory": "Sandals", "display": true },
+                    { "subCategory": "Sliders", "display": true },
+                    { "subCategory": "Slip Ons", "display": true },
+                    { "subCategory": "Slippers", "display": true },
+                    { "subCategory": "Trainers & Sneakers", "display": true },
+                    { "subCategory": "Wedges", "display": true }
+                ]
+            }
+        ]
+    },
+    {
+        "page": "boys",
+        "display": true,
+        "categories": [
+            {
+                "category": "Clothing",
+                "display": true,
+                "subCategories": [
+                    {
+                        "subCategory": "Athletic Wear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Athleisure", "display": true },
+                            { "productType": "Bodysuit", "display": true },
+                            { "productType": "Gym shorts", "display": true },
+                            { "productType": "Hoodies", "display": true },
+                            { "productType": "Jerseys", "display": true },
+                            { "productType": "Joggers", "display": true },
+                            { "productType": "Leggings", "display": true },
+                            { "productType": "Ski Suit", "display": true },
+                            { "productType": "Sportswear", "display": true },
+                            { "productType": "Sweatpants", "display": true },
+                            { "productType": "Sweatshirts", "display": true },
+                            { "productType": "Tracksuits", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Coats & Jackets",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Biker Jackets", "display": true },
+                            { "productType": "Blazers", "display": true },
+                            { "productType": "Bomber Jackets", "display": true },
+                            { "productType": "Coats", "display": true },
+                            { "productType": "Duffle", "display": true },
+                            { "productType": "Jackets", "display": true },
+                            { "productType": "Leather", "display": true },
+                            { "productType": "Military", "display": true },
+                            { "productType": "Puffer", "display": true },
+                            { "productType": "Parkas", "display": true },
+                            { "productType": "Rainwear", "display": true },
+                            { "productType": "Ski Jackets", "display": true },
+                            { "productType": "Trench Coats", "display": true },
+                            { "productType": "Varsity jackets", "display": true },
+                            { "productType": "Wind breakers", "display": true },
+                            { "productType": "Winter jackets", "display": true },
+                            { "productType": "Wool coats", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Denim",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Denim Jackets", "display": true },
+                            { "productType": "Denim Shirts", "display": true },
+                            { "productType": "Denim Shorts", "display": true },
+                            { "productType": "Jeans", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Pants",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Casual", "display": true },
+                            { "productType": "Chinos", "display": true },
+                            { "productType": "Corduroy", "display": true },
+                            { "productType": "Dungarees", "display": true },
+                            { "productType": "Linen", "display": true },
+                            { "productType": "Pants", "display": true },
+                            { "productType": "Salopettes", "display": true },
+                            { "productType": "Trousers", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sets",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "All sets", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Shorts",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bermuda", "display": true },
+                            { "productType": "Cargo", "display": true },
+                            { "productType": "Casual", "display": true },
+                            { "productType": "Linen", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sleepwear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bathrobes", "display": true },
+                            { "productType": "Pajamas", "display": true },
+                            { "productType": "Night shirts", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sweaters",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Cardigans", "display": true },
+                            { "productType": "Jumpers", "display": true },
+                            { "productType": "Knitted", "display": true },
+                            { "productType": "Sweaters", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Swimwear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Board shorts", "display": true },
+                            { "productType": "Float suits", "display": true },
+                            { "productType": "Sun suits", "display": true },
+                            { "productType": "Swim shorts", "display": true },
+                            { "productType": "Trunks", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Suits",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Suits", "display": true },
+                            { "productType": "Tuxedos", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Tops",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Polo Shirts", "display": true },
+                            { "productType": "Shirts", "display": true },
+                            { "productType": "T-shirts", "display": true },
+                            { "productType": "Zip-ups", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Underwear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bloomers", "display": true },
+                            { "productType": "Boxers", "display": true },
+                            { "productType": "Briefs", "display": true },
+                            { "productType": "Long Johns", "display": true }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "Accessories",
+                "display": true,
+                "subCategories": [
+                    {
+                        "subCategory": "Bags",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Backpacks", "display": true },
+                            { "productType": "Belt bags", "display": true },
+                            { "productType": "Fanny packs", "display": true },
+                            { "productType": "Lunch bags", "display": true },
+                            { "productType": "Messenger bags", "display": true },
+                            { "productType": "Sports bags", "display": true },
+                            { "productType": "Pouches", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Belts",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Belts", "display": true },
+                            { "productType": "Braces", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Hats",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Balaclavas", "display": true },
+                            { "productType": "Beanies", "display": true },
+                            { "productType": "Caps", "display": true },
+                            { "productType": "Fedoras", "display": true },
+                            { "productType": "Visors", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Gloves",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Gloves", "display": true },
+                            { "productType": "Mittens", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Jewelry",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bracelets", "display": true },
+                            { "productType": "Watches", "display": true },
+                            { "productType": "Wrist bands", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Socks",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Cotton", "display": true },
+                            { "productType": "Long", "display": true },
+                            { "productType": "Mid-Length", "display": true },
+                            { "productType": "Short", "display": true },
+                            { "productType": "Slipper-Socks", "display": true },
+                            { "productType": "Sport Socks", "display": true },
+                            { "productType": "Wool", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sunglasses",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Eyewear", "display": true },
+                            { "productType": "Sunglasses", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Ties",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bow ties", "display": true },
+                            { "productType": "Ready ties", "display": true },
+                            { "productType": "Ties", "display": true }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "Shoes",
+                "display": true,
+                "subCategories": [
+                    { "subCategory": "Boots", "display": true },
+                    { "subCategory": "Booties", "display": true },
+                    { "subCategory": "Espadrilles", "display": true },
+                    { "subCategory": "Moccasins", "display": true },
+                    { "subCategory": "Loafers", "display": true },
+                    { "subCategory": "Rain boots", "display": true },
+                    { "subCategory": "Running shoes", "display": true },
+                    { "subCategory": "Slippers", "display": true },
+                    { "subCategory": "Slip ons", "display": true },
+                    { "subCategory": "Sneakers", "display": true },
+                    { "subCategory": "Snow boots", "display": true },
+                    { "subCategory": "Soccer shoes", "display": true },
+                    { "subCategory": "Sports footwear", "display": true },
+                    { "subCategory": "Trainers", "display": true }
+                ]
+            }
+        ]
+    },
+    {
+        "page": "babies",
+        "display": true,
+        "categories": [
+            {
+                "category": "Baby Girl",
+                "display": true,
+                "subCategories": [
+                    {
+                        "subCategory": "Accessories",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bags", "display": true },
+                            { "productType": "Gloves & Mittens", "display": true },
+                            { "productType": "Hair accessories", "display": true },
+                            { "productType": "Hats", "display": true },
+                            { "productType": "Jewelry", "display": true },
+                            { "productType": "Socks", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Bodysuits & Onesies",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Baby bodies", "display": true },
+                            { "productType": "Babygrows", "display": true },
+                            { "productType": "Bunting", "display": true },
+                            { "productType": "Onesie", "display": true },
+                            { "productType": "Playsuits & jumpsuits", "display": true },
+                            { "productType": "Petit grow", "display": true },
+                            { "productType": "Rompers", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Bottoms",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Jeans", "display": true },
+                            { "productType": "Leggins", "display": true },
+                            { "productType": "Shorts", "display": true },
+                            { "productType": "Skirts", "display": true },
+                            { "productType": "Pants", "display": true },
+                            { "productType": "Trousers", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Coats & Jackets",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Blazers", "display": true },
+                            { "productType": "Capes", "display": true },
+                            { "productType": "Coats (Long)", "display": true },
+                            { "productType": "Denim", "display": true },
+                            { "productType": "Down Padded", "display": true },
+                            { "productType": "Jackets (Short)", "display": true },
+                            { "productType": "Knitted", "display": true },
+                            { "productType": "Lightweight", "display": true },
+                            { "productType": "Pram Coats", "display": true },
+                            { "productType": "Puffer", "display": true },
+                            { "productType": "Rainwear", "display": true },
+                            { "productType": "Sleeveless Jackets", "display": true },
+                            { "productType": "Traditional", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Dresses",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Casual", "display": true },
+                            { "productType": "Christening & Baptism", "display": true },
+                            { "productType": "Dress Sets", "display": true },
+                            { "productType": "Formal", "display": true },
+                            { "productType": "Knitted", "display": true },
+                            { "productType": "Long Sleeves", "display": true },
+                            { "productType": "Pinafore", "display": true },
+                            { "productType": "Short Sleeves", "display": true },
+                            { "productType": "Silk", "display": true },
+                            { "productType": "Smocked", "display": true },
+                            { "productType": "Special Occasion", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sets",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "All sets", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Shoes",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Booties", "display": true },
+                            { "productType": "Boots & Rain Boots", "display": true },
+                            { "productType": "First Walkers", "display": true },
+                            { "productType": "Occasion Shoes", "display": true },
+                            { "productType": "Pre-Walkers", "display": true },
+                            { "productType": "Sandals", "display": true },
+                            { "productType": "Slippers & Indoor Shoes", "display": true },
+                            { "productType": "Sneakers", "display": true },
+                            { "productType": "Trainers", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sleepwear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Nightwear", "display": true },
+                            { "productType": "Pajamas", "display": true },
+                            { "productType": "Robes", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sweaters",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Cardigans", "display": true },
+                            { "productType": "Jumpers", "display": true },
+                            { "productType": "Knitted", "display": true },
+                            { "productType": "Sweaters", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Swimwear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bikinis", "display": true },
+                            { "productType": "Sun suits", "display": true },
+                            { "productType": "Swimsuits", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Tops",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Shirts", "display": true },
+                            { "productType": "Polos", "display": true },
+                            { "productType": "Tanks", "display": true },
+                            { "productType": "Vests", "display": true },
+                            { "productType": "T-shirts", "display": true }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "Baby Boy",
+                "display": true,
+                "subCategories": [
+                    {
+                        "subCategory": "Accessories",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bags", "display": true },
+                            { "productType": "Belts", "display": true },
+                            { "productType": "Hats", "display": true },
+                            { "productType": "Socks", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Onesies",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bunting", "display": true },
+                            { "productType": "Onesie", "display": true },
+                            { "productType": "Playsuits & jumpsuits", "display": true },
+                            { "productType": "Petit grow", "display": true },
+                            { "productType": "Rompers", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Bottoms",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Jeans", "display": true },
+                            { "productType": "Leggins", "display": true },
+                            { "productType": "Shorts", "display": true },
+                            { "productType": "Skirts", "display": true },
+                            { "productType": "Pants", "display": true },
+                            { "productType": "Trousers", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Coats & Jackets",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Blazers", "display": true },
+                            { "productType": "Capes", "display": true },
+                            { "productType": "Coats (Long)", "display": true },
+                            { "productType": "Denim", "display": true },
+                            { "productType": "Down Padded", "display": true },
+                            { "productType": "Jackets (Short)", "display": true },
+                            { "productType": "Knitted", "display": true },
+                            { "productType": "Lightweight", "display": true },
+                            { "productType": "Pram Coats", "display": true },
+                            { "productType": "Puffer", "display": true },
+                            { "productType": "Rainwear", "display": true },
+                            { "productType": "Sleeveless Jackets", "display": true },
+                            { "productType": "Traditional", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sets",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "All sets", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Shoes",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Booties", "display": true },
+                            { "productType": "Boots & Rain Boots", "display": true },
+                            { "productType": "First Walkers", "display": true },
+                            { "productType": "Occasion Shoes", "display": true },
+                            { "productType": "Pre-Walkers", "display": true },
+                            { "productType": "Sandals", "display": true },
+                            { "productType": "Slippers & Indoor Shoes", "display": true },
+                            { "productType": "Sneakers", "display": true },
+                            { "productType": "Trainers", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sleepwear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Nightwear", "display": true },
+                            { "productType": "Pajamas", "display": true },
+                            { "productType": "Robes", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Sweaters",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Cardigans", "display": true },
+                            { "productType": "Jumpers", "display": true },
+                            { "productType": "Knitted", "display": true },
+                            { "productType": "Sweaters", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Swimwear",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Board shorts", "display": true },
+                            { "productType": "Float suits", "display": true },
+                            { "productType": "Sun suits", "display": true },
+                            { "productType": "Swim shorts", "display": true },
+                            { "productType": "Trunks", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Tops",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Shirts", "display": true },
+                            { "productType": "Polos", "display": true },
+                            { "productType": "Tanks", "display": true },
+                            { "productType": "Vests", "display": true },
+                            { "productType": "T-shirts", "display": true }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "page": "home",
+        "display": true,
+        "categories": [
+            {
+                "category": "Bath & Bed",
+                "display": true,
+                "subCategories": [
+                    {
+                        "subCategory": "Bath",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bath & Shower Mats", "display": true },
+                            { "productType": "Bathroom Rugs", "display": true },
+                            { "productType": "Curtains", "display": true },
+                            { "productType": "Hampers", "display": true },
+                            { "productType": "Shower curtains", "display": true },
+                            { "productType": "Shower liners", "display": true },
+                            { "productType": "Spas", "display": true },
+                            { "productType": "Tubs", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Bedding",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bedspreads", "display": true },
+                            { "productType": "Bumpers", "display": true },
+                            { "productType": "Canopys", "display": true },
+                            { "productType": "Pillows & Pillow cases", "display": true },
+                            { "productType": "Mattress protectors", "display": true },
+                            { "productType": "Shams", "display": true },
+                            { "productType": "Sheets", "display": true },
+                            { "productType": "Sleep nests", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Beauty & Skin",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Face & Body cleansers", "display": true },
+                            { "productType": "Gift sets", "display": true },
+                            { "productType": "Moisturizers", "display": true },
+                            { "productType": "Tooth care", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Comforters",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Blankets", "display": true },
+                            { "productType": "Comforters", "display": true },
+                            { "productType": "Duvets", "display": true },
+                            { "productType": "Duvet sets", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Linens",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Bath capes", "display": true },
+                            { "productType": "Towels", "display": true },
+                            { "productType": "Robes", "display": true }
+                        ]
+                    },
+                    {
+                        "subCategory": "Storage",
+                        "display": true,
+                        "productTypes": [
+                            { "productType": "Baskets", "display": true },
+                            { "productType": "Hangers & hooks", "display": true },
+                            { "productType": "Lego storage", "display": true },
+                            { "productType": "Storage boxes", "display": true },
+                            { "productType": "Storage bags", "display": true },
+                            { "productType": "Toy boxes", "display": true },
+                            { "productType": "Wall shelves", "display": true },
+                            { "productType": "Wall storage", "display": true }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "Decor",
+                "display": true,
+                "subCategories": [
+                    { "subCategory": "Artwork", "display": true },
+                    { "subCategory": "Baskets & Boxes", "display": true },
+                    { "subCategory": "Clocks", "display": true },
+                    { "subCategory": "Curtains and Drapes", "display": true },
+                    { "subCategory": "Decorative Pillows", "display": true },
+                    { "subCategory": "Figurines", "display": true },
+                    { "subCategory": "Frames", "display": true },
+                    { "subCategory": "Lighting", "display": true },
+                    { "subCategory": "Rugs", "display": true },
+                    { "subCategory": "Throws", "display": true },
+                    { "subCategory": "Travel", "display": true },
+                    { "subCategory": "Other", "display": true }
+                ]
+            },
+            {
+                "category": "Furniture",
+                "display": true,
+                "subCategories": [
+                    { "subCategory": "Bassinets", "display": true },
+                    { "subCategory": "Cribs", "display": true },
+                    { "subCategory": "Beds", "display": true },
+                    { "subCategory": "Bookcases", "display": true },
+                    { "subCategory": "Chairs", "display": true },
+                    { "subCategory": "Desks", "display": true },
+                    { "subCategory": "Dressers", "display": true },
+                    { "subCategory": "Mattresses", "display": true },
+                    { "subCategory": "Mirrors", "display": true },
+                    { "subCategory": "Nursery", "display": true },
+                    { "subCategory": "Night stands", "display": true },
+                    { "subCategory": "Ottomans", "display": true },
+                    { "subCategory": "Shelves", "display": true },
+                    { "subCategory": "Storage", "display": true },
+                    { "subCategory": "Sofas", "display": true },
+                    { "subCategory": "Tables", "display": true }
+                ]
+            }
+        ]
+    },
+    {
+        "page": "gear",
+        "display": true,
+        "categories": [
+            {
+                "category": "Baby Gear",
+                "display": true,
+                "subCategories": [
+                    { "subCategory": "Bouncers", "display": true },
+                    { "subCategory": "Carriers", "display": true },
+                    { "subCategory": "Car Seats", "display": true },
+                    { "subCategory": "Diaper Bags", "display": true },
+                    { "subCategory": "Feeding", "display": true },
+                    { "subCategory": "Gadgets", "display": true },
+                    { "subCategory": "High Chairs", "display": true },
+                    { "subCategory": "Luggage", "display": true }
+                ]
+            },
+            {
+                "category": "Baby Equipment",
+                "display": true,
+                "subCategories": [
+                    { "subCategory": "Monitors", "display": true },
+                    { "subCategory": "Play Mats/Gyms", "display": true },
+                    { "subCategory": "Strollers", "display": true },
+                    { "subCategory": "Swings", "display": true }
+                ]
+            }
+        ]
+    },
+    {
+        "page": "toys",
+        "display": true,
+        "categories": [
+            {
+                "category": "Indoor Toys",
+                "display": true,
+                "subCategories": [
+                    { "subCategory": "Action Figures", "display": true },
+                    { "subCategory": "Arts & Crafts", "display": true },
+                    { "subCategory": "Books", "display": true },
+                    { "subCategory": "Costumes", "display": true },
+                    { "subCategory": "Dolls", "display": true },
+                    { "subCategory": "Educational", "display": true },
+                    { "subCategory": "Gadgets", "display": true },
+                    { "subCategory": "Interactive", "display": true }
+                ]
+            },
+            {
+                "category": "Outdoor & Specialty Toys",
+                "display": true,
+                "subCategories": [
+                    { "subCategory": "Outdoor Play", "display": true },
+                    { "subCategory": "Puzzles & Games", "display": true },
+                    { "subCategory": "Luxury", "display": true },
+                    { "subCategory": "Bikes & Riding Toys", "display": true },
+                    { "subCategory": "Musical Instruments", "display": true },
+                    { "subCategory": "STEM", "display": true },
+                    { "subCategory": "Soft Toys", "display": true },
+                    { "subCategory": "Wooden Toys", "display": true },
+                    { "subCategory": "Vehicles", "display": true }
+                ]
+            }
+        ]
+    }          
+]

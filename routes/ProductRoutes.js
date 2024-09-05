@@ -7,6 +7,7 @@ const couponController = require('../controllers/CouponController');
 const jsonMappingController = require('../controllers/JSONMappingController');
 const csvController = require('../controllers/CsvController');
 const seoController = require('../controllers/SeoController');
+const menuController = require('../controllers/MenuController');
 const upload = multer({ storage: multer.memoryStorage() });
 // Product Routes
 router.get('/products/search', productController.getAllProducts);
@@ -35,4 +36,7 @@ router.get('/download', csvController.downloadFile);
 router.get('/seo-meta-tags',seoController.getSeoTagByFilter);
 router.get('/seo-meta-tags-search',seoController.getSeoTagByFilterForSearch);
 router.get('/seo-meta-query',seoController.getAllSeoQueryAndUrl);
+
+//Menu Routes
+router.get('/menu-categories',menuController.getMenuData);
 module.exports = router;
