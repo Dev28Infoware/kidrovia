@@ -12,6 +12,7 @@ const store = new CsvService();
 const fs = require("fs"); // Path to the CSV file
 const awsFilePath = "file_structure/store/store.csv";
 const JsonService = require('../utils/JsonService');
+const jsonMappingFilePath = path.join(__dirname, '../file_structure/store_dump/store.json');
 class ProductService {
     // constructor() {
     //     this.csvService = new CsvService();
