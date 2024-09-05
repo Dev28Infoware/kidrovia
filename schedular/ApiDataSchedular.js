@@ -34,7 +34,7 @@ cron.schedule(`0 6 * * *`,async ()=>{   //Every day 6 AM
     }
     try{
         console.log('Dumping getAllProductByShop Data');
-        await productService.getAllProductByShop(isCached);
+        await productService.shopByProduct();
     }
     catch(error){
         console.log(`Error in caching getAllProductByShop data ${error.message}`);
