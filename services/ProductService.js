@@ -17,34 +17,53 @@ class ProductService {
         this.csvService = new CsvService();
     }
 
-    async getProductsFromCSV(filePath) {
-        try {
-            const csvData =  await S3CSVService.readCSVFromS3(awsFilePath);
-            const allResults = [];
-
-            for (const row of csvData) {
-                const search = row['query'];
-                const advertiserId = row['id'];
-                const advertiserName = row['query variance'];
-                const type = row['source'];
-
-                if (search) {  // Ensure search query is provided
-                    const products = await this.getProductBySearch(search, advertiserId, advertiserName, type);
-                    allResults.push(...products);
-                }
-            }
-
-            return allResults;
-        } catch (error) {
-            console.error('Error processing CSV file:', error.message);
-            throw error;
-        }
+  async getProductsFromCSV(query, page = 1, pageSize = 10) {
+    try {
+      const analysis = await csvApiService.downloadFile("search");
+      const queryAnalysis = analysis.find((item) => item.keyword === query);
+      const attributes = queryAnalysis.suffix.split(",") || [];
+      const targetItem = queryAnalysis.product.split(",") || [];
+      const target = queryAnalysis.target.split(",") || [];
+      const products = await store.readFromFile(STOREFILEWRITEPATH);
+      // Step 2: Filter products based on the analysis
+      const filteredProducts = products.filter((product) => {
+        const { productName, description } = product;
+        const productText = `${productName} ${description}`;
+        let hasAttribute = attributes.some((keyword) =>
+          productText.toUpperCase().includes(keyword.toUpperCase())
+        );
+        let hasTarget = target.some((keyword) =>
+          productText.toUpperCase().includes(keyword.toUpperCase())
+        );
+        let hasProduct = targetItem.some((keyword) =>
+          productText.toUpperCase().includes(keyword.toUpperCase())
+        );
+        return hasProduct;
+      });
+      const startIndex = (page - 1) * pageSize;
+      const paginatedResults = filteredProducts.slice(
+      startIndex,
+      startIndex + pageSize
+      );
+      let response = {
+        totalItems: filteredProducts.length,
+        page: parseInt(page),
+        pageSize: parseInt(pageSize),
+        totalPages: Math.ceil(filteredProducts.length / pageSize),
+        data: paginatedResults,
+      };
+      return response;
+    } catch (error) {
+      console.error("Error occured :", error.message);
+      throw error;
     }
-   
-    async getProductBySearch(search, id, name, type) {
-        const regexCase = /\b(KID|KIDS|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS)\b/i;
-        let flexSearch = search.replace(' ', ',');
-        let analyzedQuery = this.queryAnalysis(search);
+  }
+
+  async getProductBySearch(search, id, name, type) {
+    const regexCase =
+      /\b(KID|KIDS|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS)\b/i;
+    let flexSearch = search.replace(" ", ",");
+    let analyzedQuery = this.queryAnalysis(search);
 
         // let FLEX_OFFER_API = `https://api.flexoffers.com/products?name=${flexSearch}&page=1&pageSize=10`;
         let flexOfferHeader = {
@@ -549,24 +568,25 @@ class ProductService {
     const keywordMappings = JSON.parse(fs.readFileSync(mappingsFilePath, 'utf-8'));
 
     // Expand the keywords using the mapping file without changing their case
-    const expandedKeywords = keywords.flatMap(keyword => {
-        return keywordMappings[keyword] ? keywordMappings[keyword] : [keyword];
+    const expandedKeywords = keywords.flatMap((keyword) => {
+      return keywordMappings[keyword] ? keywordMappings[keyword].toLowerCase : [keyword].toLowerCase;
     });
-
+    const keywordSet = new Set(expandedKeywords);
+    console.log(keywordSet);
     // Filter products based on the keywords and shop
-    const filteredProducts = products.filter(product => {
-        if (shop && product.urlName !== shop) return false;
-
-        // Check if the product matches all expanded keywords
-        return expandedKeywords.every(keyword => {
-            const keywordRegex = new RegExp(keyword, 'i');
-            return (
-                keywordRegex.test(product.productName) ||
-                keywordRegex.test(product.description) ||
-                keywordRegex.test(product.category) ||
-                keywordRegex.test(product.linkURL)
-            );
-        });
+    const filteredProducts = products.filter((product) => {
+      if (shop && product.urlName !== shop) return false;
+      
+      // Check if the product matches all expanded keywords
+      return expandedKeywords.every((keyword) => {
+        const keywordRegex = new RegExp(keyword, "i");
+        return (
+          keywordRegex.test(product.productName) ||
+          keywordRegex.test(product.description) ||
+          keywordRegex.test(product.category) ||
+          keywordRegex.test(product.linkURL)
+        );
+      });
     });
 
     // Apply pagination

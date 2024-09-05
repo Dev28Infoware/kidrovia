@@ -33,10 +33,7 @@ router.post('/upload',upload.single('file'), csvController.uploadFile);
 router.get('/download', csvController.downloadFile);
 
 //SEO routes
-router.get('/seo-meta-tags',seoController.getSeoTagByFilter);
-router.get('/seo-meta-tags-search',seoController.getSeoTagByFilterForSearch);
-router.get('/seo-meta-query',seoController.getAllSeoQueryAndUrl);
-
-//Menu Routes
-router.get('/menu-categories',menuController.getMenuData);
+router.get("/seo-meta-tags", seoController.getSeoTagByFilter);
+router.get("/seo-meta-tags-search", seoController.getSeoTagByFilterForSearch);
+router.get("/custom-page-queries", seoController.getAllSeoQueryAndUrl);
 module.exports = router;

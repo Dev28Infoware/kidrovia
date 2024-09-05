@@ -4,17 +4,15 @@ const CsvApiService = require('../services/CsvApiService')
 const csvService = new CsvApiService();
 const productService = new ProductService();
 
-exports.getAllProducts = async (req, res) => {
-    // const filePath = path.join(__dirname, '../file_structure/product/product.csv');  // Path to the CSV file
-    const awsFilePath = 'file_structure/product/product.csv';
-
-    try {
-        // const allResults = await productService.getProductsFromCSV(filePath);
-        const allResults = await csvService.readCSVFromS3(awsFilePath);
-        res.json(allResults);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
+exports.getAllProductsByPhrase = async (req, res) => {
+  try {
+    const query = req.query.query;
+    const { page = 1, pageSize = 10 } = req.query;
+    const allResults = await productService.getProductsFromCSV(query,page,pageSize);
+    res.json(allResults);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 };
 
 exports.shopByProduct = async (req, res) => {

@@ -232,14 +232,17 @@
     "Snow Boots"
   ],
   "girls": [
-    "Female",
-    "Woman",
-    "Girl"
+    "girl",
+    "girls",
+    "girl's",
+    "female"
+
   ],
   "boys": [
-    "Male",
-    "Boy",
-    "Young Man"
+    "male",
+    "boy",
+    "boy's",
+    "boy"
   ],
   "babies": [
     "Baby Girl",
