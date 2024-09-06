@@ -86,12 +86,12 @@ class MerchantService{
           } catch (error) {
               console.error(`Error fetching advertiser for merchantId ${value}:`, error.message);
           }
-      }
+         }
+         await store.writeToFile(STOREFILEWRITEPATH,responseData);
         }
         catch(error){
           console.log(error.stack);
         }
-      await store.writeToFile(STOREFILEWRITEPATH,responseData);
       return responseData;
     }
 

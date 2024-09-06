@@ -10,10 +10,12 @@ const seoController = require('../controllers/SeoController');
 const menuController = require('../controllers/MenuController');
 const upload = multer({ storage: multer.memoryStorage() });
 // Product Routes
-router.get('/products/search', productController.getAllProducts);
-router.post('/products/search', productController.searchProducts);
-router.get('/shops/products', productController.shopByProduct);
-router.get('/shops/products/:category', productController.getProductByCategory);
+router.get(
+    "/products/search_by_phrase",
+    productController.getAllProductsByPhrase
+  );
+  router.post("/products/search", productController.searchProducts);
+  router.get("/shops/products", productController.shopByProduct);
 
 // Merchant Routes
 router.get('/merchant/get_all', merchantController.getAllMerchant);
@@ -31,6 +33,9 @@ router.delete('/json-mapping/remove', jsonMappingController.removeMapping);
 //Csv Upload to s3 route
 router.post('/upload',upload.single('file'), csvController.uploadFile);
 router.get('/download', csvController.downloadFile);
+
+//Menu routes
+router.get('/menu-categories',menuController.getMenuData);
 
 //SEO routes
 router.get("/seo-meta-tags", seoController.getSeoTagByFilter);

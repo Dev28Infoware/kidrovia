@@ -4,6 +4,8 @@ const MerchantService = require('../services/MerchantService')
 const merchantService = new MerchantService();
 const CouponService = require('../services/CouponService')
 const couponService = new CouponService();
+const ProductService = require('../services/ProductService');
+const productService = new ProductService();
 
 cron.schedule(`0 6 * * *`,async ()=>{   //Every day 6 AM
     const isCached = false;
@@ -33,8 +35,8 @@ cron.schedule(`0 6 * * *`,async ()=>{   //Every day 6 AM
         console.log(`Error in caching getCouponsByCategories data ${error.message}`);
     }
     try{
-        console.log('Dumping getAllProductByShop Data');
-        await productService.getAllProductByShop(isCached);
+        console.log('Dumping shopByProduct Data');
+        await productService.shopByProduct();
     }
     catch(error){
         console.log(`Error in caching getAllProductByShop data ${error.message}`);
