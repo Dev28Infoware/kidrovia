@@ -116,7 +116,7 @@ class ProductService {
       try {
         const csvData = await S3CSVService.readCSVFromS3(awsFilePath);
         const regexCase =
-          /\b(KID|KIDS|KID'S|BABY|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS|BABIES|TOYS|TOY|TOY'S)\b/i;
+          /\b(KID|KIDS|KID'S|BABIE'S|CHILDREN|TOODLER|CHILDRENS|CHILDREN'S|TOODLERS|TEENS|BABIES|TOYS|TOY|TOY'S)\b/i;
   
         const flexofferIds = [];
         const linkshareIds = [];
@@ -478,6 +478,9 @@ class ProductService {
     
     // Expand the keywords using the mapping file without changing their case
     const category = new RegExp(keywords.length>=2?keywords[1].toLowerCase():'', 'i');
+    if (keywords.length >= 2) {
+      keywords.splice(1, 1);
+    }
     if(shop && keywords.length==0){
       let accumulatedResults = [];
       const filteredProducts = products.filter(product=>{
@@ -508,7 +511,7 @@ class ProductService {
           return result&&resultCat && (shop===product.urlName);
         }
         else {
-          return result&&resultCat;
+          return resultCat?result&&resultCat:result;
         }
       });
       accumulatedResults = accumulatedResults.concat(filteredProducts);
